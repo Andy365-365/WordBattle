@@ -1,0 +1,42 @@
+allprojects {
+    buildscript {
+        repositories {
+            def mavenAli = 'https://maven.aliyun.com/repository/public'
+            def googleAli = 'https://maven.aliyun.com/repository/google'
+            all { ArtifactRepository repo ->
+                if (repo instanceof MavenArtifactRepository) {
+                    def url = repo.url.toString()
+                    if (url.contains('google.com') || url.contains('goolgeapis')) {
+                        repo.url = googleAli
+                    }
+                    if (url.contains('repo.maven.org') || url.contains('jcenter')) {
+                        repo.url = mavenAli
+                    }
+                }
+            }
+            maven { url mavenAli }
+            maven { url googleAli }
+            mavenCentral()
+            google()
+        }
+    }
+    repositories {
+        def mavenAli = 'https://maven.aliyun.com/repository/public'
+        def googleAli = 'https://maven.aliyun.com/repository/google'
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.contains('google.com') || url.contains('goolgeapis')) {
+                    repo.url = googleAli
+                }
+                if (url.contains('repo.maven.org') || url.contains('jcenter')) {
+                    repo.url = mavenAli
+                }
+            }
+        }
+        maven { url googleAli }
+        maven { url mavenAli }
+        mavenCentral()
+        google()
+    }
+}
