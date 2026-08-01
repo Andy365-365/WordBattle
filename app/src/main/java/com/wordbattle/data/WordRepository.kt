@@ -59,7 +59,8 @@ class WordRepository {
                 round = index + 1,
                 questionText = questionText,
                 options = shuffledOptions,
-                correctIdx = correctIdx
+                correctIdx = correctIdx,
+                page = word.page
             )
         }
     }

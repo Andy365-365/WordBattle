@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,7 +20,8 @@ fun PlayerGameScreen(
     options: List<String>,
     onAnswer: (choice: Int) -> Unit,
     onBack: () -> Unit,
-    status: String = "WAITING"
+    status: String = "WAITING",
+    page: Int = 0
 ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -60,6 +62,9 @@ fun PlayerGameScreen(
                 Column(modifier = Modifier.padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(questionText, fontSize = 32.sp, fontWeight = FontWeight.Bold)
+                    if (page > 0) {
+                        Text("P$page", fontSize = 14.sp, color = Color(0xff888888), modifier = Modifier.padding(top = 4.dp))
+                    }
                 }
             }
 

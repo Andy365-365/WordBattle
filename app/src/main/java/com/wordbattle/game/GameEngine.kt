@@ -70,6 +70,7 @@ class GameEngine(
         val roundState = RoundState(round = roundIndex + 1)
         currentRound = roundState
         DebugLog.i("[Engine] nextRound: 第${roundState.round}题 question=${question.questionText}")
+        onRoundChange(roundState, question)
         network.broadcast(GameMessage.PREPARE(round = roundState.round))
         DebugLog.d("broadcast: PREPARE")
         coroutineScope.launch {
@@ -80,6 +81,7 @@ class GameEngine(
                     round = roundState.round,
                     question = question.questionText,
                     options = question.options,
+                    page = question.page,
                     timer = 10
                 ))
                 startTimeout(question)
@@ -175,7 +177,11 @@ class GameEngine(
         onGameEnd(ranking)
     }
 
+    private var restarting = false
+
     fun restart() {
+        if (restarting) return
+        restarting = true
         players.values.forEach { it.score = 0 }
         currentRound = null
         roundIndex = -1
@@ -183,8 +189,12 @@ class GameEngine(
         timeoutJob?.cancel()
         timeoutJob = null
         coroutineScope.launch {
-            network.broadcast(GameMessage.RESTART())
-            nextRound()
+            try {
+                network.broadcast(GameMessage.RESTART())
+                nextRound()
+            } finally {
+                restarting = false
+            }
         }
     }
 

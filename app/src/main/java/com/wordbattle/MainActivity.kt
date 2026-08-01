@@ -52,6 +52,7 @@ class MainActivity : ComponentActivity() {
     private val _discoveredHosts = MutableStateFlow<List<UdpBroadcast>>(emptyList())
     private val _playerStatus = MutableStateFlow("WAITING")  // WAITING / READY / ANSWERING / SUBMITTED / REVEAL
     private val _playerQuestion = MutableStateFlow("")
+    private val _playerPage = MutableStateFlow(0)
     private val _playerOptions = MutableStateFlow<List<String>>(emptyList())
     private val _playerScore = MutableStateFlow(0)
     private var myPlayerId by mutableStateOf("")
@@ -126,8 +127,10 @@ class MainActivity : ComponentActivity() {
                 playerCount = hostPlayerCount,
                 onStart = {
                     gameEngine?.startGame()
-                    appScope.launch { gameEngine?.nextRound() }
-                    navigateTo(Screen.HOST_GAME)
+                    appScope.launch {
+                        gameEngine?.nextRound()
+                        navigateTo(Screen.HOST_GAME)
+                    }
                 },
                 onBack = { stopHostMode(); navigateTo(Screen.HOME) }
             )
@@ -166,7 +169,10 @@ class MainActivity : ComponentActivity() {
                 ResultScreen(
                     ranking = hostRanking,
                     myScore = 0,
-                    onRestart = { gameEngine?.restart() },
+                    onRestart = {
+                        gameEngine?.restart()
+                        navigateTo(Screen.HOST_GAME)
+                    },
                     onBack = { stopHostMode(); navigateTo(Screen.HOME) }
                 )
             }
@@ -194,11 +200,14 @@ class MainActivity : ComponentActivity() {
 
             Screen.PLAYER_GAME -> {
                 val questionText by _playerQuestion.collectAsState()
+                val page by _playerPage.collectAsState()
                 val options by _playerOptions.collectAsState()
                 val status by _playerStatus.collectAsState()
                 PlayerGameScreen(
                     questionText = questionText,
                     options = options,
+                    status = status,
+                    page = page,
                     onAnswer = { choice ->
                         _playerStatus.value = "SUBMITTED"
                         appScope.launch {
@@ -210,8 +219,7 @@ class MainActivity : ComponentActivity() {
                             ))
                         }
                     },
-                    onBack = { stopPlayerMode(); navigateTo(Screen.HOME) },
-                    status = status
+                    onBack = { stopPlayerMode(); navigateTo(Screen.HOME) }
                 )
             }
 
@@ -232,10 +240,10 @@ class MainActivity : ComponentActivity() {
     // ========== 主机逻辑 ==========
 
     private fun setupHostMode(direction: String, total: Int) {
+        stopHostMode()
         val ip = getLocalIp()
         DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total")
         tcpServer = TcpServer(appScope).apply {
-            DebugLog.i("TCP 服务器启动 port=${TcpServer.DEFAULT_PORT}")
             start()
         }
         val server = tcpServer!!
@@ -346,6 +354,7 @@ class MainActivity : ComponentActivity() {
                                 "GO" -> {
                                     val msg = json.decodeFromString<GameMessage.GO>(jsonStr)
                                     _playerQuestion.value = msg.question
+                                    _playerPage.value = msg.page
                                     _playerOptions.value = msg.options
                                     _playerStatus.value = "ANSWERING"
                                     DebugLog.i("GO: 题目=${msg.question}")
@@ -355,7 +364,12 @@ class MainActivity : ComponentActivity() {
                                     val correctText = _playerOptions.value.getOrNull(msg.correctIdx) ?: ""
                                     _playerStatus.value = "REVEAL:idx=${msg.correctIdx}:text=$correctText"
                                     DebugLog.i("揭晓: 答案=$correctText 胜者=${msg.winnerName}")
-                                    appScope.launch { delay(2000); _playerStatus.value = "WAITING" }
+                                    appScope.launch {
+                                        delay(1500)
+                                        if (_playerStatus.value.startsWith("REVEAL")) {
+                                            _playerStatus.value = "WAITING"
+                                        }
+                                    }
                                 }
                                 "SCORES" -> {
                                     val msg = json.decodeFromString<GameMessage.SCORE>(jsonStr)

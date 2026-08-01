@@ -39,7 +39,7 @@ fun HostGameScreen(
         }
 
         Spacer(Modifier.height(12.dp))
-        Text("题目: ${question.questionText}", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+        Text("题目: ${question.questionText}${if (question.page > 0) "  P${question.page}" else ""}", fontSize = 22.sp, fontWeight = FontWeight.Bold)
         Spacer(Modifier.height(4.dp))
         Text("状态: ${playerStatus}", fontSize = 14.sp)
 

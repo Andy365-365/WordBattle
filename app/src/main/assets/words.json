@@ -1,42 +1,5348 @@
 [
-  {"word": "abandon", "translation": "放弃", "distractors": ["到达", "aboard", "abnormal"], "level": "CET4"},
-  {"word": "achieve", "translation": "实现", "distractors": ["到达", "完成", "获得"], "level": "CET4"},
-  {"word": "brave", "translation": "勇敢的", "distractors": ["粗心的", "宽的", "笨的"], "level": "初中"},
-  {"word": "capture", "translation": "捕获", "distractors": ["捕捉", "抓", "俘虏"], "level": "CET4"},
-  {"word": "delicate", "translation": "精致的", "distractors": ["脆弱的", "敏感的", "微妙的"], "level": "CET6"},
-  {"word": "efficient", "translation": "高效的", "distractors": ["有效的", "足够的", "充足的"], "level": "CET4"},
-  {"word": "flourish", "translation": "繁荣", "distractors": ["开花", "茂盛", "兴旺"], "level": "CET6"},
-  {"word": "generous", "translation": "慷慨的", "distractors": ["大量的", "丰富的", "大方的"], "level": "CET4"},
-  {"word": "hesitate", "translation": "犹豫", "distractors": ["等待", "停顿", "迟疑"], "level": "CET4"},
-  {"word": "inevitable", "translation": "不可避免的", "distractors": ["必然的", "确定的", "肯定的"], "level": "CET6"},
-  {"word": "jealous", "translation": "嫉妒的", "distractors": ["羡慕的", "嫉妒", "忌妒"], "level": "CET4"},
-  {"word": "keen", "translation": "敏锐的", "distractors": ["渴望的", "锋利的", "热心的"], "level": "CET4"},
-  {"word": "negotiate", "translation": "谈判", "distractors": ["协商", "商议", "磋商"], "level": "CET6"},
-  {"word": "obvious", "translation": "明显的", "distractors": ["显然的", "清楚的", "明白的"], "level": "CET4"},
-  {"word": "permanent", "translation": "永久的", "distractors": ["永恒的", "持久的", "长期的"], "level": "CET4"},
-  {"word": "reluctant", "translation": "不情愿的", "distractors": ["勉强的", "迟疑的", "犹豫的"], "level": "CET6"},
-  {"word": "sacrifice", "translation": "牺牲", "distractors": ["献祭", "供奉", "献出"], "level": "CET4"},
-  {"word": "temporary", "translation": "暂时的", "distractors": ["临时的", "短暂的", "临时的"], "level": "CET4"},
-  {"word": "unique", "translation": "独特的", "distractors": ["唯一的", "非凡的", "独一无二的"], "level": "CET4"},
-  {"word": "vulnerable", "translation": "脆弱的", "distractors": ["易受伤的", "易受攻击的", "敏感的"], "level": "CET6"},
-  {"word": "放弃", "translation": "abandon", "distractors": ["give up", "quit", "surrender"], "level": "CET4"},
-  {"word": "实现", "translation": "achieve", "distractors": ["realize", "accomplish", "complete"], "level": "CET4"},
-  {"word": "勇敢的", "translation": "brave", "distractors": ["courageous", "bold", "fearless"], "level": "初中"},
-  {"word": "捕获", "translation": "capture", "distractors": ["catch", "seize", "grab"], "level": "CET4"},
-  {"word": "精致的", "translation": "delicate", "distractors": ["exquisite", "elegant", "refined"], "level": "CET6"},
-  {"word": "高效的", "translation": "efficient", "distractors": ["effective", "productive", "competent"], "level": "CET4"},
-  {"word": "繁荣", "translation": "flourish", "distractors": ["thrive", "prosper", "bloom"], "level": "CET6"},
-  {"word": "慷慨的", "translation": "generous", "distractors": ["liberal", "bountiful", "magnanimous"], "level": "CET4"},
-  {"word": "犹豫", "translation": "hesitate", "distractors": ["waver", "vacillate", "pause"], "level": "CET4"},
-  {"word": "不可避免的", "translation": "inevitable", "distractors": ["unavoidable", "certain", "bound to happen"], "level": "CET6"},
-  {"word": "嫉妒的", "translation": "jealous", "distractors": ["envious", "covetous", "bitter"], "level": "CET4"},
-  {"word": "敏锐的", "translation": "keen", "distractors": ["sharp", "acute", "perceptive"], "level": "CET4"},
-  {"word": "谈判", "translation": "negotiate", "distractors": ["bargain", "discuss", "mediate"], "level": "CET6"},
-  {"word": "明显的", "translation": "obvious", "distractors": ["evident", "apparent", "clear"], "level": "CET4"},
-  {"word": "永久的", "translation": "permanent", "distractors": ["permanent", "enduring", "lasting"], "level": "CET4"},
-  {"word": "不情愿的", "translation": "reluctant", "distractors": ["unwilling", "loath", "averse"], "level": "CET6"},
-  {"word": "牺牲", "translation": "sacrifice", "distractors": ["offer up", "surrender", "give up"], "level": "CET4"},
-  {"word": "暂时的", "translation": "temporary", "distractors": ["provisional", "brief", "short-lived"], "level": "CET4"},
-  {"word": "独特的", "translation": "unique", "distractors": ["distinctive", "singular", "one-of-a-kind"], "level": "CET4"},
-  {"word": "脆弱的", "translation": "vulnerable", "distractors": ["fragile", "weak", "susceptible"], "level": "CET6"}
+  {
+    "word": "ready",
+    "translation": "准备好（做某事）的",
+    "distractors": [
+      "弥漫，充满",
+      "不作声的",
+      "发狂地；无法控制地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 3
+  },
+  {
+    "word": "准备好（做某事）的",
+    "translation": "ready",
+    "distractors": [
+      "situation",
+      "forest",
+      "everybody"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 3
+  },
+  {
+    "word": "textbook",
+    "translation": "教科书，教材，课本",
+    "distractors": [
+      "从一边到另一边；穿过",
+      "把（某物或某人）带至（新的地点或位置）",
+      "受大众喜爱的，受欢迎的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 3
+  },
+  {
+    "word": "教科书，教材，课本",
+    "translation": "textbook",
+    "distractors": [
+      "news",
+      "meaning",
+      "rose"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 3
+  },
+  {
+    "word": "eraser",
+    "translation": "橡皮",
+    "distractors": [
+      "英雄",
+      "灯笼；提灯",
+      "糖"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 3
+  },
+  {
+    "word": "橡皮",
+    "translation": "eraser",
+    "distractors": [
+      "ground",
+      "forget",
+      "ocean"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 3
+  },
+  {
+    "word": "geography",
+    "translation": "地理",
+    "distractors": [
+      "周末",
+      "历险；奇遇",
+      "昏暗的；黑暗的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 4
+  },
+  {
+    "word": "地理",
+    "translation": "geography",
+    "distractors": [
+      "dead",
+      "wolf",
+      "fact"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 4
+  },
+  {
+    "word": "biology",
+    "translation": "生物",
+    "distractors": [
+      "棉花",
+      "灯笼；提灯",
+      "喂养，饲养，给……食物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 4
+  },
+  {
+    "word": "生物",
+    "translation": "biology",
+    "distractors": [
+      "hug",
+      "celebrate",
+      "realise"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 4
+  },
+  {
+    "word": "history",
+    "translation": "历史",
+    "distractors": [
+      "某物；某事；某些东西",
+      "练习",
+      "圆形的，环形的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 4
+  },
+  {
+    "word": "历史",
+    "translation": "history",
+    "distractors": [
+      "piece",
+      "yard",
+      "fill"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 4
+  },
+  {
+    "word": "grey",
+    "translation": "灰色的",
+    "distractors": [
+      "排球（运动）",
+      "说笑话；开玩笑",
+      "不平常的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 5
+  },
+  {
+    "word": "灰色的",
+    "translation": "grey",
+    "distractors": [
+      "usually",
+      "fact",
+      "power"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 5
+  },
+  {
+    "word": "jacket",
+    "translation": "夹克，短上衣",
+    "distractors": [
+      "保护；防护",
+      "欢欣，愉快，喜悦",
+      "搁板，架子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 5
+  },
+  {
+    "word": "夹克，短上衣",
+    "translation": "jacket",
+    "distractors": [
+      "engineer",
+      "feed",
+      "dark"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 5
+  },
+  {
+    "word": "T-shirt",
+    "translation": "T恤衫，短袖运动衫",
+    "distractors": [
+      "文化",
+      "俱乐部",
+      "每个人，人人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 5
+  },
+  {
+    "word": "T恤衫，短袖运动衫",
+    "translation": "T-shirt",
+    "distractors": [
+      "pollution",
+      "really",
+      "collect"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 5
+  },
+  {
+    "word": "uniform",
+    "translation": "制服",
+    "distractors": [
+      "可怕的，骇人的，恐怖的",
+      "狼",
+      "高山，山岳"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 5
+  },
+  {
+    "word": "制服",
+    "translation": "uniform",
+    "distractors": [
+      "kiss",
+      "power",
+      "storm"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 5
+  },
+  {
+    "word": "forget",
+    "translation": "忘记，遗忘",
+    "distractors": [
+      "换（衣服）",
+      "生长",
+      "升高，上升"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 5
+  },
+  {
+    "word": "忘记，遗忘",
+    "translation": "forget",
+    "distractors": [
+      "pollution",
+      "stay",
+      "itself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 5
+  },
+  {
+    "word": "together",
+    "translation": "一起，共同，一齐，一块儿",
+    "distractors": [
+      "离开",
+      "水饺",
+      "博物馆，博物院"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 6
+  },
+  {
+    "word": "一起，共同，一齐，一块儿",
+    "translation": "together",
+    "distractors": [
+      "guitar",
+      "dumpling",
+      "start"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 6
+  },
+  {
+    "word": "lab",
+    "translation": "实验室",
+    "distractors": [
+      "庭院",
+      "从一边到另一边；穿过",
+      "历险；奇遇"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 6
+  },
+  {
+    "word": "实验室",
+    "translation": "lab",
+    "distractors": [
+      "within",
+      "journey",
+      "shocked"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 6
+  },
+  {
+    "word": "start",
+    "translation": "开始",
+    "distractors": [
+      "咖啡",
+      "吃惊的，震惊的",
+      "渴的，口渴的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 8
+  },
+  {
+    "word": "开始",
+    "translation": "start",
+    "distractors": [
+      "recognise",
+      "cotton",
+      "challenge"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 8
+  },
+  {
+    "word": "everyone",
+    "translation": "每个人，人人",
+    "distractors": [
+      "棉花",
+      "极好的，吸引人的，有趣的",
+      "自然的，天然的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "每个人，人人",
+    "translation": "everyone",
+    "distractors": [
+      "position",
+      "dry",
+      "fun"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "explore",
+    "translation": "探索；探讨，探究",
+    "distractors": [
+      "句子",
+      "历史",
+      "塑料制的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "探索；探讨，探究",
+    "translation": "explore",
+    "distractors": [
+      "mirror",
+      "yourself",
+      "workshop"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "fun",
+    "translation": "乐趣",
+    "distractors": [
+      "拖车，挂车",
+      "极好的，吸引人的，有趣的",
+      "鸽子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "乐趣",
+    "translation": "fun",
+    "distractors": [
+      "madly",
+      "touching",
+      "human"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "introduce",
+    "translation": "介绍",
+    "distractors": [
+      "心（脏）",
+      "给（车辆或机器）提供动力",
+      "暴风雨（雪）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "介绍",
+    "translation": "introduce",
+    "distractors": [
+      "grey",
+      "fun",
+      "dumpling"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "yourself",
+    "translation": "(pl.yourselves)你自己",
+    "distractors": [
+      "向着，朝着（某个方向）",
+      "摇动",
+      "使（某人）突然意识到"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "(pl.yourselves)你自己",
+    "translation": "yourself",
+    "distractors": [
+      "within",
+      "polite",
+      "culture"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "hobby",
+    "translation": "业余爱好，嗜好",
+    "distractors": [
+      "根",
+      "T恤衫，短袖运动衫",
+      "某物；某事；某些东西"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 9
+  },
+  {
+    "word": "业余爱好，嗜好",
+    "translation": "hobby",
+    "distractors": [
+      "round",
+      "without",
+      "enjoy"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 9
+  },
+  {
+    "word": "nervous",
+    "translation": "神经紧张的；焦虑不安的",
+    "distractors": [
+      "可怕的，骇人的，恐怖的",
+      "高山，山岳",
+      "职位，职务"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 10
+  },
+  {
+    "word": "神经紧张的；焦虑不安的",
+    "translation": "nervous",
+    "distractors": [
+      "challenge",
+      "engineer",
+      "sail"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 10
+  },
+  {
+    "word": "join",
+    "translation": "成为……的一员，加入",
+    "distractors": [
+      "吉他",
+      "工程师；设计师",
+      "块；片；段；截"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 13
+  },
+  {
+    "word": "成为……的一员，加入",
+    "translation": "join",
+    "distractors": [
+      "plan",
+      "dry",
+      "museum"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 13
+  },
+  {
+    "word": "without",
+    "translation": "缺乏，没有",
+    "distractors": [
+      "不在的，缺席的",
+      "准备好（做某事）的",
+      "放松，休息"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 16
+  },
+  {
+    "word": "缺乏，没有",
+    "translation": "without",
+    "distractors": [
+      "beaver",
+      "along",
+      "journey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 16
+  },
+  {
+    "word": "sentence",
+    "translation": "句子",
+    "distractors": [
+      "眼泪，泪水",
+      "舞台",
+      "生物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "句子",
+    "translation": "sentence",
+    "distractors": [
+      "yourself",
+      "join",
+      "absent"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "mistake",
+    "translation": "错误",
+    "distractors": [
+      "周末",
+      "风",
+      "每个人，人人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "错误",
+    "translation": "mistake",
+    "distractors": [
+      "without",
+      "rise",
+      "fantastic"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "polite",
+    "translation": "有礼貌的，客气的",
+    "distractors": [
+      "大自然，自然界",
+      "制服",
+      "把（某物或某人）带至（新的地点或位置）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "有礼貌的，客气的",
+    "translation": "polite",
+    "distractors": [
+      "regret",
+      "traditional",
+      "instrument"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "mind",
+    "translation": "头脑；思想，思维",
+    "distractors": [
+      "不久，即刻，很快",
+      "升高，上升",
+      "水塘，水洼"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "头脑；思想，思维",
+    "translation": "mind",
+    "distractors": [
+      "dark",
+      "something",
+      "journey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "hers",
+    "translation": "她的",
+    "distractors": [
+      "乐趣",
+      "问题，难题；困难",
+      "不在的，缺席的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "她的",
+    "translation": "hers",
+    "distractors": [
+      "care",
+      "electric",
+      "research"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "dry",
+    "translation": "干的，干燥的",
+    "distractors": [
+      "每个人，人人",
+      "乐器",
+      "一餐；饭"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "干的，干燥的",
+    "translation": "dry",
+    "distractors": [
+      "magic",
+      "towards",
+      "ground"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "meaning",
+    "translation": "意义，意思，含义",
+    "distractors": [
+      "自然的，天然的",
+      "几乎，差不多",
+      "灯笼；提灯"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "意义，意思，含义",
+    "translation": "meaning",
+    "distractors": [
+      "thirsty",
+      "round",
+      "hers"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "fact",
+    "translation": "事实；真相",
+    "distractors": [
+      "儿子",
+      "冲，奔",
+      "速度，速率"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "事实；真相",
+    "translation": "fact",
+    "distractors": [
+      "something",
+      "though",
+      "soon"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "need",
+    "translation": "需要",
+    "distractors": [
+      "乐趣",
+      "废料，废弃物",
+      "放松，休息"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "需要",
+    "translation": "need",
+    "distractors": [
+      "feed",
+      "forest",
+      "research"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "remember",
+    "translation": "记住，记得",
+    "distractors": [
+      "地理",
+      "惊人的；了不起的",
+      "病人，患者"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "记住，记得",
+    "translation": "remember",
+    "distractors": [
+      "notebook",
+      "maybe",
+      "high"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "really",
+    "translation": "确实地，的确",
+    "distractors": [
+      "千米，公里",
+      "死的，去世的",
+      "气味"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "确实地，的确",
+    "translation": "really",
+    "distractors": [
+      "workshop",
+      "emergency",
+      "yourself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "important",
+    "translation": "重要的，重大的",
+    "distractors": [
+      "邮递员，邮差",
+      "说笑话；开玩笑",
+      "业余爱好，嗜好"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 17
+  },
+  {
+    "word": "重要的，重大的",
+    "translation": "important",
+    "distractors": [
+      "Christmas",
+      "care",
+      "duty"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 17
+  },
+  {
+    "word": "plan",
+    "translation": "计划",
+    "distractors": [
+      "渴的，口渴的",
+      "丰富，充足，众多，大量",
+      "悬挂"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 21
+  },
+  {
+    "word": "计划",
+    "translation": "plan",
+    "distractors": [
+      "wolf",
+      "adventure",
+      "within"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 21
+  },
+  {
+    "word": "problem",
+    "translation": "问题，难题；困难",
+    "distractors": [
+      "认出；认识；辨认出",
+      "感人的，动人的",
+      "吻"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 22
+  },
+  {
+    "word": "问题，难题；困难",
+    "translation": "problem",
+    "distractors": [
+      "support",
+      "meal",
+      "hit"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 22
+  },
+  {
+    "word": "homework",
+    "translation": "家庭作业，功课",
+    "distractors": [
+      "病人，患者",
+      "消息",
+      "工程师；设计师"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 22
+  },
+  {
+    "word": "家庭作业，功课",
+    "translation": "homework",
+    "distractors": [
+      "weak",
+      "feed",
+      "celebrate"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 22
+  },
+  {
+    "word": "task",
+    "translation": "工作，任务",
+    "distractors": [
+      "足够",
+      "友好的，友善的",
+      "氧"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 23
+  },
+  {
+    "word": "工作，任务",
+    "translation": "task",
+    "distractors": [
+      "news",
+      "maybe",
+      "disease"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 23
+  },
+  {
+    "word": "advice",
+    "translation": "意见，建议；忠告，劝告",
+    "distractors": [
+      "鸽子",
+      "点头",
+      "干的，干燥的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 23
+  },
+  {
+    "word": "意见，建议；忠告，劝告",
+    "translation": "advice",
+    "distractors": [
+      "join",
+      "news",
+      "breathe"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 23
+  },
+  {
+    "word": "journey",
+    "translation": "旅行，旅程；历程，过程",
+    "distractors": [
+      "计划",
+      "夹克，短上衣",
+      "制服"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 24
+  },
+  {
+    "word": "旅行，旅程；历程，过程",
+    "translation": "journey",
+    "distractors": [
+      "pigeon",
+      "pull",
+      "guitar"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 24
+  },
+  {
+    "word": "something",
+    "translation": "某物；某事；某些东西",
+    "distractors": [
+      "刀",
+      "虚弱的，不强壮的",
+      "实验室"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 24
+  },
+  {
+    "word": "某物；某事；某些东西",
+    "translation": "something",
+    "distractors": [
+      "strict",
+      "serious",
+      "shape"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 24
+  },
+  {
+    "word": "thought",
+    "translation": "意见，主意，观点",
+    "distractors": [
+      "握住，抓住；抱住",
+      "可怕的，骇人的，恐怖的",
+      "圣诞节（期间）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 24
+  },
+  {
+    "word": "意见，主意，观点",
+    "translation": "thought",
+    "distractors": [
+      "mountain",
+      "heart",
+      "several"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 24
+  },
+  {
+    "word": "life",
+    "translation": "生活",
+    "distractors": [
+      "圆形的，环形的",
+      "挑战，具有挑战性的事物",
+      "缺乏，没有"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "生活",
+    "translation": "life",
+    "distractors": [
+      "dark",
+      "carry",
+      "health"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "pool",
+    "translation": "水塘，水洼",
+    "distractors": [
+      "缺乏，没有",
+      "渴的，口渴的",
+      "欢快的；充满生气的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "水塘，水洼",
+    "translation": "pool",
+    "distractors": [
+      "rush",
+      "miss",
+      "grey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "protect",
+    "translation": "保护；防护",
+    "distractors": [
+      "博物馆，博物院",
+      "很少，罕见，不常",
+      "停留，逗留，留下"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "保护；防护",
+    "translation": "protect",
+    "distractors": [
+      "remember",
+      "really",
+      "celebrate"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "wind",
+    "translation": "风",
+    "distractors": [
+      "可怕的，骇人的，恐怖的",
+      "宽的，宽阔的",
+      "根"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "风",
+    "translation": "wind",
+    "distractors": [
+      "plenty",
+      "medical",
+      "arrive"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "wide",
+    "translation": "宽的，宽阔的",
+    "distractors": [
+      "停留，逗留，留下",
+      "感人的，动人的",
+      "家庭作业，功课"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "宽的，宽阔的",
+    "translation": "wide",
+    "distractors": [
+      "grey",
+      "regret",
+      "yourself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "sail",
+    "translation": "驾驶（船只）",
+    "distractors": [
+      "镜子",
+      "工程师；设计师",
+      "夹克，短上衣"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "驾驶（船只）",
+    "translation": "sail",
+    "distractors": [
+      "challenge",
+      "geography",
+      "weekend"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "through",
+    "translation": "从一端至另一端，穿过，通过",
+    "distractors": [
+      "邮递员，邮差",
+      "驾驶（船只）",
+      "不同的，不一样的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "从一端至另一端，穿过，通过",
+    "translation": "through",
+    "distractors": [
+      "notebook",
+      "yourself",
+      "madly"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "storm",
+    "translation": "暴风雨（雪）",
+    "distractors": [
+      "根",
+      "昏暗的；黑暗的",
+      "干的，干燥的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "暴风雨（雪）",
+    "translation": "storm",
+    "distractors": [
+      "weak",
+      "emergency",
+      "leave"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "towards",
+    "translation": "向着，朝着（某个方向）",
+    "distractors": [
+      "渡渡鸟",
+      "准备好（做某事）的",
+      "健康（状况）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "向着，朝着（某个方向）",
+    "translation": "towards",
+    "distractors": [
+      "popular",
+      "magic",
+      "fill"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "hope",
+    "translation": "希望，期望，指望",
+    "distractors": [
+      "地，地面",
+      "不作声的",
+      "可怕的，骇人的，恐怖的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 25
+  },
+  {
+    "word": "希望，期望，指望",
+    "translation": "hope",
+    "distractors": [
+      "hunt",
+      "guitar",
+      "enjoy"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 25
+  },
+  {
+    "word": "electric",
+    "translation": "用电的；电动的",
+    "distractors": [
+      "发光，发亮",
+      "吉他",
+      "教科书，教材，课本"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 32
+  },
+  {
+    "word": "用电的；电动的",
+    "translation": "electric",
+    "distractors": [
+      "missing",
+      "culture",
+      "history"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 32
+  },
+  {
+    "word": "guitar",
+    "translation": "吉他",
+    "distractors": [
+      "挑战，具有挑战性的事物",
+      "足够",
+      "塑料制的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 32
+  },
+  {
+    "word": "吉他",
+    "translation": "guitar",
+    "distractors": [
+      "wolf",
+      "position",
+      "change"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 32
+  },
+  {
+    "word": "band",
+    "translation": "乐队，乐团",
+    "distractors": [
+      "收集，采集；使集中",
+      "发光，发亮",
+      "一餐；饭"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 32
+  },
+  {
+    "word": "乐队，乐团",
+    "translation": "band",
+    "distractors": [
+      "something",
+      "dark",
+      "rescue"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 32
+  },
+  {
+    "word": "sound",
+    "translation": "声音",
+    "distractors": [
+      "丰富，充足，众多，大量",
+      "森林，林区",
+      "拒绝，回绝"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 32
+  },
+  {
+    "word": "声音",
+    "translation": "sound",
+    "distractors": [
+      "stay",
+      "geography",
+      "hold"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 32
+  },
+  {
+    "word": "different",
+    "translation": "不同的，不一样的",
+    "distractors": [
+      "刀",
+      "确实地，的确",
+      "笔记本"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 32
+  },
+  {
+    "word": "不同的，不一样的",
+    "translation": "different",
+    "distractors": [
+      "dodo",
+      "awake",
+      "notebook"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 32
+  },
+  {
+    "word": "suddenly",
+    "translation": "突然，突如其来地",
+    "distractors": [
+      "放松，休息",
+      "宽的，宽阔的",
+      "历史"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "突然，突如其来地",
+    "translation": "suddenly",
+    "distractors": [
+      "everybody",
+      "biology",
+      "remember"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "hit",
+    "translation": "使（某人）突然意识到",
+    "distractors": [
+      "邮递员，邮差",
+      "整个的，全部的",
+      "突然，突如其来地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "使（某人）突然意识到",
+    "translation": "hit",
+    "distractors": [
+      "lantern",
+      "root",
+      "rush"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "rush",
+    "translation": "冲，奔",
+    "distractors": [
+      "英雄",
+      "认出；认识；辨认出",
+      "吃惊的，震惊的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "冲，奔",
+    "translation": "rush",
+    "distractors": [
+      "fill",
+      "forest",
+      "chat"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "decide",
+    "translation": "决定",
+    "distractors": [
+      "跟着，跟随",
+      "昏暗的；黑暗的",
+      "打猎；猎杀"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "决定",
+    "translation": "decide",
+    "distractors": [
+      "earthquake",
+      "smile",
+      "joy"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "practice",
+    "translation": "练习",
+    "distractors": [
+      "说笑话；开玩笑",
+      "决定",
+      "呼吸"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "练习",
+    "translation": "practice",
+    "distractors": [
+      "queen",
+      "emergency",
+      "joke"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "stage",
+    "translation": "舞台",
+    "distractors": [
+      "旅行，旅程；历程，过程",
+      "心（脏）",
+      "工作，任务"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "舞台",
+    "translation": "stage",
+    "distractors": [
+      "reunion",
+      "decision",
+      "news"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "nod",
+    "translation": "点头",
+    "distractors": [
+      "声音",
+      "吃惊的，震惊的",
+      "眼泪，泪水"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "点头",
+    "translation": "nod",
+    "distractors": [
+      "serious",
+      "sugar",
+      "sound"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "instrument",
+    "translation": "乐器",
+    "distractors": [
+      "叶，叶子",
+      "保护；防护",
+      "文化"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "乐器",
+    "translation": "instrument",
+    "distractors": [
+      "result",
+      "seldom",
+      "awake"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "everybody",
+    "translation": "每个人，人人",
+    "distractors": [
+      "排球（运动）",
+      "黄瓜",
+      "有魔力的，神奇的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "每个人，人人",
+    "translation": "everybody",
+    "distractors": [
+      "textbook",
+      "guitar",
+      "practice"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "smile",
+    "translation": "笑容v.微笑",
+    "distractors": [
+      "风",
+      "岛，岛屿",
+      "用电的；电动的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "笑容v.微笑",
+    "translation": "smile",
+    "distractors": [
+      "wide",
+      "classmate",
+      "reunion"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "enjoy",
+    "translation": "喜欢；享受……的乐趣",
+    "distractors": [
+      "俱乐部",
+      "神经紧张的；焦虑不安的",
+      "路，道路，公路"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 33
+  },
+  {
+    "word": "喜欢；享受……的乐趣",
+    "translation": "enjoy",
+    "distractors": [
+      "joy",
+      "regret",
+      "itself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 33
+  },
+  {
+    "word": "skate",
+    "translation": "滑冰，溜冰",
+    "distractors": [
+      "练习",
+      "人类；人",
+      "沟通；连接"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 35
+  },
+  {
+    "word": "滑冰，溜冰",
+    "translation": "skate",
+    "distractors": [
+      "realise",
+      "classmate",
+      "care"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 35
+  },
+  {
+    "word": "club",
+    "translation": "俱乐部",
+    "distractors": [
+      "一起，共同，一齐，一块儿",
+      "团圆，团聚",
+      "至关重要的；必不可少的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 35
+  },
+  {
+    "word": "俱乐部",
+    "translation": "club",
+    "distractors": [
+      "eraser",
+      "challenge",
+      "breathe"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 35
+  },
+  {
+    "word": "volleyball",
+    "translation": "排球（运动）",
+    "distractors": [
+      "拥抱",
+      "英雄",
+      "庭院"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 35
+  },
+  {
+    "word": "排球（运动）",
+    "translation": "volleyball",
+    "distractors": [
+      "across",
+      "kiss",
+      "absent"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 35
+  },
+  {
+    "word": "traditional",
+    "translation": "传统的；习俗的；惯例的",
+    "distractors": [
+      "医学的；医疗的",
+      "用电的；电动的",
+      "支持"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 35
+  },
+  {
+    "word": "传统的；习俗的；惯例的",
+    "translation": "traditional",
+    "distractors": [
+      "homework",
+      "situation",
+      "emergency"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 35
+  },
+  {
+    "word": "hold",
+    "translation": "握住，抓住；抱住",
+    "distractors": [
+      "从一端至另一端，穿过，通过",
+      "闲聊，闲谈，聊天",
+      "吻"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 38
+  },
+  {
+    "word": "握住，抓住；抱住",
+    "translation": "hold",
+    "distractors": [
+      "volleyball",
+      "whole",
+      "balloon"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 38
+  },
+  {
+    "word": "ground",
+    "translation": "地，地面",
+    "distractors": [
+      "受大众喜爱的，受欢迎的",
+      "缺乏，没有",
+      "速度，速率"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 39
+  },
+  {
+    "word": "地，地面",
+    "translation": "ground",
+    "distractors": [
+      "adventure",
+      "laugh",
+      "miss"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 39
+  },
+  {
+    "word": "weak",
+    "translation": "虚弱的，不强壮的",
+    "distractors": [
+      "俱乐部",
+      "镜子",
+      "知道；明白；认识到"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 39
+  },
+  {
+    "word": "虚弱的，不强壮的",
+    "translation": "weak",
+    "distractors": [
+      "position",
+      "biscuit",
+      "suddenly"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 39
+  },
+  {
+    "word": "high",
+    "translation": "高的",
+    "distractors": [
+      "午夜",
+      "紧急情况，不测事件",
+      "废料，废弃物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 39
+  },
+  {
+    "word": "高的",
+    "translation": "high",
+    "distractors": [
+      "fantastic",
+      "awake",
+      "engineer"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 39
+  },
+  {
+    "word": "nature",
+    "translation": "大自然，自然界",
+    "distractors": [
+      "自己，自身",
+      "女演员",
+      "气味"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 39
+  },
+  {
+    "word": "大自然，自然界",
+    "translation": "nature",
+    "distractors": [
+      "firework",
+      "adventure",
+      "son"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 39
+  },
+  {
+    "word": "adventure",
+    "translation": "历险；奇遇",
+    "distractors": [
+      "生长",
+      "说笑话；开玩笑",
+      "也许，大概，可能"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 41
+  },
+  {
+    "word": "历险；奇遇",
+    "translation": "adventure",
+    "distractors": [
+      "polite",
+      "leaf",
+      "almost"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 41
+  },
+  {
+    "word": "awake",
+    "translation": "醒着的",
+    "distractors": [
+      "问题，难题；困难",
+      "可是，不过，然而",
+      "教科书，教材，课本"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "醒着的",
+    "translation": "awake",
+    "distractors": [
+      "news",
+      "collect",
+      "lonely"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "midnight",
+    "translation": "午夜",
+    "distractors": [
+      "家庭作业，功课",
+      "不作声的",
+      "俱乐部"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "午夜",
+    "translation": "midnight",
+    "distractors": [
+      "cotton",
+      "marry",
+      "silent"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "heart",
+    "translation": "心（脏）",
+    "distractors": [
+      "使（某人）突然意识到",
+      "神经紧张的；焦虑不安的",
+      "送出，发出"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "心（脏）",
+    "translation": "heart",
+    "distractors": [
+      "duty",
+      "suddenly",
+      "usually"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "almost",
+    "translation": "几乎，差不多",
+    "distractors": [
+      "结婚；娶；嫁",
+      "氧",
+      "庆祝"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "几乎，差不多",
+    "translation": "almost",
+    "distractors": [
+      "uniform",
+      "homework",
+      "medical"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "shake",
+    "translation": "摇动",
+    "distractors": [
+      "河狸，海狸",
+      "顺着，沿着",
+      "成为……的一员，加入"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "摇动",
+    "translation": "shake",
+    "distractors": [
+      "really",
+      "health",
+      "seed"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "classmate",
+    "translation": "同班同学",
+    "distractors": [
+      "庭院",
+      "足够",
+      "忘记，遗忘"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "同班同学",
+    "translation": "classmate",
+    "distractors": [
+      "history",
+      "pigeon",
+      "start"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "lonely",
+    "translation": "孤单的，寂寞的",
+    "distractors": [
+      "拉；扯；拖",
+      "跟着，跟随",
+      "满的；满是……的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "孤单的，寂寞的",
+    "translation": "lonely",
+    "distractors": [
+      "shine",
+      "balloon",
+      "change"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "magic",
+    "translation": "有魔力的，神奇的",
+    "distractors": [
+      "极好的，吸引人的，有趣的",
+      "跟着，跟随",
+      "神经紧张的；焦虑不安的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "有魔力的，神奇的",
+    "translation": "magic",
+    "distractors": [
+      "cotton",
+      "pork",
+      "wolf"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "joy",
+    "translation": "欢欣，愉快，喜悦",
+    "distractors": [
+      "沟通；连接",
+      "圆形的，环形的",
+      "庆祝"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 40
+  },
+  {
+    "word": "欢欣，愉快，喜悦",
+    "translation": "joy",
+    "distractors": [
+      "problem",
+      "nature",
+      "wolf"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 40
+  },
+  {
+    "word": "notebook",
+    "translation": "笔记本",
+    "distractors": [
+      "橡皮",
+      "吉他",
+      "暴风雨（雪）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 41
+  },
+  {
+    "word": "笔记本",
+    "translation": "notebook",
+    "distractors": [
+      "pollution",
+      "husband",
+      "connect"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 41
+  },
+  {
+    "word": "shelf",
+    "translation": "搁板，架子",
+    "distractors": [
+      "挑战，具有挑战性的事物",
+      "休息（时间）",
+      "希望，期望，指望"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 41
+  },
+  {
+    "word": "搁板，架子",
+    "translation": "shelf",
+    "distractors": [
+      "enjoy",
+      "rise",
+      "ready"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 41
+  },
+  {
+    "word": "leave",
+    "translation": "离开",
+    "distractors": [
+      "历险；奇遇",
+      "周末",
+      "吻"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 41
+  },
+  {
+    "word": "离开",
+    "translation": "leave",
+    "distractors": [
+      "engineer",
+      "unusual",
+      "guitar"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 41
+  },
+  {
+    "word": "silent",
+    "translation": "不作声的",
+    "distractors": [
+      "突然，突如其来地",
+      "决定",
+      "大学"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "不作声的",
+    "translation": "silent",
+    "distractors": [
+      "seed",
+      "shelf",
+      "balloon"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "along",
+    "translation": "顺着，沿着",
+    "distractors": [
+      "句子",
+      "黄瓜",
+      "重要的，重大的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "顺着，沿着",
+    "translation": "along",
+    "distractors": [
+      "hold",
+      "jacket",
+      "within"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "mountain",
+    "translation": "高山，山岳",
+    "distractors": [
+      "医学的；医疗的",
+      "圣诞节（期间）",
+      "人类；人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "高山，山岳",
+    "translation": "mountain",
+    "distractors": [
+      "everybody",
+      "oxygen",
+      "wide"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "road",
+    "translation": "路，道路，公路",
+    "distractors": [
+      "无趣的，无聊的，乏味的",
+      "渴的，口渴的",
+      "河狸，海狸"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "路，道路，公路",
+    "translation": "road",
+    "distractors": [
+      "important",
+      "through",
+      "follow"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "strict",
+    "translation": "严格的，严厉的",
+    "distractors": [
+      "暴风雨（雪）",
+      "形，形状，外形",
+      "海洋，大海"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "严格的，严厉的",
+    "translation": "strict",
+    "distractors": [
+      "chat",
+      "quarter",
+      "breathe"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "follow",
+    "translation": "跟着，跟随",
+    "distractors": [
+      "团圆，团聚",
+      "更喜欢",
+      "需要"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "跟着，跟随",
+    "translation": "follow",
+    "distractors": [
+      "towards",
+      "hobby",
+      "sound"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "postman",
+    "translation": "邮递员，邮差",
+    "distractors": [
+      "旅行，旅程；历程，过程",
+      "千米，公里",
+      "闲聊，闲谈，聊天"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "邮递员，邮差",
+    "translation": "postman",
+    "distractors": [
+      "pollution",
+      "result",
+      "scary"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "touching",
+    "translation": "感人的，动人的",
+    "distractors": [
+      "沟通；连接",
+      "不在的，缺席的",
+      "决定"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "感人的，动人的",
+    "translation": "touching",
+    "distractors": [
+      "hobby",
+      "patient",
+      "smile"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "son",
+    "translation": "儿子",
+    "distractors": [
+      "严格的，严厉的",
+      "极好的，吸引人的，有趣的",
+      "几个，数个，一些"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "儿子",
+    "translation": "son",
+    "distractors": [
+      "different",
+      "save",
+      "emergency"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "serve",
+    "translation": "为……工作；供职",
+    "distractors": [
+      "欢快的；充满生气的",
+      "邮递员，邮差",
+      "突然，突如其来地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "为……工作；供职",
+    "translation": "serve",
+    "distractors": [
+      "plenty",
+      "health",
+      "biscuit"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "absent",
+    "translation": "不在的，缺席的",
+    "distractors": [
+      "叶，叶子",
+      "同班同学",
+      "速度，速率"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "不在的，缺席的",
+    "translation": "absent",
+    "distractors": [
+      "almost",
+      "shelf",
+      "instrument"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "seldom",
+    "translation": "很少，罕见，不常",
+    "distractors": [
+      "镜子",
+      "摇动",
+      "自然的，天然的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "很少，罕见，不常",
+    "translation": "seldom",
+    "distractors": [
+      "hunt",
+      "maybe",
+      "root"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "position",
+    "translation": "职位，职务",
+    "distractors": [
+      "向着，朝着（某个方向）",
+      "到达，抵达",
+      "英雄"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 48
+  },
+  {
+    "word": "职位，职务",
+    "translation": "position",
+    "distractors": [
+      "feed",
+      "peaceful",
+      "scary"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 48
+  },
+  {
+    "word": "carry",
+    "translation": "把（某物或某人）带至（新的地点或位置）",
+    "distractors": [
+      "T恤衫，短袖运动衫",
+      "很少，罕见，不常",
+      "为……工作；供职"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "把（某物或某人）带至（新的地点或位置）",
+    "translation": "carry",
+    "distractors": [
+      "strict",
+      "wide",
+      "Christmas"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "across",
+    "translation": "从一边到另一边；穿过",
+    "distractors": [
+      "严重的",
+      "气球",
+      "支持"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "从一边到另一边；穿过",
+    "translation": "across",
+    "distractors": [
+      "important",
+      "firework",
+      "seed"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "tear",
+    "translation": "眼泪，泪水",
+    "distractors": [
+      "顺着，沿着",
+      "高的",
+      "感人的，动人的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "眼泪，泪水",
+    "translation": "tear",
+    "distractors": [
+      "care",
+      "dodo",
+      "introduce"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "hide",
+    "translation": "把……藏起来，隐藏",
+    "distractors": [
+      "地震",
+      "形势，情况，状况，局面",
+      "渴的，口渴的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "把……藏起来，隐藏",
+    "translation": "hide",
+    "distractors": [
+      "hang",
+      "follow",
+      "across"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "care",
+    "translation": "关心",
+    "distractors": [
+      "医学的；医疗的",
+      "吃惊的，震惊的",
+      "自然的，天然的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "关心",
+    "translation": "care",
+    "distractors": [
+      "culture",
+      "joy",
+      "send"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "hug",
+    "translation": "拥抱",
+    "distractors": [
+      "岛，岛屿",
+      "T恤衫，短袖运动衫",
+      "健康（状况）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "拥抱",
+    "translation": "hug",
+    "distractors": [
+      "mirror",
+      "stay",
+      "decision"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "kiss",
+    "translation": "吻",
+    "distractors": [
+      "研究，调查",
+      "重要的，重大的",
+      "气味"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 49
+  },
+  {
+    "word": "吻",
+    "translation": "kiss",
+    "distractors": [
+      "traditional",
+      "uniform",
+      "treat"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 49
+  },
+  {
+    "word": "marry",
+    "translation": "结婚；娶；嫁",
+    "distractors": [
+      "灯笼；提灯",
+      "使（某人）突然意识到",
+      "需要"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 51
+  },
+  {
+    "word": "结婚；娶；嫁",
+    "translation": "marry",
+    "distractors": [
+      "miss",
+      "bamboo",
+      "shocked"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 51
+  },
+  {
+    "word": "queen",
+    "translation": "女王",
+    "distractors": [
+      "形势，情况，状况，局面",
+      "健康（状况）",
+      "自然的，天然的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 53
+  },
+  {
+    "word": "女王",
+    "translation": "queen",
+    "distractors": [
+      "several",
+      "uniform",
+      "situation"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 53
+  },
+  {
+    "word": "actress",
+    "translation": "女演员",
+    "distractors": [
+      "气味",
+      "成为……的一员，加入",
+      "确实地，的确"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 54
+  },
+  {
+    "word": "女演员",
+    "translation": "actress",
+    "distractors": [
+      "reunion",
+      "skate",
+      "themselves"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 54
+  },
+  {
+    "word": "change",
+    "translation": "换（衣服）",
+    "distractors": [
+      "女王",
+      "向着，朝着（某个方向）",
+      "挑战，具有挑战性的事物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 55
+  },
+  {
+    "word": "换（衣服）",
+    "translation": "change",
+    "distractors": [
+      "mirror",
+      "earthquake",
+      "human"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 55
+  },
+  {
+    "word": "serious",
+    "translation": "严重的",
+    "distractors": [
+      "女王",
+      "圣诞节（期间）",
+      "咖啡"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "严重的",
+    "translation": "serious",
+    "distractors": [
+      "notebook",
+      "task",
+      "dry"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "disease",
+    "translation": "疾病，病",
+    "distractors": [
+      "和平的，非暴力的",
+      "高山，山岳",
+      "关心"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "疾病，病",
+    "translation": "disease",
+    "distractors": [
+      "popular",
+      "joy",
+      "rush"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "stay",
+    "translation": "停留，逗留，留下",
+    "distractors": [
+      "可怕的，骇人的，恐怖的",
+      "一餐；饭",
+      "不平常的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "停留，逗留，留下",
+    "translation": "stay",
+    "distractors": [
+      "through",
+      "advice",
+      "yourself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "trailer",
+    "translation": "拖车，挂车",
+    "distractors": [
+      "根",
+      "孤单的，寂寞的",
+      "糖"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "拖车，挂车",
+    "translation": "trailer",
+    "distractors": [
+      "something",
+      "stay",
+      "nervous"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "pull",
+    "translation": "拉；扯；拖",
+    "distractors": [
+      "干的，干燥的",
+      "呼吸",
+      "工程师；设计师"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "拉；扯；拖",
+    "translation": "pull",
+    "distractors": [
+      "volleyball",
+      "wind",
+      "research"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "bright",
+    "translation": "欢快的；充满生气的",
+    "distractors": [
+      "渡渡鸟",
+      "从一边到另一边；穿过",
+      "结婚；娶；嫁"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "欢快的；充满生气的",
+    "translation": "bright",
+    "distractors": [
+      "engineer",
+      "through",
+      "soon"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "refuse",
+    "translation": "拒绝，回绝",
+    "distractors": [
+      "每个人，人人",
+      "惊人的；了不起的",
+      "灰色的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "拒绝，回绝",
+    "translation": "refuse",
+    "distractors": [
+      "missing",
+      "regret",
+      "nature"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "result",
+    "translation": "结果，后果",
+    "distractors": [
+      "生长",
+      "生物",
+      "有魔力的，神奇的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "结果，后果",
+    "translation": "result",
+    "distractors": [
+      "university",
+      "band",
+      "yourself"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "power",
+    "translation": "给（车辆或机器）提供动力",
+    "distractors": [
+      "支持",
+      "竹，竹子",
+      "大学"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 56
+  },
+  {
+    "word": "给（车辆或机器）提供动力",
+    "translation": "power",
+    "distractors": [
+      "scary",
+      "serious",
+      "leaf"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 56
+  },
+  {
+    "word": "unusual",
+    "translation": "不平常的",
+    "distractors": [
+      "饼干",
+      "暴风雨（雪）",
+      "气味"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "不平常的",
+    "translation": "unusual",
+    "distractors": [
+      "realise",
+      "send",
+      "journey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "university",
+    "translation": "大学",
+    "distractors": [
+      "工作，任务",
+      "渡渡鸟",
+      "地理"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "大学",
+    "translation": "university",
+    "distractors": [
+      "rose",
+      "hold",
+      "save"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "treat",
+    "translation": "请客，款待，招待",
+    "distractors": [
+      "关心",
+      "后悔（做了某事）；对……感到遗憾",
+      "计划"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "请客，款待，招待",
+    "translation": "treat",
+    "distractors": [
+      "meal",
+      "husband",
+      "yard"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "realise",
+    "translation": "知道；明白；认识到",
+    "distractors": [
+      "确实地，的确",
+      "从一边到另一边；穿过",
+      "笑容v.微笑"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "知道；明白；认识到",
+    "translation": "realise",
+    "distractors": [
+      "tear",
+      "shape",
+      "grey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "dumpling",
+    "translation": "水饺",
+    "distractors": [
+      "摇动",
+      "收集，采集；使集中",
+      "人类；人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "水饺",
+    "translation": "dumpling",
+    "distractors": [
+      "chat",
+      "forget",
+      "uniform"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "whole",
+    "translation": "整个的，全部的",
+    "distractors": [
+      "吉他",
+      "吻",
+      "拒绝，回绝"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "整个的，全部的",
+    "translation": "whole",
+    "distractors": [
+      "news",
+      "queen",
+      "midnight"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "cucumber",
+    "translation": "黄瓜",
+    "distractors": [
+      "家庭作业，功课",
+      "博物馆，博物院",
+      "制服"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 64
+  },
+  {
+    "word": "黄瓜",
+    "translation": "cucumber",
+    "distractors": [
+      "whole",
+      "itself",
+      "plastic"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 64
+  },
+  {
+    "word": "hang",
+    "translation": "悬挂",
+    "distractors": [
+      "橡皮",
+      "到达，抵达",
+      "烟火，烟花"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "悬挂",
+    "translation": "hang",
+    "distractors": [
+      "oxygen",
+      "plan",
+      "amazing"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "balloon",
+    "translation": "气球",
+    "distractors": [
+      "从一端至另一端，穿过，通过",
+      "医学的；医疗的",
+      "塑料制的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "气球",
+    "translation": "balloon",
+    "distractors": [
+      "island",
+      "wind",
+      "plenty"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "lantern",
+    "translation": "灯笼；提灯",
+    "distractors": [
+      "虚弱的，不强壮的",
+      "污染",
+      "拒绝，回绝"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "灯笼；提灯",
+    "translation": "lantern",
+    "distractors": [
+      "within",
+      "museum",
+      "queen"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "joke",
+    "translation": "说笑话；开玩笑",
+    "distractors": [
+      "病人，患者",
+      "一餐；饭",
+      "点头"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "说笑话；开玩笑",
+    "translation": "joke",
+    "distractors": [
+      "hobby",
+      "root",
+      "notebook"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "shocked",
+    "translation": "吃惊的，震惊的",
+    "distractors": [
+      "有魔力的，神奇的",
+      "受大众喜爱的，受欢迎的",
+      "无趣的，无聊的，乏味的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "吃惊的，震惊的",
+    "translation": "shocked",
+    "distractors": [
+      "traditional",
+      "missing",
+      "regret"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "laugh",
+    "translation": "发出笑声，（大）笑",
+    "distractors": [
+      "成人，成年人",
+      "工作，任务",
+      "使（某人）突然意识到"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "发出笑声，（大）笑",
+    "translation": "laugh",
+    "distractors": [
+      "fantastic",
+      "joke",
+      "polite"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "pork",
+    "translation": "猪肉",
+    "distractors": [
+      "英雄",
+      "灯笼；提灯",
+      "喂养，饲养，给……食物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "猪肉",
+    "translation": "pork",
+    "distractors": [
+      "dark",
+      "care",
+      "coffee"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "round",
+    "translation": "圆形的，环形的",
+    "distractors": [
+      "研究，调查",
+      "保护；防护",
+      "可是，不过，然而"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "圆形的，环形的",
+    "translation": "round",
+    "distractors": [
+      "change",
+      "stage",
+      "start"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "shape",
+    "translation": "形，形状，外形",
+    "distractors": [
+      "意义，意思，含义",
+      "很少，罕见，不常",
+      "结婚；娶；嫁"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "形，形状，外形",
+    "translation": "shape",
+    "distractors": [
+      "feed",
+      "problem",
+      "recognise"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "reunion",
+    "translation": "团圆，团聚",
+    "distractors": [
+      "吉他",
+      "开始",
+      "灰色的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "团圆，团聚",
+    "translation": "reunion",
+    "distractors": [
+      "balloon",
+      "wind",
+      "hobby"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "piece",
+    "translation": "块；片；段；截",
+    "distractors": [
+      "车间，工场",
+      "自然的，天然的",
+      "海洋，大海"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "块；片；段；截",
+    "translation": "piece",
+    "distractors": [
+      "earthquake",
+      "stage",
+      "serve"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "knife",
+    "translation": "刀",
+    "distractors": [
+      "重要的，重大的",
+      "高山，山岳",
+      "团圆，团聚"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "刀",
+    "translation": "knife",
+    "distractors": [
+      "save",
+      "treat",
+      "sugar"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "smell",
+    "translation": "气味",
+    "distractors": [
+      "缺乏，没有",
+      "研究，调查",
+      "大学"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "气味",
+    "translation": "smell",
+    "distractors": [
+      "grow",
+      "stage",
+      "enough"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "fill",
+    "translation": "弥漫，充满",
+    "distractors": [
+      "糖",
+      "旅行，旅程；历程，过程",
+      "认出；认识；辨认出"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 65
+  },
+  {
+    "word": "弥漫，充满",
+    "translation": "fill",
+    "distractors": [
+      "shape",
+      "geography",
+      "full"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 65
+  },
+  {
+    "word": "Christmas",
+    "translation": "圣诞节（期间）",
+    "distractors": [
+      "夹克，短上衣",
+      "每个人，人人",
+      "废料，废弃物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 70
+  },
+  {
+    "word": "圣诞节（期间）",
+    "translation": "Christmas",
+    "distractors": [
+      "adventure",
+      "club",
+      "T-shirt"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 70
+  },
+  {
+    "word": "waste",
+    "translation": "废料，废弃物",
+    "distractors": [
+      "意见，建议；忠告，劝告",
+      "俱乐部",
+      "孤单的，寂寞的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 70
+  },
+  {
+    "word": "废料，废弃物",
+    "translation": "waste",
+    "distractors": [
+      "refuse",
+      "within",
+      "relax"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 70
+  },
+  {
+    "word": "pollution",
+    "translation": "污染",
+    "distractors": [
+      "突然，突如其来地",
+      "种子，籽",
+      "乐队，乐团"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 70
+  },
+  {
+    "word": "污染",
+    "translation": "pollution",
+    "distractors": [
+      "fantastic",
+      "celebrate",
+      "introduce"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 70
+  },
+  {
+    "word": "plastic",
+    "translation": "塑料制的",
+    "distractors": [
+      "很少，罕见，不常",
+      "惊人的；了不起的",
+      "醒着的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 70
+  },
+  {
+    "word": "塑料制的",
+    "translation": "plastic",
+    "distractors": [
+      "traditional",
+      "ground",
+      "something"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 70
+  },
+  {
+    "word": "celebrate",
+    "translation": "庆祝",
+    "distractors": [
+      "找不到的",
+      "严重的",
+      "水塘，水洼"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 70
+  },
+  {
+    "word": "庆祝",
+    "translation": "celebrate",
+    "distractors": [
+      "relax",
+      "wolf",
+      "hers"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 70
+  },
+  {
+    "word": "meal",
+    "translation": "一餐；饭",
+    "distractors": [
+      "它们自己；他们自己；她们自己",
+      "几乎，差不多",
+      "严重的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 71
+  },
+  {
+    "word": "一餐；饭",
+    "translation": "meal",
+    "distractors": [
+      "shine",
+      "piece",
+      "forest"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 71
+  },
+  {
+    "word": "duty",
+    "translation": "职责，义务",
+    "distractors": [
+      "岛，岛屿",
+      "它们自己；他们自己；她们自己",
+      "滑冰，溜冰"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "职责，义务",
+    "translation": "duty",
+    "distractors": [
+      "dodo",
+      "change",
+      "send"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "shine",
+    "translation": "发光，发亮",
+    "distractors": [
+      "感人的，动人的",
+      "女王",
+      "烟火，烟花"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "发光，发亮",
+    "translation": "shine",
+    "distractors": [
+      "start",
+      "shelf",
+      "dry"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "usually",
+    "translation": "通常地；惯常地",
+    "distractors": [
+      "需要",
+      "医学的；医疗的",
+      "突然，突如其来地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "通常地；惯常地",
+    "translation": "usually",
+    "distractors": [
+      "band",
+      "strict",
+      "plastic"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "break",
+    "translation": "中断，暂停",
+    "distractors": [
+      "眼泪，泪水",
+      "把……藏起来，隐藏",
+      "教科书，教材，课本"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "中断，暂停",
+    "translation": "break",
+    "distractors": [
+      "seldom",
+      "cotton",
+      "join"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "emergency",
+    "translation": "紧急情况，不测事件",
+    "distractors": [
+      "需要",
+      "生长",
+      "发狂地；无法控制地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "紧急情况，不测事件",
+    "translation": "emergency",
+    "distractors": [
+      "bright",
+      "send",
+      "rose"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "miss",
+    "translation": "错过",
+    "distractors": [
+      "通常地；惯常地",
+      "练习",
+      "邮递员，邮差"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "错过",
+    "translation": "miss",
+    "distractors": [
+      "yard",
+      "hide",
+      "amazing"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "thirsty",
+    "translation": "渴的，口渴的",
+    "distractors": [
+      "女演员",
+      "部分",
+      "送出，发出"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "渴的，口渴的",
+    "translation": "thirsty",
+    "distractors": [
+      "midnight",
+      "adventure",
+      "something"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "challenge",
+    "translation": "挑战，具有挑战性的事物",
+    "distractors": [
+      "中断，暂停",
+      "缺乏，没有",
+      "不作声的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "挑战，具有挑战性的事物",
+    "translation": "challenge",
+    "distractors": [
+      "marry",
+      "celebrate",
+      "pork"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "patient",
+    "translation": "病人，患者",
+    "distractors": [
+      "庆祝",
+      "职位，职务",
+      "污染"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "病人，患者",
+    "translation": "patient",
+    "distractors": [
+      "health",
+      "band",
+      "celebrate"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "situation",
+    "translation": "形势，情况，状况，局面",
+    "distractors": [
+      "冲，奔",
+      "意想不到的事",
+      "夹克，短上衣"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 72
+  },
+  {
+    "word": "形势，情况，状况，局面",
+    "translation": "situation",
+    "distractors": [
+      "hide",
+      "important",
+      "hang"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 72
+  },
+  {
+    "word": "regret",
+    "translation": "后悔（做了某事）；对……感到遗憾",
+    "distractors": [
+      "形，形状，外形",
+      "舞台",
+      "文化"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "后悔（做了某事）；对……感到遗憾",
+    "translation": "regret",
+    "distractors": [
+      "shape",
+      "cotton",
+      "health"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "decision",
+    "translation": "决定，抉择",
+    "distractors": [
+      "病人，患者",
+      "受大众喜爱的，受欢迎的",
+      "块；片；段；截"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "决定，抉择",
+    "translation": "decision",
+    "distractors": [
+      "health",
+      "almost",
+      "miss"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "support",
+    "translation": "支持",
+    "distractors": [
+      "森林，林区",
+      "排球（运动）",
+      "镜子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "支持",
+    "translation": "support",
+    "distractors": [
+      "grow",
+      "traditional",
+      "advice"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "medical",
+    "translation": "医学的；医疗的",
+    "distractors": [
+      "为……工作；供职",
+      "病人，患者",
+      "很少，罕见，不常"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "医学的；医疗的",
+    "translation": "medical",
+    "distractors": [
+      "problem",
+      "shape",
+      "lab"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "firework",
+    "translation": "烟火，烟花",
+    "distractors": [
+      "生物",
+      "喜欢；享受……的乐趣",
+      "历险；奇遇"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 73
+  },
+  {
+    "word": "烟火，烟花",
+    "translation": "firework",
+    "distractors": [
+      "jacket",
+      "support",
+      "electric"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 73
+  },
+  {
+    "word": "within",
+    "translation": "在（建筑或地区）里",
+    "distractors": [
+      "排球（运动）",
+      "停留，逗留，留下",
+      "竹，竹子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 80
+  },
+  {
+    "word": "在（建筑或地区）里",
+    "translation": "within",
+    "distractors": [
+      "ready",
+      "result",
+      "relax"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 80
+  },
+  {
+    "word": "quarter",
+    "translation": "一刻钟，十五分钟",
+    "distractors": [
+      "地，地面",
+      "黄瓜",
+      "气球"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "一刻钟，十五分钟",
+    "translation": "quarter",
+    "distractors": [
+      "history",
+      "earthquake",
+      "workshop"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "workshop",
+    "translation": "车间，工场",
+    "distractors": [
+      "吃惊的，震惊的",
+      "地，地面",
+      "业余爱好，嗜好"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "车间，工场",
+    "translation": "workshop",
+    "distractors": [
+      "change",
+      "plan",
+      "break"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "leaf",
+    "translation": "叶，叶子",
+    "distractors": [
+      "形势，情况，状况，局面",
+      "灰色的",
+      "醒着的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "叶，叶子",
+    "translation": "leaf",
+    "distractors": [
+      "decision",
+      "hug",
+      "silent"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "collect",
+    "translation": "收集，采集；使集中",
+    "distractors": [
+      "地理",
+      "也许，大概，可能",
+      "圣诞节（期间）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "收集，采集；使集中",
+    "translation": "collect",
+    "distractors": [
+      "bamboo",
+      "meal",
+      "human"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "root",
+    "translation": "根",
+    "distractors": [
+      "结果，后果",
+      "庭院",
+      "更喜欢"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "根",
+    "translation": "root",
+    "distractors": [
+      "treat",
+      "key",
+      "rescue"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "send",
+    "translation": "送出，发出",
+    "distractors": [
+      "糖",
+      "部分",
+      "地，地面"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "送出，发出",
+    "translation": "send",
+    "distractors": [
+      "oxygen",
+      "something",
+      "joy"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "rise",
+    "translation": "升高，上升",
+    "distractors": [
+      "废料，废弃物",
+      "放松，休息",
+      "儿子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "升高，上升",
+    "translation": "rise",
+    "distractors": [
+      "classmate",
+      "advice",
+      "lantern"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "sugar",
+    "translation": "糖",
+    "distractors": [
+      "风",
+      "挑战，具有挑战性的事物",
+      "医学的；医疗的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "糖",
+    "translation": "sugar",
+    "distractors": [
+      "save",
+      "fun",
+      "join"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "oxygen",
+    "translation": "氧",
+    "distractors": [
+      "足够",
+      "打猎；猎杀",
+      "无趣的，无聊的，乏味的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "氧",
+    "translation": "oxygen",
+    "distractors": [
+      "coffee",
+      "biscuit",
+      "pull"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "human",
+    "translation": "人类；人",
+    "distractors": [
+      "笑容v.微笑",
+      "发狂地；无法控制地",
+      "女演员"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "人类；人",
+    "translation": "human",
+    "distractors": [
+      "forest",
+      "hide",
+      "dodo"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "though",
+    "translation": "可是，不过，然而",
+    "distractors": [
+      "职位，职务",
+      "休息（时间）",
+      "每个人，人人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "可是，不过，然而",
+    "translation": "though",
+    "distractors": [
+      "pigeon",
+      "club",
+      "son"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "breathe",
+    "translation": "呼吸",
+    "distractors": [
+      "吻",
+      "闲聊，闲谈，聊天",
+      "意见，建议；忠告，劝告"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "呼吸",
+    "translation": "breathe",
+    "distractors": [
+      "popular",
+      "cucumber",
+      "nervous"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "soon",
+    "translation": "不久，即刻，很快",
+    "distractors": [
+      "事实；真相",
+      "记住，记得",
+      "儿子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "不久，即刻，很快",
+    "translation": "soon",
+    "distractors": [
+      "ocean",
+      "electric",
+      "island"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "dark",
+    "translation": "昏暗的；黑暗的",
+    "distractors": [
+      "团圆，团聚",
+      "棉花",
+      "有魔力的，神奇的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "昏暗的；黑暗的",
+    "translation": "dark",
+    "distractors": [
+      "pigeon",
+      "explore",
+      "sail"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "rest",
+    "translation": "休息（时间）",
+    "distractors": [
+      "喜欢；享受……的乐趣",
+      "笑容v.微笑",
+      "女演员"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "休息（时间）",
+    "translation": "rest",
+    "distractors": [
+      "themselves",
+      "wind",
+      "disease"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "natural",
+    "translation": "自然的，天然的",
+    "distractors": [
+      "更喜欢",
+      "心（脏）",
+      "儿子"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 81
+  },
+  {
+    "word": "自然的，天然的",
+    "translation": "natural",
+    "distractors": [
+      "leave",
+      "engineer",
+      "forest"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 81
+  },
+  {
+    "word": "seed",
+    "translation": "种子，籽",
+    "distractors": [
+      "水塘，水洼",
+      "从一端至另一端，穿过，通过",
+      "可怕的，骇人的，恐怖的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 83
+  },
+  {
+    "word": "种子，籽",
+    "translation": "seed",
+    "distractors": [
+      "sugar",
+      "refuse",
+      "piece"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 83
+  },
+  {
+    "word": "grow",
+    "translation": "生长",
+    "distractors": [
+      "错过",
+      "河狸，海狸",
+      "可怕的，骇人的，恐怖的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 83
+  },
+  {
+    "word": "生长",
+    "translation": "grow",
+    "distractors": [
+      "scary",
+      "bamboo",
+      "hobby"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 83
+  },
+  {
+    "word": "part",
+    "translation": "部分",
+    "distractors": [
+      "忘记，遗忘",
+      "弥漫，充满",
+      "昏暗的；黑暗的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 83
+  },
+  {
+    "word": "部分",
+    "translation": "part",
+    "distractors": [
+      "shape",
+      "patient",
+      "cucumber"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 83
+  },
+  {
+    "word": "culture",
+    "translation": "文化",
+    "distractors": [
+      "种子，籽",
+      "喜欢；享受……的乐趣",
+      "可是，不过，然而"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 85
+  },
+  {
+    "word": "文化",
+    "translation": "culture",
+    "distractors": [
+      "queen",
+      "joy",
+      "nod"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 85
+  },
+  {
+    "word": "health",
+    "translation": "健康（状况）",
+    "distractors": [
+      "也许，大概，可能",
+      "烟火，烟花",
+      "探索；探讨，探究"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 87
+  },
+  {
+    "word": "健康（状况）",
+    "translation": "health",
+    "distractors": [
+      "stage",
+      "unusual",
+      "hold"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 87
+  },
+  {
+    "word": "rose",
+    "translation": "玫瑰；蔷薇",
+    "distractors": [
+      "女演员",
+      "灰色的",
+      "挑战，具有挑战性的事物"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 87
+  },
+  {
+    "word": "玫瑰；蔷薇",
+    "translation": "rose",
+    "distractors": [
+      "waste",
+      "change",
+      "duty"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 87
+  },
+  {
+    "word": "cotton",
+    "translation": "棉花",
+    "distractors": [
+      "氧",
+      "发出笑声，（大）笑",
+      "关心"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 87
+  },
+  {
+    "word": "棉花",
+    "translation": "cotton",
+    "distractors": [
+      "rescue",
+      "culture",
+      "joke"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 87
+  },
+  {
+    "word": "bamboo",
+    "translation": "竹，竹子",
+    "distractors": [
+      "狼",
+      "死的，去世的",
+      "秘密"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 87
+  },
+  {
+    "word": "竹，竹子",
+    "translation": "bamboo",
+    "distractors": [
+      "prefer",
+      "though",
+      "pool"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 87
+  },
+  {
+    "word": "popular",
+    "translation": "受大众喜爱的，受欢迎的",
+    "distractors": [
+      "关心",
+      "俱乐部",
+      "团圆，团聚"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 88
+  },
+  {
+    "word": "受大众喜爱的，受欢迎的",
+    "translation": "popular",
+    "distractors": [
+      "key",
+      "plan",
+      "soon"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 88
+  },
+  {
+    "word": "key",
+    "translation": "至关重要的；必不可少的",
+    "distractors": [
+      "确实地，的确",
+      "友好的，友善的",
+      "沟通；连接"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 88
+  },
+  {
+    "word": "至关重要的；必不可少的",
+    "translation": "key",
+    "distractors": [
+      "mind",
+      "whole",
+      "stage"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 88
+  },
+  {
+    "word": "news",
+    "translation": "消息",
+    "distractors": [
+      "同班同学",
+      "顺着，沿着",
+      "成人，成年人"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "消息",
+    "translation": "news",
+    "distractors": [
+      "magic",
+      "skate",
+      "start"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "prefer",
+    "translation": "更喜欢",
+    "distractors": [
+      "受大众喜爱的，受欢迎的",
+      "练习",
+      "悬挂"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "更喜欢",
+    "translation": "prefer",
+    "distractors": [
+      "bamboo",
+      "jacket",
+      "different"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "coffee",
+    "translation": "咖啡",
+    "distractors": [
+      "种子，籽",
+      "不久，即刻，很快",
+      "森林，林区"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "咖啡",
+    "translation": "coffee",
+    "distractors": [
+      "save",
+      "uniform",
+      "suddenly"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "secret",
+    "translation": "秘密",
+    "distractors": [
+      "笑容v.微笑",
+      "医学的；医疗的",
+      "意想不到的事"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "秘密",
+    "translation": "secret",
+    "distractors": [
+      "full",
+      "plan",
+      "grow"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "husband",
+    "translation": "丈夫",
+    "distractors": [
+      "探索；探讨，探究",
+      "岛，岛屿",
+      "一餐；饭"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "丈夫",
+    "translation": "husband",
+    "distractors": [
+      "homework",
+      "knife",
+      "hug"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "adult",
+    "translation": "成人，成年人",
+    "distractors": [
+      "找不到的",
+      "英雄",
+      "氧"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "成人，成年人",
+    "translation": "adult",
+    "distractors": [
+      "uniform",
+      "island",
+      "weekend"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "weekend",
+    "translation": "周末",
+    "distractors": [
+      "忘记，遗忘",
+      "向着，朝着（某个方向）",
+      "给（车辆或机器）提供动力"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "周末",
+    "translation": "weekend",
+    "distractors": [
+      "task",
+      "need",
+      "towards"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "chat",
+    "translation": "闲聊，闲谈，聊天",
+    "distractors": [
+      "意见，主意，观点",
+      "不同的，不一样的",
+      "圣诞节（期间）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "闲聊，闲谈，聊天",
+    "translation": "chat",
+    "distractors": [
+      "power",
+      "through",
+      "polite"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "relax",
+    "translation": "放松，休息",
+    "distractors": [
+      "练习",
+      "闲聊，闲谈，聊天",
+      "通常地；惯常地"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "放松，休息",
+    "translation": "relax",
+    "distractors": [
+      "realise",
+      "feed",
+      "round"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "yard",
+    "translation": "庭院",
+    "distractors": [
+      "发出笑声，（大）笑",
+      "业余爱好，嗜好",
+      "渡渡鸟"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "庭院",
+    "translation": "yard",
+    "distractors": [
+      "mirror",
+      "breathe",
+      "shine"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "biscuit",
+    "translation": "饼干",
+    "distractors": [
+      "森林，林区",
+      "灰色的",
+      "拥抱"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "饼干",
+    "translation": "biscuit",
+    "distractors": [
+      "itself",
+      "rescue",
+      "weak"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "connect",
+    "translation": "沟通；连接",
+    "distractors": [
+      "塑料制的",
+      "笑容v.微笑",
+      "探索；探讨，探究"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 89
+  },
+  {
+    "word": "沟通；连接",
+    "translation": "connect",
+    "distractors": [
+      "nod",
+      "hide",
+      "position"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 89
+  },
+  {
+    "word": "pigeon",
+    "translation": "鸽子",
+    "distractors": [
+      "风",
+      "渡渡鸟",
+      "滑冰，溜冰"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "鸽子",
+    "translation": "pigeon",
+    "distractors": [
+      "adult",
+      "history",
+      "geography"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "surprise",
+    "translation": "意想不到的事",
+    "distractors": [
+      "氧",
+      "神经紧张的；焦虑不安的",
+      "团圆，团聚"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "意想不到的事",
+    "translation": "surprise",
+    "distractors": [
+      "fill",
+      "actress",
+      "lonely"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "boring",
+    "translation": "无趣的，无聊的，乏味的",
+    "distractors": [
+      "灯笼；提灯",
+      "忘记，遗忘",
+      "练习"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "无趣的，无聊的，乏味的",
+    "translation": "boring",
+    "distractors": [
+      "realise",
+      "joy",
+      "coffee"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "feed",
+    "translation": "喂养，饲养，给……食物",
+    "distractors": [
+      "文化",
+      "不在的，缺席的",
+      "职责，义务"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "喂养，饲养，给……食物",
+    "translation": "feed",
+    "distractors": [
+      "marry",
+      "secret",
+      "refuse"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "madly",
+    "translation": "发狂地；无法控制地",
+    "distractors": [
+      "知道；明白；认识到",
+      "惊人的；了不起的",
+      "拉；扯；拖"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "发狂地；无法控制地",
+    "translation": "madly",
+    "distractors": [
+      "midnight",
+      "trailer",
+      "practice"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "scary",
+    "translation": "可怕的，骇人的，恐怖的",
+    "distractors": [
+      "教科书，教材，课本",
+      "(pl.yourselves)你自己",
+      "忘记，遗忘"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 96
+  },
+  {
+    "word": "可怕的，骇人的，恐怖的",
+    "translation": "scary",
+    "distractors": [
+      "hang",
+      "along",
+      "speed"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 96
+  },
+  {
+    "word": "research",
+    "translation": "研究，调查",
+    "distractors": [
+      "庭院",
+      "和平的，非暴力的",
+      "英雄"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "研究，调查",
+    "translation": "research",
+    "distractors": [
+      "husband",
+      "madly",
+      "everyone"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "recognise",
+    "translation": "认出；认识；辨认出",
+    "distractors": [
+      "紧急情况，不测事件",
+      "地，地面",
+      "停留，逗留，留下"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "认出；认识；辨认出",
+    "translation": "recognise",
+    "distractors": [
+      "leaf",
+      "boring",
+      "homework"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "themselves",
+    "translation": "它们自己；他们自己；她们自己",
+    "distractors": [
+      "渴的，口渴的",
+      "眼泪，泪水",
+      "顺着，沿着"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "它们自己；他们自己；她们自己",
+    "translation": "themselves",
+    "distractors": [
+      "really",
+      "news",
+      "hit"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "mirror",
+    "translation": "镜子",
+    "distractors": [
+      "夹克，短上衣",
+      "和平的，非暴力的",
+      "邮递员，邮差"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "镜子",
+    "translation": "mirror",
+    "distractors": [
+      "culture",
+      "awake",
+      "beaver"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "itself",
+    "translation": "自己，自身",
+    "distractors": [
+      "计划",
+      "橡皮",
+      "更喜欢"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "自己，自身",
+    "translation": "itself",
+    "distractors": [
+      "boring",
+      "laugh",
+      "save"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "maybe",
+    "translation": "也许，大概，可能",
+    "distractors": [
+      "很少，罕见，不常",
+      "旅行，旅程；历程，过程",
+      "历史"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "也许，大概，可能",
+    "translation": "maybe",
+    "distractors": [
+      "joy",
+      "human",
+      "different"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "several",
+    "translation": "几个，数个，一些",
+    "distractors": [
+      "速度，速率",
+      "拥抱",
+      "水饺"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "几个，数个，一些",
+    "translation": "several",
+    "distractors": [
+      "decide",
+      "wolf",
+      "joke"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "kilometre",
+    "translation": "千米，公里",
+    "distractors": [
+      "制服",
+      "错误",
+      "足够"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "千米，公里",
+    "translation": "kilometre",
+    "distractors": [
+      "miss",
+      "forest",
+      "collect"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "speed",
+    "translation": "速度，速率",
+    "distractors": [
+      "饼干",
+      "眼泪，泪水",
+      "开始"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "速度，速率",
+    "translation": "speed",
+    "distractors": [
+      "firework",
+      "news",
+      "coffee"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "amazing",
+    "translation": "惊人的；了不起的",
+    "distractors": [
+      "生长",
+      "向着，朝着（某个方向）",
+      "闲聊，闲谈，聊天"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "惊人的；了不起的",
+    "translation": "amazing",
+    "distractors": [
+      "forget",
+      "hobby",
+      "rescue"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "enough",
+    "translation": "足够",
+    "distractors": [
+      "历史",
+      "渡渡鸟",
+      "受大众喜爱的，受欢迎的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 97
+  },
+  {
+    "word": "足够",
+    "translation": "enough",
+    "distractors": [
+      "wide",
+      "awake",
+      "change"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 97
+  },
+  {
+    "word": "beaver",
+    "translation": "河狸，海狸",
+    "distractors": [
+      "惊人的；了不起的",
+      "玫瑰；蔷薇",
+      "制服"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 99
+  },
+  {
+    "word": "河狸，海狸",
+    "translation": "beaver",
+    "distractors": [
+      "T-shirt",
+      "fun",
+      "pull"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 99
+  },
+  {
+    "word": "wolf",
+    "translation": "狼",
+    "distractors": [
+      "欢快的；充满生气的",
+      "烟火，烟花",
+      "给（车辆或机器）提供动力"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 99
+  },
+  {
+    "word": "狼",
+    "translation": "wolf",
+    "distractors": [
+      "marry",
+      "hide",
+      "full"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 99
+  },
+  {
+    "word": "engineer",
+    "translation": "工程师；设计师",
+    "distractors": [
+      "历险；奇遇",
+      "头脑；思想，思维",
+      "风"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 99
+  },
+  {
+    "word": "工程师；设计师",
+    "translation": "engineer",
+    "distractors": [
+      "grey",
+      "without",
+      "reunion"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 99
+  },
+  {
+    "word": "hero",
+    "translation": "英雄",
+    "distractors": [
+      "休息（时间）",
+      "整个的，全部的",
+      "重要的，重大的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 101
+  },
+  {
+    "word": "英雄",
+    "translation": "hero",
+    "distractors": [
+      "dry",
+      "through",
+      "peaceful"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 101
+  },
+  {
+    "word": "rescue",
+    "translation": "营救，救援",
+    "distractors": [
+      "知道；明白；认识到",
+      "生长",
+      "车间，工场"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 102
+  },
+  {
+    "word": "营救，救援",
+    "translation": "rescue",
+    "distractors": [
+      "ground",
+      "speed",
+      "nervous"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 102
+  },
+  {
+    "word": "earthquake",
+    "translation": "地震",
+    "distractors": [
+      "决定",
+      "庭院",
+      "工作，任务"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 102
+  },
+  {
+    "word": "地震",
+    "translation": "earthquake",
+    "distractors": [
+      "follow",
+      "plastic",
+      "practice"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 102
+  },
+  {
+    "word": "missing",
+    "translation": "找不到的",
+    "distractors": [
+      "实验室",
+      "某物；某事；某些东西",
+      "成为……的一员，加入"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 102
+  },
+  {
+    "word": "找不到的",
+    "translation": "missing",
+    "distractors": [
+      "sentence",
+      "journey",
+      "enough"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 102
+  },
+  {
+    "word": "save",
+    "translation": "救，拯救，挽救",
+    "distractors": [
+      "笑容v.微笑",
+      "水塘，水洼",
+      "到达，抵达"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 102
+  },
+  {
+    "word": "救，拯救，挽救",
+    "translation": "save",
+    "distractors": [
+      "thought",
+      "important",
+      "missing"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 102
+  },
+  {
+    "word": "dead",
+    "translation": "死的，去世的",
+    "distractors": [
+      "镜子",
+      "工程师；设计师",
+      "地震"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "死的，去世的",
+    "translation": "dead",
+    "distractors": [
+      "grey",
+      "key",
+      "pork"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "dodo",
+    "translation": "渡渡鸟",
+    "distractors": [
+      "紧急情况，不测事件",
+      "休息（时间）",
+      "生活"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "渡渡鸟",
+    "translation": "dodo",
+    "distractors": [
+      "realise",
+      "decision",
+      "nature"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  },
+  {
+    "word": "museum",
+    "translation": "博物馆，博物院",
+    "distractors": [
+      "找不到的",
+      "跟着，跟随",
+      "意想不到的事"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "博物馆，博物院",
+    "translation": "museum",
+    "distractors": [
+      "plan",
+      "queen",
+      "journey"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "island",
+    "translation": "岛，岛屿",
+    "distractors": [
+      "更喜欢",
+      "停留，逗留，留下",
+      "摇动"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "岛，岛屿",
+    "translation": "island",
+    "distractors": [
+      "absent",
+      "thought",
+      "ready"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "ocean",
+    "translation": "海洋，大海",
+    "distractors": [
+      "制服",
+      "气味",
+      "吃惊的，震惊的"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "海洋，大海",
+    "translation": "ocean",
+    "distractors": [
+      "something",
+      "arrive",
+      "mistake"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "plenty",
+    "translation": "丰富，充足，众多，大量",
+    "distractors": [
+      "使（某人）突然意识到",
+      "计划",
+      "更喜欢"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "丰富，充足，众多，大量",
+    "translation": "plenty",
+    "distractors": [
+      "pull",
+      "key",
+      "meal"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "friendly",
+    "translation": "友好的，友善的",
+    "distractors": [
+      "感人的，动人的",
+      "高的",
+      "岛，岛屿"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "友好的，友善的",
+    "translation": "friendly",
+    "distractors": [
+      "need",
+      "sentence",
+      "usually"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "peaceful",
+    "translation": "和平的，非暴力的",
+    "distractors": [
+      "头脑；思想，思维",
+      "健康（状况）",
+      "职责，义务"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 104
+  },
+  {
+    "word": "和平的，非暴力的",
+    "translation": "peaceful",
+    "distractors": [
+      "care",
+      "scary",
+      "polite"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 104
+  },
+  {
+    "word": "arrive",
+    "translation": "到达，抵达",
+    "distractors": [
+      "镜子",
+      "渴的，口渴的",
+      "(pl.yourselves)你自己"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "到达，抵达",
+    "translation": "arrive",
+    "distractors": [
+      "popular",
+      "challenge",
+      "feed"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  },
+  {
+    "word": "forest",
+    "translation": "森林，林区",
+    "distractors": [
+      "重要的，重大的",
+      "使（某人）突然意识到",
+      "悬挂"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "森林，林区",
+    "translation": "forest",
+    "distractors": [
+      "pork",
+      "hug",
+      "museum"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  },
+  {
+    "word": "hunt",
+    "translation": "打猎；猎杀",
+    "distractors": [
+      "点头",
+      "教科书，教材，课本",
+      "足够"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "打猎；猎杀",
+    "translation": "hunt",
+    "distractors": [
+      "towards",
+      "key",
+      "remember"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  },
+  {
+    "word": "full",
+    "translation": "满的；满是……的",
+    "distractors": [
+      "也许，大概，可能",
+      "干的，干燥的",
+      "排球（运动）"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "满的；满是……的",
+    "translation": "full",
+    "distractors": [
+      "without",
+      "hope",
+      "remember"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  },
+  {
+    "word": "fantastic",
+    "translation": "极好的，吸引人的，有趣的",
+    "distractors": [
+      "高山，山岳",
+      "介绍",
+      "实验室"
+    ],
+    "level": "EN_TO_ZH",
+    "page": 105
+  },
+  {
+    "word": "极好的，吸引人的，有趣的",
+    "translation": "fantastic",
+    "distractors": [
+      "classmate",
+      "chat",
+      "remember"
+    ],
+    "level": "ZH_TO_EN",
+    "page": 105
+  }
 ]
