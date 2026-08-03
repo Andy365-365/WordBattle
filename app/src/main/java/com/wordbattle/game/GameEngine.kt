@@ -16,7 +16,8 @@ interface GameNetworkBridge {
 
 class GameEngine(
     private val network: GameNetworkBridge,
-    private val coroutineScope: CoroutineScope
+    private val coroutineScope: CoroutineScope,
+    private val wordRepo: com.wordbattle.data.WordRepository
 ) {
 
     private var state = GameState.WAITING
@@ -188,6 +189,14 @@ class GameEngine(
         state = GameState.PLAYING
         timeoutJob?.cancel()
         timeoutJob = null
+        // Re-create answer listener (cancelled by endGame)
+        answerListenerJob = coroutineScope.launch {
+            network.onAnswer.collect { answer ->
+                handleAnswer(answer)
+            }
+        }
+        questions = wordRepo.generateQuestions(direction, totalRounds)
+        DebugLog.i("[Engine] restart: 重新抽题")
         coroutineScope.launch {
             try {
                 network.broadcast(GameMessage.RESTART())

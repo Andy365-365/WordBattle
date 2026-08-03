@@ -55,6 +55,7 @@ class MainActivity : ComponentActivity() {
     private val _playerPage = MutableStateFlow(0)
     private val _playerOptions = MutableStateFlow<List<String>>(emptyList())
     private val _playerScore = MutableStateFlow(0)
+    private var revealDelayJob: Job? = null
     private var myPlayerId by mutableStateOf("")
     private var hostAsPlayer = false
     private var playerRanking by mutableStateOf<List<RankEntry>>(emptyList())
@@ -247,7 +248,7 @@ class MainActivity : ComponentActivity() {
             start()
         }
         val server = tcpServer!!
-        gameEngine = GameEngine(server.asBridge(), appScope)
+        gameEngine = GameEngine(server.asBridge(), appScope, wordRepo)
 
         // 主机自己也连自己，可以答题（不跳转页面）
         hostAsPlayer = true
@@ -349,6 +350,7 @@ class MainActivity : ComponentActivity() {
                                     _playerStatus.value = "WAITING"
                                 }
                                 "PREPARE" -> {
+                                    revealDelayJob?.cancel()
                                     _playerStatus.value = "READY"
                                 }
                                 "GO" -> {
@@ -364,7 +366,8 @@ class MainActivity : ComponentActivity() {
                                     val correctText = _playerOptions.value.getOrNull(msg.correctIdx) ?: ""
                                     _playerStatus.value = "REVEAL:idx=${msg.correctIdx}:text=$correctText"
                                     DebugLog.i("揭晓: 答案=$correctText 胜者=${msg.winnerName}")
-                                    appScope.launch {
+                                    revealDelayJob?.cancel()
+                                    revealDelayJob = appScope.launch {
                                         delay(1500)
                                         if (_playerStatus.value.startsWith("REVEAL")) {
                                             _playerStatus.value = "WAITING"
