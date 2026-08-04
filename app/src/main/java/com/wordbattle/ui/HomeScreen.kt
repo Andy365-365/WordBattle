@@ -15,7 +15,8 @@ import com.wordbattle.debug.DebugLog
 fun HomeScreen(
     onHostClicked: () -> Unit,
     onPlayerClicked: () -> Unit,
-    onDebugClicked: () -> Unit
+    onDebugClicked: () -> Unit,
+    onOcrTestClicked: () -> Unit
 ) {
     var clickCount by remember { mutableIntStateOf(0) }
     var lastClickTime by remember { mutableLongStateOf(0) }
@@ -66,6 +67,13 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
         ) {
             Text("当抢答者", fontSize = 20.sp)
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(
+            onClick = onOcrTestClicked,
+            modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
+        ) {
+            Text("OCR 测试", fontSize = 20.sp)
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(onClick = onDebugClicked) {

@@ -11,4 +11,5 @@ sealed class Screen {
     object PLAYER_GAME : Screen()
     object PLAYER_RESULT : Screen()
     object DEBUG : Screen()
+    object OCR_TEST : Screen()
 }
