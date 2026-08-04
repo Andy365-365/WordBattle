@@ -6,6 +6,8 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -125,7 +127,10 @@ fun OcrTestScreen(
 
         if (ocrText.isNotEmpty()) {
             Text("OCR 原始文本:", fontSize = 14.sp, fontWeight = FontWeight.Bold)
-            Text(ocrText, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            val scrollState = rememberScrollState(0)
+            Column(modifier = Modifier.height(200.dp).fillMaxWidth().verticalScroll(scrollState).padding(4.dp)) {
+                Text(ocrText, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
             Spacer(modifier = Modifier.height(12.dp))
         }
 
