@@ -9,13 +9,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.wordbattle.data.UserRepository
 import com.wordbattle.debug.DebugLog
 
 @Composable
 fun HomeScreen(
+    userRepository: UserRepository,
     onHostClicked: () -> Unit,
     onPlayerClicked: () -> Unit,
-    onDebugClicked: () -> Unit
+    onDebugClicked: () -> Unit,
+    onUserManageClicked: () -> Unit
 ) {
     var clickCount by remember { mutableIntStateOf(0) }
     var lastClickTime by remember { mutableLongStateOf(0) }
@@ -35,6 +38,16 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        // 顶部用户切换器
+        Box(modifier = Modifier.fillMaxWidth()) {
+            UserSwitcher(
+                userRepository = userRepository,
+                onManageClicked = onUserManageClicked
+            )
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
             text = "英语抢答对战",
             fontSize = 28.sp,
@@ -43,7 +56,7 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = "v1.1",
+            text = "v1.2",
             fontSize = 12.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

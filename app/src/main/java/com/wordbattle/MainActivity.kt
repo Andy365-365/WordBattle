@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.wordbattle.data.Question
+import com.wordbattle.data.UserRepository
 import com.wordbattle.data.WordRepository
 import com.wordbattle.game.*
 import com.wordbattle.network.*
@@ -23,6 +24,7 @@ import java.net.NetworkInterface
 class MainActivity : ComponentActivity() {
 
     private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private lateinit var userRepo: UserRepository
     private val wordRepo = WordRepository()
 
     private val _currentScreen = MutableStateFlow<Screen>(Screen.HOME)
@@ -67,6 +69,8 @@ class MainActivity : ComponentActivity() {
         CrashHandler.install()
         DebugLog.init(this)
         DebugLog.i("App started, SDK=${android.os.Build.VERSION.SDK_INT}")
+        userRepo = UserRepository(this)
+        DebugLog.i("[UserRepo] 当前用户: ${userRepo.getCurrent()?.username}")
 
         udpDiscovery = UdpDiscovery(appScope)
 
@@ -108,9 +112,11 @@ class MainActivity : ComponentActivity() {
     private fun RenderScreen(screen: Screen) {
         when (screen) {
             Screen.HOME -> HomeScreen(
+                userRepository = userRepo,
                 onHostClicked = { navigateTo(Screen.HOST_SETUP) },
                 onPlayerClicked = { navigateTo(Screen.PLAYER_JOIN); udpDiscovery.startListening() },
-                onDebugClicked = { navigateTo(Screen.DEBUG) }
+                onDebugClicked = { navigateTo(Screen.DEBUG) },
+                onUserManageClicked = { navigateTo(Screen.USER_MANAGE) }
             )
 
             Screen.HOST_SETUP -> HostSetupScreen(
@@ -235,6 +241,10 @@ class MainActivity : ComponentActivity() {
             }
 
             Screen.DEBUG -> DebugScreen(activity = this, onBack = { navigateTo(Screen.HOME) })
+            Screen.USER_MANAGE -> UserManageScreen(
+                userRepository = userRepo,
+                onBack = { navigateTo(Screen.HOME) }
+            )
         }
     }
 
