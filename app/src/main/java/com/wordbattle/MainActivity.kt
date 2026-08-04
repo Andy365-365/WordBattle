@@ -110,8 +110,7 @@ class MainActivity : ComponentActivity() {
             Screen.HOME -> HomeScreen(
                 onHostClicked = { navigateTo(Screen.HOST_SETUP) },
                 onPlayerClicked = { navigateTo(Screen.PLAYER_JOIN); udpDiscovery.startListening() },
-                onDebugClicked = { navigateTo(Screen.DEBUG) },
-                onOcrTestClicked = { navigateTo(Screen.OCR_TEST) }
+                onDebugClicked = { navigateTo(Screen.DEBUG) }
             )
 
             Screen.HOST_SETUP -> HostSetupScreen(
@@ -235,8 +234,7 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
-            Screen.DEBUG -> DebugScreen(onBack = { navigateTo(Screen.HOME) })
-            Screen.OCR_TEST -> OcrTestScreen(activity = this, onBack = { navigateTo(Screen.HOME) })
+            Screen.DEBUG -> DebugScreen(activity = this, onBack = { navigateTo(Screen.HOME) })
         }
     }
 

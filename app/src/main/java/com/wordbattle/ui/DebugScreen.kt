@@ -25,8 +25,15 @@ import kotlinx.coroutines.withContext
 
 @Composable
 fun DebugScreen(
+    activity: android.app.Activity,
     onBack: () -> Unit
 ) {
+    var showOcrTest by remember { mutableStateOf(false) }
+
+    if (showOcrTest) {
+        OcrTestScreen(activity = activity, onBack = { showOcrTest = false })
+        return
+    }
     val scope = rememberCoroutineScope()
     var logs by remember { mutableStateOf(DebugLog.getAll()) }
     var refreshKey by remember { mutableStateOf(0) }
@@ -119,6 +126,9 @@ fun DebugScreen(
                                 }
                                 TextButton(onClick = { pingLogServer() }) {
                                     Text("Ping日志", color = Color(0xff00ff41))
+                                }
+                                TextButton(onClick = { showOcrTest = true }) {
+                                    Text("OCR测试", color = Color(0xffff00ff))
                                 }
                             }
                         }
