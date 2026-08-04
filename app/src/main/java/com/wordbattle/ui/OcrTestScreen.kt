@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.chinese.ChineseTextRecognizerOptions
+import com.wordbattle.debug.DebugLog
 
 data class OcrWord(val word: String, val meaning: String, val rawLine: String)
 
@@ -37,32 +38,45 @@ fun OcrTestScreen(
 
     val galleryLauncher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
+            DebugLog.i("[OCR] 用户选了图片: ${uri.path}")
             try {
                 val stream = activity.contentResolver.openInputStream(it)
                 bitmap = BitmapFactory.decodeStream(stream)
                 stream?.close()
+                DebugLog.i("[OCR] 图片加载成功: ${bitmap!!.width}x${bitmap!!.height}")
                 loading = true
                 val image = InputImage.fromBitmap(bitmap!!, 0)
                 val recognizer = TextRecognition.getClient(ChineseTextRecognizerOptions.Builder().build())
                 recognizer.process(image)
                     .addOnSuccessListener { visionText ->
                         ocrText = visionText.text
+                        val blocks = visionText.textBlocks.size
                         val lines = visionText.textBlocks.flatMap { block ->
                             block.lines
                         }.map { it.text }
-                        parsedWords = lines.mapNotNull { line ->
+                        val words = lines.mapNotNull { line ->
                             parseWordLine(line)
                         }.distinctBy { it.word.lowercase() }
+                        parsedWords = words
                         errorMsg = null
                         loading = false
+                        DebugLog.i("[OCR] 识别完成: blocks=$blocks, lines=${lines.size}, parsed=${words.size}")
+                        DebugLog.i("[OCR] 解析结果:\n${words.joinToString("\n") { "${it.word} -> ${it.meaning} (raw: ${it.rawLine})" }}")
+                        // Log unparsable lines
+                        val unparsed = lines.filter { parseWordLine(it) == null }
+                        if (unparsed.isNotEmpty()) {
+                            DebugLog.w("[OCR] 无法解析的${unparsed.size}行:\n${unparsed.take(10).joinToString("\n") { "  > $it" }}")
+                        }
                     }
                     .addOnFailureListener { e ->
                         errorMsg = "OCR 失败: ${e.message}"
                         loading = false
+                        DebugLog.e("[OCR] 识别失败: ${e.message}")
                     }
             } catch (e: Exception) {
                 errorMsg = "加载图片失败: ${e.message}"
                 loading = false
+                DebugLog.e("[OCR] 加载图片异常: ${e.message}")
             }
         }
     }
