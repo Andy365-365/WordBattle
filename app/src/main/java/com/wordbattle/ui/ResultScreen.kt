@@ -12,13 +12,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wordbattle.network.RankEntry
 
-/**
- * 结算页：显示排行榜
- */
 @Composable
 fun ResultScreen(
     ranking: List<RankEntry>,
-    myScore: Int,
     onRestart: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -29,9 +25,6 @@ fun ResultScreen(
         Spacer(modifier = Modifier.height(40.dp))
         Text("比赛结束!", fontSize = 32.sp, fontWeight = FontWeight.Bold)
         Spacer(modifier = Modifier.height(30.dp))
-
-        Text("我的得分: $myScore 分", fontSize = 20.sp)
-        Spacer(modifier = Modifier.height(20.dp))
 
         Card(modifier = Modifier.fillMaxWidth()) {
             LazyColumn(modifier = Modifier.padding(16.dp)) {

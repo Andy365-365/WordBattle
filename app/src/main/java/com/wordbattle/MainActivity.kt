@@ -175,7 +175,6 @@ class MainActivity : ComponentActivity() {
             Screen.HOST_RESULT -> {
                 ResultScreen(
                     ranking = hostRanking,
-                    myScore = 0,
                     onRestart = {
                         gameEngine?.restart()
                         navigateTo(Screen.HOST_GAME)
@@ -234,7 +233,6 @@ class MainActivity : ComponentActivity() {
                 val score by _playerScore.collectAsState()
                 ResultScreen(
                     ranking = playerRanking,
-                    myScore = score,
                     onRestart = { appScope.launch { tcpClient?.send(GameMessage.RESTART()) } },
                     onBack = { stopPlayerMode(); navigateTo(Screen.HOME) }
                 )
