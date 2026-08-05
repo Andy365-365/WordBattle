@@ -266,7 +266,7 @@ class MainActivity : ComponentActivity() {
                 val ok = tcpClient?.connect("127.0.0.1", TcpServer.DEFAULT_PORT) ?: false
                 if (ok) {
                     DebugLog.i("[Host] 本地连接成功，可以答题")
-                    tcpClient?.send(GameMessage.JOIN(playerId = "", name = "主机"))
+                    tcpClient?.send(GameMessage.JOIN(playerId = "", name = (userRepo.getCurrent()?.username ?: "主机")))
                     listenForHostMessages(noNavigate = true)
                 } else {
                     DebugLog.e("[Host] 本地连接失败")
@@ -324,7 +324,7 @@ class MainActivity : ComponentActivity() {
             val ok = tcpClient?.connect(host.ip, host.port) ?: false
             if (ok) {
                 DebugLog.i("TCP 连接成功")
-                tcpClient?.send(GameMessage.JOIN(playerId = "", name = "玩家"))
+                tcpClient?.send(GameMessage.JOIN(playerId = "", name = (userRepo.getCurrent()?.username ?: "玩家")))
                 DebugLog.i("发送 JOIN 消息")
                 listenForMessages(host.ip)
             } else {
