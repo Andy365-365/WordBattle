@@ -23,9 +23,9 @@ fun UserSwitcher(
     userRepository: UserRepository,
     onManageClicked: () -> Unit
 ) {
-    val currentUser by remember {
-        val user = userRepository.getCurrent()
-        mutableStateOf(user)
+    var refreshKey by remember { mutableIntStateOf(0) }
+    val currentUser by remember(refreshKey) {
+        mutableStateOf(userRepository.getCurrent())
     }
 
     var showMenu by remember { mutableStateOf(false) }
@@ -68,7 +68,7 @@ fun UserSwitcher(
                     onClick = {
                         if (!isCurrent) {
                             userRepository.switchUser(user.username)
-                            DebugLog.i("[UI] 切换用户: ${user.username}")
+                            refreshKey++
                         }
                         showMenu = false
                     }
