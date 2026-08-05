@@ -37,13 +37,13 @@ fun UserSwitcher(
         ) {
             Text(
                 text = currentUser?.username ?: "玩家",
-                fontSize = 16.sp,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.primary
             )
             Text(
                 " ▾",
-                fontSize = 12.sp,
+                fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary
             )
         }
