@@ -6,9 +6,12 @@ import com.wordbattle.debug.DebugLog
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+import kotlinx.serialization.Serializable
+
 /**
  * 用户数据模型
  */
+@Serializable
 data class User(
     val username: String,
     val createdAt: Long = System.currentTimeMillis()
