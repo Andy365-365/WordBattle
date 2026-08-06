@@ -297,6 +297,7 @@ class MainActivity : ComponentActivity() {
         gameEngine?.onRoundChange = { round, question ->
             hostCurrentRound = round
             hostCurrentQuestion = question
+            udpDiscovery.updateStatus("WAITING")
         }
 
         gameEngine?.onScoreChange = {
@@ -369,6 +370,7 @@ class MainActivity : ComponentActivity() {
                                     _playerPage.value = msg.page
                                     _playerOptions.value = msg.options
                                     _playerStatus.value = "ANSWERING"
+                                    udpDiscovery.updateStatus("ANSWERING")
                                     DebugLog.i("GO: 题目=${msg.question}")
                                 }
                                 "REVEAL" -> {
