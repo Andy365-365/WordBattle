@@ -253,16 +253,51 @@ class MainActivity : ComponentActivity() {
         stopHostMode()
         val ip = getLocalIp()
         DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total")
-        tcpServer = TcpServer(appScope).apply {
-            start()
-        }
-        val server = tcpServer!!
-        gameEngine = GameEngine(server.asBridge(), appScope, wordRepo)
-
-        // 主机自己也连自己，可以答题（不跳转页面）
-        hostAsPlayer = true
-        tcpClient = TcpClient(appScope)
+        // 等端口释放后再启动新服务
         appScope.launch {
+            delay(300)
+            tcpServer = TcpServer(appScope).apply {
+                start()
+            }
+            val server = tcpServer!!
+            gameEngine = GameEngine(server.asBridge(), appScope, wordRepo)
+
+            // 监听客户端加入
+            appScope.launch {
+                try {
+                    server.onClientJoin.collect { (playerId, joinMsg) ->
+                        gameEngine?.playerJoined(playerId, joinMsg)
+                        hostPlayerCount = gameEngine?.players?.size ?: 0
+                        hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
+                    }
+                } catch (_: Exception) {}
+            }
+
+            gameEngine?.onGameEnd = { ranking ->
+                hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
+                hostRanking = ranking
+                udpDiscovery.updateStatus("IDLE")
+                navigateTo(Screen.HOST_RESULT)
+            }
+
+            gameEngine?.onRoundChange = { round, question ->
+                hostCurrentRound = round
+                hostCurrentQuestion = question
+                udpDiscovery.updateStatus("WAITING")
+            }
+
+            gameEngine?.onScoreChange = {
+                hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
+            }
+
+            udpDiscovery.startAdvertising(ip, 5201, "我的手机", direction, total)
+            val questions = wordRepo.generateQuestions(direction, total)
+            gameEngine?.init(direction, total, questions)
+
+            // 主机自己也连自己，可以答题（不跳转页面）
+            hostAsPlayer = true
+            tcpClient = TcpClient(appScope)
+            delay(100)
             try {
                 val ok = tcpClient?.connect("127.0.0.1", TcpServer.DEFAULT_PORT) ?: false
                 if (ok) {
@@ -276,45 +311,17 @@ class MainActivity : ComponentActivity() {
                 DebugLog.e("[Host] 本地连接异常: ${e.message}")
             }
         }
-
-        appScope.launch {
-            try {
-                tcpServer!!.onClientJoin.collect { (playerId, joinMsg) ->
-                    gameEngine?.playerJoined(playerId, joinMsg)
-                    hostPlayerCount = gameEngine?.players?.size ?: 0
-                    hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
-                }
-            } catch (_: Exception) {}
-        }
-
-        gameEngine?.onGameEnd = { ranking ->
-            hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
-            hostRanking = ranking
-            udpDiscovery.updateStatus("IDLE")
-            navigateTo(Screen.HOST_RESULT)
-        }
-
-        gameEngine?.onRoundChange = { round, question ->
-            hostCurrentRound = round
-            hostCurrentQuestion = question
-            udpDiscovery.updateStatus("WAITING")
-        }
-
-        gameEngine?.onScoreChange = {
-            hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
-        }
-
-        udpDiscovery.startAdvertising(ip, 5201, "我的手机", direction, total)
-        val questions = wordRepo.generateQuestions(direction, total)
-        gameEngine?.init(direction, total, questions)
     }
 
     private fun stopHostMode() {
+        tcpClient?.disconnect()
+        tcpClient = null
         gameEngine?.cleanup()
         tcpServer?.stop()
         tcpServer = null
         udpDiscovery.stop()
         hostAsPlayer = false
+        DebugLog.i("主机模式已停止")
     }
 
     // ========== 抢答者逻辑 ==========
