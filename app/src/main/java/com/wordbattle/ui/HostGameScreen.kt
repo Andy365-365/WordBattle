@@ -19,10 +19,10 @@ import com.wordbattle.game.RoundState
 @Composable
 fun HostGameScreen(
     roundState: RoundState,
-    question: Question,
     totalRounds: Int,
     players: List<PlayerState>,
     playerStatus: String,
+    playerQuestion: String,
     playerOptions: List<String>,
     onAnswer: (Int) -> Unit,
     onRestart: () -> Unit,
@@ -39,13 +39,14 @@ fun HostGameScreen(
         }
 
         Spacer(Modifier.height(12.dp))
-        Text("题目: ${question.questionText}${if (question.page > 0) "  P${question.page}" else ""}", fontSize = 22.sp, fontWeight = FontWeight.Bold)
-        Spacer(Modifier.height(4.dp))
         Text("状态: ${playerStatus}", fontSize = 14.sp)
 
         Spacer(Modifier.height(16.dp))
 
+        // 只有收到开始答题信号后才显示题目和选项
         if (playerStatus == "ANSWERING" || playerStatus == "SUBMITTED") {
+            Text("题目: $playerQuestion", fontSize = 22.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(16.dp))
             Text("快速答题:", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
             playerOptions.forEachIndexed { idx, opt ->
@@ -59,11 +60,15 @@ fun HostGameScreen(
                 Spacer(Modifier.height(8.dp))
             }
             Spacer(Modifier.height(16.dp))
+        } else if (playerStatus == "READY" || playerStatus == "WAITING") {
+            Text("准备中，请等待...", fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Spacer(Modifier.height(16.dp))
         }
 
+        // 揭晓答案
         if (playerStatus.startsWith("REVEAL")) {
             val parts = playerStatus.split(":")
-            val correctIdx = parts.getOrNull(1)?.removePrefix("idx=")?.toIntOrNull() ?: -1
             val correctText = parts.getOrNull(2)?.removePrefix("text=") ?: ""
             Card(elevation = CardDefaults.cardElevation(4.dp), modifier = Modifier.fillMaxWidth()) {
                 PaddingValues(12.dp).let {

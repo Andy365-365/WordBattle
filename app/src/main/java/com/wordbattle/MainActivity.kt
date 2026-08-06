@@ -145,31 +145,30 @@ class MainActivity : ComponentActivity() {
 
             Screen.HOST_GAME -> {
                 hostCurrentRound?.let { round ->
-                    hostCurrentQuestion?.let { q ->
-                        val pStatus by _playerStatus.collectAsState()
-                        val pOpts by _playerOptions.collectAsState()
-                        HostGameScreen(
-                            roundState = round,
-                            question = q,
-                            totalRounds = hostTotalRounds,
-                            players = hostPlayers,
-                            playerStatus = pStatus,
-                            playerOptions = pOpts,
-                            onAnswer = { choice ->
-                                _playerStatus.value = "SUBMITTED"
-                                appScope.launch {
-                                    tcpClient?.send(GameMessage.ANSWER(
-                                        playerId = myPlayerId,
-                                        round = (hostCurrentRound?.round ?: 0),
-                                        choice = choice,
-                                        ts = System.currentTimeMillis()
-                                    ))
-                                }
-                            },
-                            onRestart = { gameEngine?.restart() },
-                            onBack = { stopHostMode(); navigateTo(Screen.HOME) }
-                        )
-                    }
+                    val pStatus by _playerStatus.collectAsState()
+                    val pQuestion by _playerQuestion.collectAsState()
+                    val pOpts by _playerOptions.collectAsState()
+                    HostGameScreen(
+                        roundState = round,
+                        totalRounds = hostTotalRounds,
+                        players = hostPlayers,
+                        playerStatus = pStatus,
+                        playerQuestion = pQuestion,
+                        playerOptions = pOpts,
+                        onAnswer = { choice ->
+                            _playerStatus.value = "SUBMITTED"
+                            appScope.launch {
+                                tcpClient?.send(GameMessage.ANSWER(
+                                    playerId = myPlayerId,
+                                    round = (hostCurrentRound?.round ?: 0),
+                                    choice = choice,
+                                    ts = System.currentTimeMillis()
+                                ))
+                            }
+                        },
+                        onRestart = { gameEngine?.restart() },
+                        onBack = { stopHostMode(); navigateTo(Screen.HOME) }
+                    )
                 }
             }
 
@@ -402,7 +401,7 @@ class MainActivity : ComponentActivity() {
                                     _playerScore.value = 0
                                     _playerStatus.value = "WAITING"
                                     _playerQuestion.value = ""
-                                    _playerOptions.value = emptyList()
+                                    // 不清空 _playerOptions，等 GO 覆盖
                                     if (!hostAsPlayer) navigateTo(Screen.PLAYER_GAME) else Unit
                                     appScope.launch { tcpClient?.send(GameMessage.RESTART_ACK(playerId = myPlayerId)) }
                                 }
