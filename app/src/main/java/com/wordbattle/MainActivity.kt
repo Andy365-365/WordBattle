@@ -291,6 +291,7 @@ class MainActivity : ComponentActivity() {
         gameEngine?.onGameEnd = { ranking ->
             hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
             hostRanking = ranking
+            udpDiscovery.updateStatus("IDLE")
             navigateTo(Screen.HOST_RESULT)
         }
 
