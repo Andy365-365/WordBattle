@@ -193,9 +193,8 @@ class GameEngine(
         currentRound = null
         roundIndex = -1
         state = GameState.PLAYING
-        timeoutJob?.cancel()
-        timeoutJob = null
         // Re-create answer listener (cancelled by endGame)
+        answerListenerJob?.cancel()
         answerListenerJob = coroutineScope.launch {
             network.onAnswer.collect { answer ->
                 handleAnswer(answer)
