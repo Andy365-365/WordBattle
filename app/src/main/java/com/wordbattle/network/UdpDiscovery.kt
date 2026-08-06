@@ -6,7 +6,10 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.net.DatagramPacket
 import java.net.DatagramSocket
+import java.net.Inet4Address
 import java.net.InetAddress
+import java.net.InterfaceAddress
+import java.net.NetworkInterface
 
 class UdpDiscovery(
     private val coroutineScope: CoroutineScope
@@ -22,8 +25,53 @@ class UdpDiscovery(
 
     private var job: Job? = null
 
+    private fun safeStop() {
+        try { socket?.close() } catch (_: Exception) {}
+        socket = null
+        job?.cancel()
+        job = null
+    }
+
+    private fun getBroadcastAddresses(): List<InetAddress> {
+        val addrs = mutableListOf<InetAddress>()
+        try {
+            addrs.add(InetAddress.getByName("255.255.255.255"))
+        } catch (_: Exception) {}
+        try {
+            NetworkInterface.getNetworkInterfaces().asSequence().forEach { iface ->
+                if (iface.isUp && !iface.isLoopback) {
+                    iface.interfaceAddresses.forEach { ia ->
+                        val addr = ia.address
+                        if (addr is Inet4Address && addr.hostAddress?.startsWith("127.") != true) {
+                            // Compute broadcast address: ~netmask | ip
+                            val netmaskBytes = ia.networkPrefixLength.toInt().let { prefix ->
+                                val mask = if (prefix == 0) 0 else (-1 shl (32 - prefix))
+                                byteArrayOf(
+                                    (mask shr 24).toByte(),
+                                    (mask shr 16).toByte(),
+                                    (mask shr 8).toByte(),
+                                    mask.toByte()
+                                )
+                            }
+                            val ipBytes = addr.address
+                            val broadcastBytes = ipBytes.mapIndexed { i, b ->
+                                val ipByte = b.toInt() and 0xFF
+                                val notMask = (netmaskBytes[i].toInt() and 0xFF) xor 0xFF
+                                (ipByte or notMask).toByte()
+                            }.toByteArray()
+                            try {
+                                addrs.add(InetAddress.getByAddress(broadcastBytes))
+                            } catch (_: Exception) {}
+                        }
+                    }
+                }
+            }
+        } catch (_: Exception) {}
+        return addrs
+    }
+
     fun startAdvertising(ip: String, tcpPort: Int, name: String, dir: String, total: Int) {
-        stop()
+        safeStop()
         job = coroutineScope.launch(Dispatchers.IO) {
             socket = DatagramSocket().apply {
                 broadcast = true
@@ -31,13 +79,15 @@ class UdpDiscovery(
             }
             val broadcast = UdpBroadcast(ip = ip, port = tcpPort, name = name, dir = dir, total = total)
             val data = json.encodeToString(broadcast).toByteArray(Charsets.UTF_8)
-            val broadcastAddr = InetAddress.getByName("255.255.255.255")
+            val broadcastAddrs = getBroadcastAddresses()
             while (isActive) {
-                try {
-                    val packet = DatagramPacket(data, data.size, broadcastAddr, broadcastPort)
-                    socket?.send(packet)
-                } catch (_: Exception) {
-                    // Android 15 后台 UDP 可能被阻止，静默忽略
+                for (addr in broadcastAddrs) {
+                    try {
+                        val packet = DatagramPacket(data, data.size, addr, broadcastPort)
+                        socket?.send(packet)
+                    } catch (_: Exception) {
+                        // 某个广播地址失败不影响其他
+                    }
                 }
                 delay(2000)
             }
@@ -45,7 +95,7 @@ class UdpDiscovery(
     }
 
     fun startListening() {
-        stop()
+        safeStop()
         job = coroutineScope.launch(Dispatchers.IO) {
             socket = DatagramSocket(broadcastPort).apply {
                 broadcast = true
@@ -69,10 +119,7 @@ class UdpDiscovery(
     }
 
     fun stop() {
-        job?.cancel()
-        job = null
-        try { socket?.close() } catch (_: Exception) {}
-        socket = null
+        safeStop()
     }
 
     companion object {
