@@ -371,7 +371,7 @@ class MainActivity : ComponentActivity() {
                                     _playerOptions.value = msg.options
                                     _playerStatus.value = "ANSWERING"
                                     udpDiscovery.updateStatus("ANSWERING")
-                                    DebugLog.i("GO: 题目=${msg.question}")
+                                    DebugLog.i("GO: 题目=${msg.question}, 选项数=${msg.options.size}")
                                 }
                                 "REVEAL" -> {
                                     val msg = json.decodeFromString<GameMessage.REVEAL>(jsonStr)

@@ -15,7 +15,7 @@ class TcpClient(
     private var socket: Socket? = null
     private var readJob: Job? = null
 
-    private val _onMessage = MutableSharedFlow<String>(extraBufferCapacity = 4)
+    private val _onMessage = MutableSharedFlow<String>(extraBufferCapacity = 100)
     val onMessage = _onMessage
 
     val isConnected: Boolean

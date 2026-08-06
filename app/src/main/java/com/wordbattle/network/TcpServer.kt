@@ -98,7 +98,7 @@ class TcpServer(
     }
 
     suspend fun broadcast(msg: GameMessage) {
-        DebugLog.d("[TcpServer] broadcast: ${msg::class.simpleName}")
+        DebugLog.d("[TcpServer] broadcast: ${msg::class.simpleName} to ${clients.map { it.playerId }}")
         val jsonStr = json.encodeToString(GameMessage.serializer(), msg)
         val data = TcpCodec.encode(jsonStr)
         val toRemove = mutableListOf<ClientSession>()
@@ -106,6 +106,7 @@ class TcpServer(
             try {
                 session.sendRaw(data)
             } catch (e: Exception) {
+                DebugLog.w("[TcpServer] broadcast 发送失败: ${session.playerId} -> ${e.message}")
                 toRemove.add(session)
             }
         }
