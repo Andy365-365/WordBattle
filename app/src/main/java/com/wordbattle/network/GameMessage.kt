@@ -114,7 +114,8 @@ data class UdpBroadcast(
     val port: Int,
     val name: String,
     val dir: String,
-    val total: Int
+    val total: Int,
+    val status: String = ""  // "IDLE" / "ANSWERING" / "GAME_OVER"
 )
 
 @Serializable

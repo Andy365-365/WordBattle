@@ -8,7 +8,6 @@ import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.Inet4Address
 import java.net.InetAddress
-import java.net.InterfaceAddress
 import java.net.NetworkInterface
 
 class UdpDiscovery(
@@ -24,6 +23,14 @@ class UdpDiscovery(
     val onHostDiscovered = _onHostDiscovered
 
     private var job: Job? = null
+
+    // Advertising state (mutable)
+    private var advIp = ""
+    private var advPort = 0
+    private var advName = ""
+    private var advDir = ""
+    private var advTotal = 0
+    @Volatile private var advStatus = "IDLE"
 
     private fun safeStop() {
         try { socket?.close() } catch (_: Exception) {}
@@ -43,7 +50,6 @@ class UdpDiscovery(
                     iface.interfaceAddresses.forEach { ia ->
                         val addr = ia.address
                         if (addr is Inet4Address && addr.hostAddress?.startsWith("127.") != true) {
-                            // Compute broadcast address: ~netmask | ip
                             val netmaskBytes = ia.networkPrefixLength.toInt().let { prefix ->
                                 val mask = if (prefix == 0) 0 else (-1 shl (32 - prefix))
                                 byteArrayOf(
@@ -72,26 +78,34 @@ class UdpDiscovery(
 
     fun startAdvertising(ip: String, tcpPort: Int, name: String, dir: String, total: Int) {
         safeStop()
+        advIp = ip
+        advPort = tcpPort
+        advName = name
+        advDir = dir
+        advTotal = total
+        advStatus = "IDLE"
+        val broadcastAddrs = getBroadcastAddresses()
         job = coroutineScope.launch(Dispatchers.IO) {
             socket = DatagramSocket().apply {
                 broadcast = true
                 reuseAddress = true
             }
-            val broadcast = UdpBroadcast(ip = ip, port = tcpPort, name = name, dir = dir, total = total)
-            val data = json.encodeToString(broadcast).toByteArray(Charsets.UTF_8)
-            val broadcastAddrs = getBroadcastAddresses()
             while (isActive) {
+                val broadcast = UdpBroadcast(ip = advIp, port = advPort, name = advName, dir = advDir, total = advTotal, status = advStatus)
+                val data = json.encodeToString(broadcast).toByteArray(Charsets.UTF_8)
                 for (addr in broadcastAddrs) {
                     try {
                         val packet = DatagramPacket(data, data.size, addr, broadcastPort)
                         socket?.send(packet)
-                    } catch (_: Exception) {
-                        // 某个广播地址失败不影响其他
-                    }
+                    } catch (_: Exception) {}
                 }
                 delay(2000)
             }
         }
+    }
+
+    fun updateStatus(status: String) {
+        advStatus = status
     }
 
     fun startListening() {

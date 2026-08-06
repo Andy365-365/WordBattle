@@ -134,6 +134,7 @@ class MainActivity : ComponentActivity() {
                 playerCount = hostPlayerCount,
                 onStart = {
                     gameEngine?.startGame()
+                    udpDiscovery.updateStatus("ANSWERING")
                     appScope.launch {
                         gameEngine?.nextRound()
                         navigateTo(Screen.HOST_GAME)
@@ -177,6 +178,7 @@ class MainActivity : ComponentActivity() {
                     ranking = hostRanking,
                     onRestart = {
                         gameEngine?.restart()
+                        udpDiscovery.updateStatus("ANSWERING")
                         navigateTo(Screen.HOST_GAME)
                     },
                     onBack = { stopHostMode(); navigateTo(Screen.HOME) }

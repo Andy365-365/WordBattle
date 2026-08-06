@@ -71,19 +71,32 @@ fun PlayerJoinScreen(
         } else {
             LazyColumn {
                 items(hosts) { host ->
+                    val isAnswering = host.status == "ANSWERING"
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(vertical = 4.dp)
+                            .padding(vertical = 4.dp),
+                        colors = CardDefaults.cardColors(
+                            containerColor = if (isAnswering)
+                                MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                            else MaterialTheme.colorScheme.surface
+                        )
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(host.name, fontSize = 18.sp, fontWeight = FontWeight.Bold)
                             Text("IP: ${host.ip} | 方向: ${if (host.dir == "EN_TO_ZH") "英→中" else "中→英"} | 题数: ${host.total}",
                                 fontSize = 14.sp,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            if (isAnswering) {
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text("答题中，无法加入", fontSize = 14.sp, color = MaterialTheme.colorScheme.error)
+                            }
                             Spacer(modifier = Modifier.height(8.dp))
-                            Button(onClick = { onJoin(host) }) {
-                                Text("加入")
+                            Button(
+                                onClick = { onJoin(host) },
+                                enabled = !isAnswering
+                            ) {
+                                Text(if (isAnswering) "答题中" else "加入")
                             }
                         }
                     }
