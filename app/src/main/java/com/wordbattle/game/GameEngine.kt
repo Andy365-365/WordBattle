@@ -31,6 +31,7 @@ class GameEngine(
     private var timeoutJob: Job? = null
     private var answerListenerJob: Job? = null
     private var goJob: Job? = null  // 跟踪延迟 GO 任务
+    private var revealJob: Job? = null  // 跟踪 reveal delay 任务
 
     var onRoundChange: (RoundState, Question) -> Unit = { _, _ -> }
     var onScoreChange: () -> Unit = {}
@@ -54,6 +55,7 @@ class GameEngine(
         state = GameState.PLAYING
         roundIndex = -1
         players.values.forEach { it.score = 0 }
+        answerListenerJob?.cancel()
         answerListenerJob = coroutineScope.launch {
             network.onAnswer.collect { answer ->
                 handleAnswer(answer)
@@ -152,24 +154,31 @@ class GameEngine(
         }
     }
 
-    private suspend fun revealAndNext(question: Question) {
-        val round = currentRound ?: return
-        round.isRevealed = true
-        DebugLog.i("[Engine] revealAndNext: 正确答案=${question.correctIdx}")
-        network.broadcast(GameMessage.REVEAL(
-            round = round.round,
-            correctIdx = question.correctIdx,
-            winner = null,
-            winnerName = null
-        ))
-        delay(2000)
-        if (state == GameState.PLAYING) nextRound()
+    private fun revealAndNext(question: Question) {
+        revealJob?.cancel()
+        revealJob = coroutineScope.launch {
+            val round = currentRound ?: return@launch
+            round.isRevealed = true
+            DebugLog.i("[Engine] revealAndNext: 正确答案=${question.correctIdx}")
+            network.broadcast(GameMessage.REVEAL(
+                round = round.round,
+                correctIdx = question.correctIdx,
+                winner = null,
+                winnerName = null
+            ))
+            delay(2000)
+            if (state == GameState.PLAYING) nextRound()
+        }
     }
 
     fun endGame() {
         state = GameState.END
         timeoutJob?.cancel()
         timeoutJob = null
+        goJob?.cancel()
+        goJob = null
+        revealJob?.cancel()
+        revealJob = null
         answerListenerJob?.cancel()
         val ranking = players.values.sortedByDescending { it.score }
             .map { RankEntry(name = it.name, score = it.score) }
@@ -187,6 +196,8 @@ class GameEngine(
         // Cancel in-flight tasks
         goJob?.cancel()
         goJob = null
+        revealJob?.cancel()
+        revealJob = null
         timeoutJob?.cancel()
         timeoutJob = null
         players.values.forEach { it.score = 0 }
@@ -217,6 +228,8 @@ class GameEngine(
         timeoutJob = null
         goJob?.cancel()
         goJob = null
+        revealJob?.cancel()
+        revealJob = null
         answerListenerJob?.cancel()
         state = GameState.WAITING
     }
