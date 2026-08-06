@@ -30,6 +30,7 @@ class GameEngine(
     private var roundIndex: Int = -1
     private var timeoutJob: Job? = null
     private var answerListenerJob: Job? = null
+    private var goJob: Job? = null  // 跟踪延迟 GO 任务
 
     var onRoundChange: (RoundState, Question) -> Unit = { _, _ -> }
     var onScoreChange: () -> Unit = {}
@@ -74,7 +75,7 @@ class GameEngine(
         onRoundChange(roundState, question)
         network.broadcast(GameMessage.PREPARE(round = roundState.round))
         DebugLog.d("broadcast: PREPARE")
-        coroutineScope.launch {
+        goJob = coroutineScope.launch {
             delay(500)
             if (state == GameState.PLAYING) {
                 DebugLog.i("[Engine] nextRound: 广播 GO 第${roundState.round}题")
@@ -183,6 +184,11 @@ class GameEngine(
     fun restart() {
         if (restarting) return
         restarting = true
+        // Cancel in-flight tasks
+        goJob?.cancel()
+        goJob = null
+        timeoutJob?.cancel()
+        timeoutJob = null
         players.values.forEach { it.score = 0 }
         currentRound = null
         roundIndex = -1
@@ -210,6 +216,8 @@ class GameEngine(
     fun cleanup() {
         timeoutJob?.cancel()
         timeoutJob = null
+        goJob?.cancel()
+        goJob = null
         answerListenerJob?.cancel()
         state = GameState.WAITING
     }
