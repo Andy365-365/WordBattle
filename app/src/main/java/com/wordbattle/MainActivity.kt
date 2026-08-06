@@ -255,7 +255,7 @@ class MainActivity : ComponentActivity() {
         DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total")
         // 等端口释放后再启动新服务
         appScope.launch {
-            delay(300)
+            delay(200)
             tcpServer = TcpServer(appScope).apply {
                 start()
             }

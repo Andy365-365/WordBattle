@@ -14,6 +14,7 @@ class TcpServer(
     private val json = Json { ignoreUnknownKeys = true }
     private val port: Int = 5201
     private var serverJob: Job? = null
+    private var serverSocket: ServerSocket? = null
     private val clients = mutableListOf<ClientSession>()
     private val clientCounter = ClientCounter()
 
@@ -27,6 +28,7 @@ class TcpServer(
             val server = ServerSocket()
             server.reuseAddress = true
             server.bind(java.net.InetSocketAddress("0.0.0.0", port))
+            serverSocket = server
             DebugLog.i("TCP 服务器启动 port=$port")
             try {
                 while (true) {
@@ -122,6 +124,9 @@ class TcpServer(
             try { it.socket.close() } catch (_: Exception) {}
         }
         clients.clear()
+        try { serverSocket?.close() } catch (_: Exception) {}
+        serverSocket = null
+        DebugLog.i("TCP 服务器已关闭，端口已释放")
     }
 
     inner class ClientSession(val playerId: String, val socket: Socket, private val j: Json) {
