@@ -198,34 +198,64 @@ def main():
     time.sleep(3)
     screenshot('s4_start')
 
-    # Step 5: 点击"主机+答题" (fixed coords from LLM analysis)
+    # Step 5: 点击"主机+答题"
     print("\n[5/12] 点击'主机+答题'...")
-    tap(436, 1096)
-    print("  ✅ tap(436, 1096)")
+    pos = find_button_center('主机+答题')
+    if pos:
+        tap(*pos)
+        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+    else:
+        print("  ❌ 没找到按钮")
+        return
     time.sleep(2)
 
-    # Step 6: 设置30题 (fixed coords)
+    # Step 6: 设置30题
     print("\n[6/12] 设置30题...")
-    tap(776, 1127)
-    print("  ✅ tap(776, 1127)")
+    pos = find_button_by_y('30', 0)
+    if pos:
+        tap(*pos)
+        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+    else:
+        print("  ❌ 没找到30题按钮")
+        return
     time.sleep(0.5)
 
-    # Step 7: 设置5秒等待时间 (fixed coords)
+    # Step 7: 设置5秒等待时间（5秒本就是默认值，此步为明确选择）
     print("\n[7/12] 设置5秒等待时间...")
-    tap(180, 1127)
-    print("  ✅ tap(180, 1127)")
+    pos = find_button_by_y('5', 900)
+    if pos:
+        tap(*pos)
+        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+    else:
+        print("  ⚠️ 没找到5秒按钮（默认就是5秒，继续）")
     time.sleep(0.5)
 
-    # Step 8: 开始等待玩家 (fixed coords)
+    # Step 8: 开始等待玩家
     print("\n[8/12] 点击'开始等待玩家'...")
-    tap(436, 1234)
-    print("  ✅ tap(436, 1234)")
+    pos = find_button_center('开始等待玩家')
+    if pos:
+        tap(*pos)
+        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+    else:
+        print("  ❌ 没找到按钮")
+        return
     time.sleep(3)
 
-    # Step 9: 开始游戏 (fixed coords)
+    # Step 9: 开始游戏
     print("\n[9/12] 点击'开始游戏'...")
-    tap(436, 1165)
-    print("  ✅ tap(436, 1165)")
+    pos = find_button_center('开始游戏')
+    if pos:
+        tap(*pos)
+        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+    else:
+        time.sleep(3)
+        pos = find_button_center('开始游戏')
+        if pos:
+            tap(*pos)
+            print(f"  ✅ tap({pos[0]}, {pos[1]}) (retry)")
+        else:
+            print("  ❌ 没找到按钮")
+            return
     time.sleep(3)
     screenshot('s9_game')
 
@@ -332,9 +362,9 @@ def main():
 
         # 2) Click one of the 4 fixed answer button positions
         time.sleep(0.3)
-        # Answer buttons are vertically stacked in the middle of the screen
-        # Based on UI dump: ~480x width, ~80y height, evenly spaced
-        button_positions = [(480, 750), (480, 870), (480, 990), (480, 1110)]
+        # Answer buttons from UI dump (center coords):
+        # 选项1: (540, 770), 选项2: (540, 946), 选项3: (540, 1122), 选项4: (540, 1298)
+        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
         bx, by = random.choice(button_positions)
         tap(bx, by)
         total_answers += 1
