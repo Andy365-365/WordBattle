@@ -332,6 +332,48 @@ def main():
         print("  ❌ 未检测到 GO 信号")
         return
 
+    # === 校准选项按钮坐标 ===
+    print("\n  [校准] 抓取答题界面 UI...")
+    xml = dump_ui()
+    nodes = parse_nodes(xml)
+    buttons = find_answer_buttons(nodes)
+    screenshot('game_answers')
+    print(f"  [校准] 找到 {len(buttons)} 个按钮:")
+    for bx, by, label in buttons:
+        print(f"    {label}: ({bx}, {by})")
+
+    if len(buttons) >= 4:
+        button_positions = [(bx, by) for bx, by, _ in buttons]
+        print(f"  [校准] 使用动态坐标: {button_positions}")
+    else:
+        button_positions = [(480, 770), (480, 946), (480, 1122), (480, 1298)]
+        print(f"  [校准] 按钮不足({len(buttons)})，回退硬编码坐标")
+
+    # 回答第一题（GO 已到，需立即回答）
+    first_round = 1
+    m_first = re.search(r"广播 GO\s+第(\d+)题", _first_line)
+    if m_first:
+        first_round = int(m_first.group(1))
+    time.sleep(0.3)
+    choice_idx = random.randrange(len(button_positions))
+    bx, by = button_positions[choice_idx]
+    tap(bx, by)
+    total_answers += 1
+    print(f"  [题{first_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
+
+    # 等待第一题 REVEAL
+    for _ in range(15):
+        feed_pending(1.0)
+        for l in pending:
+            if "REVEAL" in l and f"round={first_round}" in l:
+                m2 = re.search(r"text=([^,}]+)", l)
+                correct = m2.group(1) if m2 else "?"
+                print(f"  [题{first_round}] 答案: {correct}")
+                pending[:] = [l for l in pending if not ("REVEAL" in l and f"round={first_round}" in l)]
+                break
+
+    feed_pending(0.5)
+
     # Main loop: wait for GO -> tap answer -> wait for REVEAL -> repeat
     for i in range(60):  # max rounds
         # 1) Wait for GO signal from pending
@@ -354,15 +396,13 @@ def main():
             print(f"  [轮{i}] 超时未收到 GO，退出")
             break
 
-        # 2) Click one of the 4 fixed answer button positions
+        # 2) Click one of the answer buttons
         time.sleep(0.3)
-        # Answer buttons: X=480 (verified from successful run), Y from UI dump
-        # 选项1: (480, 770), 选项2: (480, 946), 选项3: (480, 1122), 选项4: (480, 1298)
-        button_positions = [(480, 770), (480, 946), (480, 1122), (480, 1298)]
-        bx, by = random.choice(button_positions)
+        choice_idx = random.randrange(len(button_positions))
+        bx, by = button_positions[choice_idx]
         tap(bx, by)
         total_answers += 1
-        print(f"  [题{go_round}] GO -> 点击 ({bx}, {by}) (共{total_answers}次)")
+        print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
 
         # 3) Wait for REVEAL signal (lines go to pending, not consumed permanently)
         reveal_line = None
@@ -390,6 +430,13 @@ def main():
 
         # Feed pending while waiting for next GO (keeps buffer full)
         feed_pending(0.5)
+
+    # Kill tail subprocess (blocks main() exit if not killed)
+    tail_proc_holder[0].terminate()
+    try:
+        tail_proc_holder[0].wait(timeout=3)
+    except:
+        tail_proc_holder[0].kill()
 
     # Step 11: 结果
     time.sleep(3)
