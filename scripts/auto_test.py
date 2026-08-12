@@ -179,18 +179,12 @@ def main():
         return
     time.sleep(0.5)
 
-    # Step 2: 卸载
-    print("\n[2/12] 卸载旧版...")
-    r = adb('shell pm uninstall com.wordbattle')
-    print(f"  {'✅' if 'Success' in r.stdout or 'not found' in r.stdout else '⚠️'} {r.stdout.strip()}")
-
-    # Step 3: 安装
-    print("\n[3/12] 自动安装...")
-    r = subprocess.run('python3 /data/wordbattle/scripts/auto_install.py', shell=True, capture_output=True, text=True, timeout=30)
-    print(f"  {'✅ 安装成功' if 'SUCCESS' in r.stdout else '❌ ' + r.stdout.strip()}")
-    if 'SUCCESS' not in r.stdout:
+    # Step 2: 覆盖安装（保留 Device Admin 权限）
+    print("\n[2/12] 覆盖安装新版...")
+    r = adb(f'shell pm install -r "{APK}"')
+    print(f"  {'✅' if 'Success' in r.stdout or 'REINSTALL_SUCCEEDED' in r.stdout else '❌'} {r.stdout.strip()}")
+    if 'Success' not in r.stdout and 'REINSTALL_SUCCEEDED' not in r.stdout:
         return
-    time.sleep(1)
 
     # Step 4: 启动
     print("\n[4/12] 启动 WordBattle...")
@@ -210,10 +204,10 @@ def main():
     print("  ✅ tap(776, 1127)")
     time.sleep(0.5)
 
-    # Step 7: 设置10秒等待时间 (fixed coords)
-    print("\n[7/12] 设置10秒等待时间...")
-    tap(331, 1127)
-    print("  ✅ tap(331, 1127)")
+    # Step 7: 设置5秒等待时间 (fixed coords)
+    print("\n[7/12] 设置5秒等待时间...")
+    tap(180, 1127)
+    print("  ✅ tap(180, 1127)")
     time.sleep(0.5)
 
     # Step 8: 开始等待玩家 (fixed coords)

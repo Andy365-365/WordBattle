@@ -63,7 +63,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(40.dp))
         Button(
             onClick = {
-                DebugLog.i("[UI] HomeScreen: 点击'当主机'")
+                DebugLog.i("[UI] HomeScreen: 点击'主机+答题'")
                 onHostClicked()
             },
             modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
