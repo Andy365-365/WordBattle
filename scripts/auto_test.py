@@ -361,15 +361,15 @@ def main():
     total_answers += 1
     print(f"  [题{first_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
 
-    # 等待第一题 REVEAL
+    # 等待第一题 REVEAL (日志格式: "round":N  JSON)
     for _ in range(15):
         feed_pending(1.0)
         for l in pending:
-            if "REVEAL" in l and f"round={first_round}" in l:
-                m2 = re.search(r"text=([^,}]+)", l)
+            if "REVEAL" in l and f'"round":{first_round}' in l:
+                m2 = re.search(r'"correctIdx":(\d+)', l)
                 correct = m2.group(1) if m2 else "?"
                 print(f"  [题{first_round}] 答案: {correct}")
-                pending[:] = [l for l in pending if not ("REVEAL" in l and f"round={first_round}" in l)]
+                pending[:] = [l for l in pending if not ("REVEAL" in l and f'"round":{first_round}' in l)]
                 break
 
     feed_pending(0.5)
@@ -404,22 +404,31 @@ def main():
         total_answers += 1
         print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
 
-        # 3) Wait for REVEAL signal (lines go to pending, not consumed permanently)
+        # 3) Wait for REVEAL signal (日志格式: "round":N  JSON)
         reveal_line = None
+        game_over = False
         for _ in range(15):  # 15s timeout
             feed_pending(1.0)
+            # Check for game end
+            if any("游戏结束" in l for l in pending):
+                game_over = True
+                break
             # Peek for REVEAL of current round
             for l in pending:
-                if "REVEAL" in l and f"round={go_round}" in l:
+                if "REVEAL" in l and f'"round":{go_round}' in l:
                     reveal_line = l
                     break
             if reveal_line:
                 # Remove it from pending
-                pending[:] = [l for l in pending if not ("REVEAL" in l and f"round={go_round}" in l)]
+                pending[:] = [l for l in pending if not ("REVEAL" in l and f'"round":{go_round}' in l)]
                 break
 
+        if game_over:
+            print("  游戏已结束，退出答题循环")
+            break
+
         if reveal_line:
-            m2 = re.search(r"text=([^,}]+)", reveal_line)
+            m2 = re.search(r'"correctIdx":(\d+)', reveal_line)
             correct = m2.group(1) if m2 else "?"
             print(f"  [题{go_round}] 答案: {correct}")
 
