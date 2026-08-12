@@ -68,17 +68,17 @@ fun HomeScreen(
             },
             modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
         ) {
-            Text("当主机", fontSize = 20.sp)
+            Text("主机+答题", fontSize = 20.sp)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = {
-                DebugLog.i("[UI] HomeScreen: 点击'当抢答者'")
+                DebugLog.i("[UI] HomeScreen: 点击'答题'")
                 onPlayerClicked()
             },
             modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
         ) {
-            Text("当抢答者", fontSize = 20.sp)
+            Text("答题", fontSize = 20.sp)
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(onClick = onDebugClicked) {

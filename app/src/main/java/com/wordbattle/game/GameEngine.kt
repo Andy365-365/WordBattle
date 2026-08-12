@@ -37,12 +37,16 @@ class GameEngine(
     var onScoreChange: () -> Unit = {}
     var onGameEnd: (List<RankEntry>) -> Unit = {}
 
-    fun init(direction: String, totalRounds: Int, questions: List<Question>) {
+    private var answerTimeoutMs: Long = 10_000
+
+    fun init(direction: String, totalRounds: Int, questions: List<Question>, answerTimeout: Int = 10) {
         this.direction = direction
         this.totalRounds = totalRounds
         this.questions = questions
+        this.answerTimeoutMs = (answerTimeout * 1000).toLong()
         this.state = GameState.WAITING
         roundIndex = -1
+        DebugLog.i("[Engine] init: direction=$direction total=$totalRounds timeout=${answerTimeout}s")
     }
 
     fun playerJoined(playerId: String, joinMsg: GameMessage.JOIN) {
@@ -86,7 +90,7 @@ class GameEngine(
                     question = question.questionText,
                     options = question.options,
                     page = question.page,
-                    timer = 10
+                    timer = answerTimeoutMs.toInt() / 1000
                 ))
                 startTimeout(question)
             }
@@ -147,7 +151,7 @@ class GameEngine(
 
     private fun startTimeout(question: Question) {
         timeoutJob = coroutineScope.launch {
-            delay(10_000)
+            delay(answerTimeoutMs)
             if (state == GameState.PLAYING && currentRound?.claimedBy == null) {
                 revealAndNext(question)
             }

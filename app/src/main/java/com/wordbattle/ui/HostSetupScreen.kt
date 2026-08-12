@@ -12,11 +12,12 @@ import com.wordbattle.debug.DebugLog
 
 @Composable
 fun HostSetupScreen(
-    onStartWaiting: (direction: String, totalRounds: Int) -> Unit,
+    onStartWaiting: (direction: String, totalRounds: Int, answerTimeout: Int) -> Unit,
     onBack: () -> Unit
 ) {
     var direction by remember { mutableStateOf("EN_TO_ZH") }
     var totalRounds by remember { mutableIntStateOf(10) }
+    var answerTimeout by remember { mutableIntStateOf(5) }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("主机设置", fontSize = 24.sp, fontWeight = FontWeight.Bold)
@@ -56,12 +57,32 @@ fun HostSetupScreen(
             }
         }
 
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text("答题等待时间(秒)", fontSize = 18.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            listOf(5, 10, 20, 30).forEach { n ->
+                val selected = answerTimeout == n
+                Button(
+                    onClick = { DebugLog.i("[UI] HostSetup: 选择答题等待 $n 秒"); answerTimeout = n },
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (selected) MaterialTheme.colorScheme.primary
+                        else MaterialTheme.colorScheme.surfaceVariant
+                    ),
+                    modifier = Modifier.width(80.dp)
+                ) {
+                    Text("$n")
+                }
+            }
+        }
+
         Spacer(modifier = Modifier.weight(1f))
 
         Button(
             onClick = {
-                DebugLog.i("[UI] HostSetup: 点击'开始等待玩家' dir=$direction total=$totalRounds")
-                onStartWaiting(direction, totalRounds)
+                DebugLog.i("[UI] HostSetup: 点击'开始等待玩家' dir=$direction total=$totalRounds timeout=${answerTimeout}s")
+                onStartWaiting(direction, totalRounds, answerTimeout)
             },
             modifier = Modifier
                 .fillMaxWidth()

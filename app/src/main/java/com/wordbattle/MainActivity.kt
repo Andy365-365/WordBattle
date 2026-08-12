@@ -120,10 +120,10 @@ class MainActivity : ComponentActivity() {
             )
 
             Screen.HOST_SETUP -> HostSetupScreen(
-                onStartWaiting = { dir, total ->
+                onStartWaiting = { dir, total, timeout ->
                     hostDirection = dir
                     hostTotalRounds = total
-                    setupHostMode(dir, total)
+                    setupHostMode(dir, total, timeout)
                     navigateTo(Screen.HOST_WAITING)
                 },
                 onBack = { navigateTo(Screen.HOME) }
@@ -249,10 +249,10 @@ class MainActivity : ComponentActivity() {
 
     // ========== 主机逻辑 ==========
 
-    private fun setupHostMode(direction: String, total: Int) {
+    private fun setupHostMode(direction: String, total: Int, answerTimeout: Int = 10) {
         stopHostMode()
         val ip = getLocalIp()
-        DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total")
+        DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total timeout=${answerTimeout}s")
         // 等端口释放后再启动新服务
         appScope.launch {
             delay(200)
@@ -292,7 +292,7 @@ class MainActivity : ComponentActivity() {
 
             udpDiscovery.startAdvertising(ip, 5201, "我的手机", direction, total)
             val questions = wordRepo.generateQuestions(direction, total)
-            gameEngine?.init(direction, total, questions)
+            gameEngine?.init(direction, total, questions, answerTimeout)
 
             // 主机自己也连自己，可以答题（不跳转页面）
             hostAsPlayer = true
