@@ -220,9 +220,9 @@ def main():
         return
     time.sleep(0.5)
 
-    # Step 7: 设置5秒等待时间（5秒本就是默认值，此步为明确选择）
+    # Step 7: 设置5秒等待时间（Y>1200避开题目数行的"5"）
     print("\n[7/12] 设置5秒等待时间...")
-    pos = find_button_by_y('5', 900)
+    pos = find_button_by_y('5', 1200)
     if pos:
         tap(*pos)
         print(f"  ✅ tap({pos[0]}, {pos[1]})")
@@ -266,21 +266,15 @@ def main():
     today_str = datetime.now().strftime("%Y%m%d")
     log_file = f"/data/wordbattle/logs/remote_all_{today_str}.log"
 
-    # Truncate existing log file (keep the inode that log_receiver is writing to)
+    # Record current line count (don't truncate - log_receiver keeps file handle)
+    start_line = 0
     if os.path.exists(log_file):
-        open(log_file, 'w').close()
-    else:
-        # Wait for log_receiver to create it
-        for _ in range(60):
-            if os.path.exists(log_file):
-                break
-            time.sleep(0.05)
-        if os.path.exists(log_file):
-            open(log_file, 'w').close()
+        with open(log_file) as f:
+            start_line = sum(1 for _ in f)
 
-    # Use tail -f -n0 (only new lines, no history)
+    # Use tail -f +N (start from line N+1, skip history)
     tail_proc_holder = [subprocess.Popen(
-        ["tail", "-f", "-n0", log_file],
+        ["tail", "-f", f"+{start_line + 1}", log_file],
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
         text=True,
@@ -293,9 +287,9 @@ def main():
         start = time.time()
         while time.time() - start < timeout:
             if tail_proc_holder[0].poll() is not None:
-                # File may have been recreated, restart tail
+                # File may have been recreated, restart tail with same offset
                 tail_proc_holder[0] = subprocess.Popen(
-                    ["tail", "-f", "-n0", log_file],
+                    ["tail", "-f", f"+{start_line + 1}", log_file],
                     stdout=subprocess.PIPE,
                     stderr=subprocess.DEVNULL,
                     text=True,
@@ -362,9 +356,9 @@ def main():
 
         # 2) Click one of the 4 fixed answer button positions
         time.sleep(0.3)
-        # Answer buttons from UI dump (center coords):
-        # 选项1: (540, 770), 选项2: (540, 946), 选项3: (540, 1122), 选项4: (540, 1298)
-        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
+        # Answer buttons: X=480 (verified from successful run), Y from UI dump
+        # 选项1: (480, 770), 选项2: (480, 946), 选项3: (480, 1122), 选项4: (480, 1298)
+        button_positions = [(480, 770), (480, 946), (480, 1122), (480, 1298)]
         bx, by = random.choice(button_positions)
         tap(bx, by)
         total_answers += 1
