@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
     // 主机 UI
     private var hostDirection by mutableStateOf("EN_TO_ZH")
     private var hostTotalRounds by mutableIntStateOf(10)
+    private var hostUnit by mutableStateOf("")
     private var hostPlayerCount by mutableIntStateOf(0)
     private var hostCurrentRound by mutableStateOf<RoundState?>(null)
     private var hostCurrentQuestion by mutableStateOf<Question?>(null)
@@ -120,10 +121,12 @@ class MainActivity : ComponentActivity() {
             )
 
             Screen.HOST_SETUP -> HostSetupScreen(
-                onStartWaiting = { dir, total, timeout ->
+                units = wordRepo.getUnits(),
+                onStartWaiting = { dir, total, timeout, unit ->
                     hostDirection = dir
                     hostTotalRounds = total
-                    setupHostMode(dir, total, timeout)
+                    hostUnit = unit
+                    setupHostMode(dir, total, timeout, unit)
                     navigateTo(Screen.HOST_WAITING)
                 },
                 onBack = { navigateTo(Screen.HOME) }
@@ -249,7 +252,7 @@ class MainActivity : ComponentActivity() {
 
     // ========== 主机逻辑 ==========
 
-    private fun setupHostMode(direction: String, total: Int, answerTimeout: Int = 10) {
+    private fun setupHostMode(direction: String, total: Int, answerTimeout: Int = 10, unit: String = "") {
         stopHostMode()
         val ip = getLocalIp()
         DebugLog.i("设置主机模式: ip=$ip dir=$direction total=$total timeout=${answerTimeout}s")
@@ -291,7 +294,7 @@ class MainActivity : ComponentActivity() {
             }
 
             udpDiscovery.startAdvertising(ip, 5201, "我的手机", direction, total)
-            val questions = wordRepo.generateQuestions(direction, total)
+            val questions = wordRepo.generateQuestions(direction, total, unit)
             gameEngine?.init(direction, total, questions, answerTimeout)
 
             // 主机自己也连自己，可以答题（不跳转页面）

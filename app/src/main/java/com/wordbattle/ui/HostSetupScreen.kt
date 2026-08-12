@@ -10,14 +10,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wordbattle.debug.DebugLog
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HostSetupScreen(
-    onStartWaiting: (direction: String, totalRounds: Int, answerTimeout: Int) -> Unit,
+    units: List<String>,
+    onStartWaiting: (direction: String, totalRounds: Int, answerTimeout: Int, unit: String) -> Unit,
     onBack: () -> Unit
 ) {
     var direction by remember { mutableStateOf("EN_TO_ZH") }
     var totalRounds by remember { mutableIntStateOf(10) }
     var answerTimeout by remember { mutableIntStateOf(5) }
+    var selectedUnit by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text("主机设置", fontSize = 24.sp, fontWeight = FontWeight.Bold)
@@ -36,6 +39,42 @@ fun HostSetupScreen(
                 onClick = { DebugLog.i("[UI] HostSetup: 选择方向 中→英"); direction = "ZH_TO_EN" }
             )
             Text("中→英", fontSize = 16.sp)
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        var expanded by remember { mutableStateOf(false) }
+        val unitLabels = listOf("全部") + units
+
+        Text("范围", fontSize = 18.sp)
+        Spacer(modifier = Modifier.height(8.dp))
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { expanded = !expanded }
+        ) {
+            OutlinedTextField(
+                value = if (selectedUnit.isEmpty()) "全部" else selectedUnit,
+                onValueChange = {},
+                readOnly = true,
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                colors = ExposedDropdownMenuDefaults.textFieldColors(),
+                modifier = Modifier.fillMaxWidth().menuAnchor()
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                unitLabels.forEach { label ->
+                    DropdownMenuItem(
+                        text = { Text(label) },
+                        onClick = {
+                            DebugLog.i("[UI] HostSetup: 选择范围 $label")
+                            selectedUnit = if (label == "全部") "" else label
+                            expanded = false
+                        }
+                    )
+                }
+            }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -81,8 +120,8 @@ fun HostSetupScreen(
 
         Button(
             onClick = {
-                DebugLog.i("[UI] HostSetup: 点击'开始等待玩家' dir=$direction total=$totalRounds timeout=${answerTimeout}s")
-                onStartWaiting(direction, totalRounds, answerTimeout)
+                DebugLog.i("[UI] HostSetup: 点击'开始等待玩家' dir=$direction total=$totalRounds timeout=${answerTimeout}s unit=$selectedUnit")
+                onStartWaiting(direction, totalRounds, answerTimeout, selectedUnit)
             },
             modifier = Modifier
                 .fillMaxWidth()

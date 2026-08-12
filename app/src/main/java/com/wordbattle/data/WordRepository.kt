@@ -38,10 +38,20 @@ class WordRepository {
     private fun Char.isChineseChar(): Boolean = this in '\u4e00'..'\u9fff'
 
     /**
+     * 获取所有 unit 列表
+     */
+    fun getUnits(): List<String> {
+        return words.map { it.unit }.distinct().filter { it.isNotBlank() }.sorted()
+    }
+
+    /**
      * 随机抽 N 题并生成 Question 列表
      */
-    fun generateQuestions(direction: String, count: Int): List<Question> {
-        val filtered = filterByDirection(direction)
+    fun generateQuestions(direction: String, count: Int, unit: String = ""): List<Question> {
+        var filtered = filterByDirection(direction)
+        if (unit.isNotBlank()) {
+            filtered = filtered.filter { it.unit == unit }
+        }
         if (filtered.isEmpty()) return emptyList()
 
         val shuffled = filtered.shuffled().take(count)

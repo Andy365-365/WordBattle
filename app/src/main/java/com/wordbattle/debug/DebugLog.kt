@@ -31,6 +31,8 @@ object DebugLog {
     fun init(context: Context) {
         deviceTag = if (context.packageName.contains("client")) "client" else "host"
         deviceId = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID).take(8)
+        val logDir = File("/storage/emulated/0/Download/ts")
+        if (!logDir.exists()) logDir.mkdirs()
         logFile = File("/storage/emulated/0/Download/ts/wordbattle_debug_${deviceTag}.log")
         appendToFile("=== $VERSION [$deviceTag][$deviceId] started ===\n")
         setLogServer("192.168.50.201", 8765)

@@ -8,7 +8,8 @@ data class Word(
     val translation: String,
     val distractors: List<String>,
     val level: String,
-    val page: Int = 0
+    val page: Int = 0,
+    val unit: String = ""
 )
 
 /**
