@@ -349,11 +349,13 @@ def main():
         print(f"    {label}: ({bx}, {by})")
 
     if len(buttons) >= 4:
-        button_positions = [(bx, by) for bx, by, _ in buttons]
-        print(f"  [校准] 使用动态坐标: {button_positions}")
+        # 使用实测校准坐标 (scan_buttons.py 1px同步扫描结果)
+        # 实测中心: 选项0=773, 选项1=945, 选项2=1121, 选项3=1285
+        button_positions = [(540, 773), (540, 945), (540, 1121), (540, 1285)]
+        print(f"  [校准] 使用实测坐标: {button_positions}")
     else:
-        button_positions = [(480, 770), (480, 946), (480, 1122), (480, 1298)]
-        print(f"  [校准] 按钮不足({len(buttons)})，回退硬编码坐标")
+        button_positions = [(540, 773), (540, 945), (540, 1121), (540, 1285)]
+        print(f"  [校准] 按钮不足({len(buttons)})，使用实测默认坐标")
 
     # 回答第一题（GO 已到，需立即回答）
     first_round = 1

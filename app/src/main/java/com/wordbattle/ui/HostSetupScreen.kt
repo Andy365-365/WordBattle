@@ -101,7 +101,7 @@ fun HostSetupScreen(
         Text("答题等待时间(秒)", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            listOf(5, 10, 20, 30).forEach { n ->
+            listOf(5, 10, 20, 30, 120).forEach { n ->
                 val selected = answerTimeout == n
                 Button(
                     onClick = { DebugLog.i("[UI] HostSetup: 选择答题等待 $n 秒"); answerTimeout = n },
