@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""扫描选项按钮真实 Y 坐标范围 (logcat + 同步确认 + 1px步进)"""
+"""扫描选项按钮真实 Y 坐标范围 (读远程日志 + 同步确认 + 1px步进 + bgTap)"""
 import subprocess
 import time
 import re
+import os
 
 DEVICE = "b054d001"
+
+LOG_FILE = "/data/wordbattle/logs/remote_all_20260813.log"
 
 def adb(cmd, timeout=15):
     return subprocess.run(f'adb -s {DEVICE} {cmd}', shell=True, capture_output=True, text=True, timeout=timeout)
@@ -12,42 +15,45 @@ def adb(cmd, timeout=15):
 def tap(x, y):
     adb(f'shell input tap {x} {y}')
 
-def flush_logcat():
-    subprocess.run(f'adb -s {DEVICE} logcat -c', shell=True)
+def get_scan_lines():
+    """读远程日志文件，获取 [SCAN] 行"""
+    if not os.path.exists(LOG_FILE):
+        return []
+    with open(LOG_FILE, 'r') as f:
+        return [l.strip() for l in f if '[SCAN]' in l]
 
-def wait_for_scan(timeout=3):
-    """等待 logcat 中出现 SCAN 日志，返回 idx 或 None"""
+def tap_and_wait(y, prev_count=0):
+    """tap 并等待远程日志中出现新 SCAN 行。返回 idx(int) 或 'bg'(背景) 或 None(超时)"""
+    tap(540, y)
     start = time.time()
-    while time.time() - start < timeout:
-        r = subprocess.run(
-            f'adb -s {DEVICE} logcat -d -s SCAN:*, *:S',
-            shell=True, capture_output=True, text=True, timeout=5
-        )
-        for l in reversed(r.stdout.split('\n')):
-            m = re.search(r'onAnswer idx=(\d+)', l)
+    while time.time() - start < 3:
+        lines = get_scan_lines()
+        if len(lines) > prev_count:
+            # 有新日志，取最后一条
+            last = lines[-1]
+            m = re.search(r'\[SCAN\]\s+onAnswer\s+idx=(\d+)', last)
             if m:
                 return int(m.group(1))
-        time.sleep(0.1)
+            m = re.search(r'\[SCAN\]\s+bgTap\s+y=(\d+)', last)
+            if m:
+                return 'bg'
+        time.sleep(0.05)
     return None
-
-def tap_and_wait(y):
-    """tap 并等待 logcat 确认，返回 (idx) 或 None"""
-    flush_logcat()
-    time.sleep(0.05)
-    tap(540, y)
-    return wait_for_scan(timeout=3)
 
 def main():
     print("=" * 60)
-    print("扫描选项按钮 Y 坐标范围 (logcat + 同步确认 + 1px)")
+    print("扫描选项按钮 Y 坐标范围 (远程日志 + 同步确认 + 1px + bgTap)")
     print("=" * 60)
 
     # 1. 唤醒
     adb('shell input keyevent 26')
     time.sleep(0.5)
 
-    # 2. 卸载 + 安装
-    adb('shell pm uninstall com.wordbattle')
+    # 2. force-stop 旧版 + 覆盖安装（pm uninstall 在 MIUI 会失败，直接 install -r 覆盖）
+    adb('shell am force-stop com.wordbattle')
+    time.sleep(0.5)
+    adb('shell input keyevent KEYCODE_HOME')
+    time.sleep(1)
     r = subprocess.run('python3 /data/wordbattle/scripts/auto_install.py', shell=True, capture_output=True, text=True, timeout=30)
     if 'SUCCESS' not in r.stdout:
         print(f"安装失败: {r.stdout}")
@@ -92,22 +98,35 @@ def main():
         print("超时未进入答题界面")
         return
 
-    # 10. 阶段1: 1px 扫描，从 Y=700 开始向下，找到4个按钮的首次命中
-    print(f"\n阶段1: 1px步进找首次命中...")
-    first_hits = {}  # idx -> first_y
-    y = 700
-    last_idx = None
-    for y in range(700, 1351):
-        idx = tap_and_wait(y)
-        if idx is not None:
-            if last_idx is None or idx != last_idx:
-                # 首次看到新 idx
-                first_hits[idx] = y
-                last_idx = idx
-                print(f"  选项{idx} 首次命中 Y={y}")
-            # 同一 idx 继续往下找
-        # 如果连续 50px 没命中任何按钮，且已找到4个，提前停止
-        if len(first_hits) == 4 and y > 1250:
+    # 10. 阶段1: 1px 扫描，Y=0~2400，找到4个按钮的首次命中
+    print(f"\n阶段1: 1px步进找首次命中 (Y=0~2400)...")
+    first_hits = {}
+    last_result = None
+    prev_count = len(get_scan_lines())
+
+    for y in range(0, 2401):
+        result = tap_and_wait(y, prev_count)
+        if result is not None:
+            if isinstance(result, int):
+                if last_result is None or (isinstance(last_result, int) and result != last_result):
+                    first_hits[result] = y
+                    print(f"  选项{result} 首次命中 Y={y}")
+                last_result = result
+            else:
+                last_result = 'bg'
+        else:
+            print(f"  Y={y} 超时(未命中)")
+            last_result = None
+
+        # 更新 prev_count
+        prev_count = len(get_scan_lines())
+
+        # 打印进度
+        if y % 200 == 0 and y > 0:
+            print(f"  [进度] Y={y}, 已找到{len(first_hits)}个按钮")
+
+        if len(first_hits) == 4 and y > 1800:
+            print(f"  已找到全部4个按钮，Y={y}，提前停止")
             break
 
     if len(first_hits) < 4:
@@ -115,7 +134,6 @@ def main():
 
     # 11. 阶段2: 对每个按钮，1px 扫上下边界
     print(f"\n阶段2: 1px步进扫每个按钮的完整范围...")
-    all_results = []  # (y, idx_or_None)
     button_ranges = {}
 
     for idx in sorted(first_hits):
@@ -124,9 +142,8 @@ def main():
 
         # 向上扫找上边界
         upper = start_y
-        for y in range(start_y - 1, 699, -1):
-            result = tap_and_wait(y)
-            status = f"idx={result}" if result is not None else "未命中"
+        for y in range(start_y - 1, -1, -1):
+            result = tap_and_wait(y, prev_count)
             if result == idx:
                 upper = y
             else:
@@ -134,14 +151,14 @@ def main():
 
         # 向下扫找下边界
         lower = start_y
-        for y in range(start_y + 1, 1351):
-            result = tap_and_wait(y)
-            status = f"idx={result}" if result is not None else "未命中"
+        for y in range(start_y + 1, 2401):
+            result = tap_and_wait(y, prev_count)
             if result == idx:
                 lower = y
             else:
                 break
 
+        prev_count = len(get_scan_lines())
         button_ranges[idx] = (upper, lower)
         print(f"  选项{idx}: Y=[{upper} ~ {lower}] 共{lower-upper+1}px")
 

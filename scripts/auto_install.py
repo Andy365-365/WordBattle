@@ -3,7 +3,7 @@ import subprocess, time, sys, xml.etree.ElementTree as ET
 
 DEVICE = "b054d001"
 APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
-DELAY = float(sys.argv[1]) if len(sys.argv) > 1 else 1.0
+DELAY = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
 
 print(f"=== Testing delay: {DELAY}s ===")
 
@@ -45,7 +45,7 @@ if not found:
     print(f"  [MISS] Dialog not found at {DELAY}s")
 
 # Wait for result
-time.sleep(12)
+time.sleep(15)
 result = subprocess.run(
     f'adb -s {DEVICE} shell pm path com.wordbattle',
     shell=True, capture_output=True, text=True
