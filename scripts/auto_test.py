@@ -332,11 +332,17 @@ def main():
         print("  ❌ 未检测到 GO 信号")
         return
 
-    # === 校准选项按钮坐标 ===
-    print("\n  [校准] 抓取答题界面 UI...")
-    xml = dump_ui()
-    nodes = parse_nodes(xml)
-    buttons = find_answer_buttons(nodes)
+    # === 校准选项按钮坐标（等 UI 稳定后再 dump）===
+    print("\n  [校准] 等待答题界面稳定...")
+    buttons = []
+    for attempt in range(5):
+        time.sleep(1)
+        xml = dump_ui()
+        nodes = parse_nodes(xml)
+        buttons = find_answer_buttons(nodes)
+        if len(buttons) >= 4:
+            break
+        print(f"  [校准] 尝试{attempt+1}: 找到{len(buttons)}个按钮，重试...")
     screenshot('game_answers')
     print(f"  [校准] 找到 {len(buttons)} 个按钮:")
     for bx, by, label in buttons:
