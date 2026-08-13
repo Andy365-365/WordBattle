@@ -20,11 +20,8 @@ def dump_ui():
     with open('/tmp/wb_ui.xml', 'r') as f:
         return f.read()
 
-def tap(x, y, retries=1):
-    for i in range(retries):
-        adb(f'shell input tap {x} {y}')
-        if i < retries - 1:
-            time.sleep(0.1)
+def tap(x, y):
+    adb(f'shell input tap {x} {y}')
 
 def screenshot(name):
     subprocess.run(f'adb -s {DEVICE} exec-out screencap -p > /tmp/{name}.png', shell=True, timeout=10)
@@ -366,7 +363,7 @@ def main():
     time.sleep(0.3)
     choice_idx = random.randrange(len(button_positions))
     bx, by = button_positions[choice_idx]
-    tap(bx, by, retries=2)
+    tap(bx, by)
     total_answers += 1
     print(f"  [题{first_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
 
@@ -409,7 +406,7 @@ def main():
         time.sleep(0.3)
         choice_idx = random.randrange(len(button_positions))
         bx, by = button_positions[choice_idx]
-        tap(bx, by, retries=2)
+        tap(bx, by)
         total_answers += 1
         print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
 
