@@ -11,6 +11,9 @@ import glob
 DEVICE = "b054d001"
 APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
 
+# Test mode: "random" (default), "all_correct", "all_wrong"
+answer_mode = "all_correct"
+
 def adb(cmd, timeout=15):
     return subprocess.run(f'adb -s {DEVICE} {cmd}', shell=True, capture_output=True, text=True, timeout=timeout)
 
@@ -403,13 +406,32 @@ def main():
             print(f"  [轮{i}] 超时未收到 GO，退出")
             break
 
-        # 2) Click one of the answer buttons
+        # 2) Parse correctIdx from GO and click answer
+        # Find the GO JSON line in pending to get correctIdx
+        correct_idx = None
+        for l in pending:
+            if '"correctIdx"' in l and '"type":"GO"' in l:
+                cm = re.search(r'"correctIdx":(\d+)', l)
+                if cm:
+                    correct_idx = int(cm.group(1))
+                    break
+
+        if correct_idx is not None:
+            if answer_mode == "all_correct":
+                choice_idx = correct_idx
+            elif answer_mode == "all_wrong":
+                choice_idx = (correct_idx + 1) % 4
+            else:
+                choice_idx = random.randrange(len(button_positions))
+        else:
+            choice_idx = random.randrange(len(button_positions))
+
         time.sleep(0.3)
-        choice_idx = random.randrange(len(button_positions))
         bx, by = button_positions[choice_idx]
         tap(bx, by)
         total_answers += 1
-        print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
+        label = {"all_correct": "正确", "all_wrong": "错误", "random": "随机"}.get(answer_mode, "未知")
+        print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) [模式:{label}] (共{total_answers}次)")
 
         # 3) Wait for REVEAL signal (日志格式: "round":N  JSON)
         reveal_line = None

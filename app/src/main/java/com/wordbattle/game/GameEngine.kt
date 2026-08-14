@@ -77,7 +77,7 @@ class GameEngine(
         val question = questions[roundIndex]
         val roundState = RoundState(round = roundIndex + 1)
         currentRound = roundState
-        DebugLog.i("[Engine] nextRound: 第${roundState.round}题 question=${question.questionText}")
+        DebugLog.i("[Engine] ====== 第${roundState.round}题: ${question.questionText} ======")
         onRoundChange(roundState, question)
         network.broadcast(GameMessage.PREPARE(round = roundState.round))
         DebugLog.d("broadcast: PREPARE")
@@ -90,7 +90,8 @@ class GameEngine(
                     question = question.questionText,
                     options = question.options,
                     page = question.page,
-                    timer = answerTimeoutMs.toInt() / 1000
+                    timer = answerTimeoutMs.toInt() / 1000,
+                    correctIdx = question.correctIdx
                 ))
                 startTimeout(question)
             }

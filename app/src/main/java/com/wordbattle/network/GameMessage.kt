@@ -55,7 +55,8 @@ sealed class GameMessage {
         val question: String,
         val options: List<String>,
         val page: Int = 0,
-        val timer: Int = 10
+        val timer: Int = 10,
+        val correctIdx: Int = -1
     ) : GameMessage()
 
     @Serializable

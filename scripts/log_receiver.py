@@ -80,7 +80,7 @@ class Handler(BaseHTTPRequestHandler):
                 version = ""
             ts = datetime.now().strftime("%H:%M:%S")
             devLabel = f"[{devId}]" if devId else ""
-            line = f"[{ts}] {version} [{device}][{devLabel}] [{level}] {msg}\n"
+            line = f"[{ts}] {version} [{device}]{devLabel} [{level}] {msg}\n"
 
             # Write to daily files
             all_path = daily_paths["all"]
