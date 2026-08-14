@@ -6,6 +6,7 @@ from datetime import datetime
 import sys
 import os
 import glob
+import threading
 
 LOG_DIR = "/data/wordbattle/logs"
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
@@ -53,6 +54,11 @@ prune_old_logs()
 
 daily_paths = get_daily_paths()
 
+# Global counter for SCAN lines
+_scan_lock = threading.Lock()
+_scan_count = 0
+_scan_latest = ""
+
 
 class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
@@ -86,6 +92,13 @@ class Handler(BaseHTTPRequestHandler):
                 with open(key_path, "a") as f:
                     f.write(line)
 
+            # Track SCAN lines
+            if "[SCAN]" in msg:
+                global _scan_count, _scan_latest
+                with _scan_lock:
+                    _scan_count += 1
+                    _scan_latest = line.rstrip("\n")
+
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
@@ -98,6 +111,27 @@ class Handler(BaseHTTPRequestHandler):
 
     def log_message(self, format, *args):
         pass
+
+    def do_GET(self):
+        """Query interface for scan script."""
+        if self.path.startswith("/scan/latest"):
+            with _scan_lock:
+                count = _scan_count
+                latest = _scan_latest
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps({"count": count, "latest": latest}).encode())
+        elif self.path.startswith("/scan/count"):
+            with _scan_lock:
+                count = _scan_count
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(str(count).encode())
+        else:
+            self.send_response(404)
+            self.end_headers()
 
 
 if __name__ == "__main__":

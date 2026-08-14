@@ -19,7 +19,7 @@ fun HostSetupScreen(
 ) {
     var direction by remember { mutableStateOf("EN_TO_ZH") }
     var totalRounds by remember { mutableIntStateOf(10) }
-    var answerTimeout by remember { mutableIntStateOf(5) }
+    var answerTimeout by remember { mutableIntStateOf(3600) }
     var selectedUnit by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
