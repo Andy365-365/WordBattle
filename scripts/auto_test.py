@@ -403,21 +403,20 @@ def main():
             print(f"  [轮{i}] 超时未收到 GO，退出")
             break
 
-        # 2) Parse correctIdx from GO and click answer
-        # Wait for GO JSON line to appear in pending (up to 5s)
-        correct_idx = None
-        for _ in range(50):
-            feed_pending(0.1)
-            for l in pending:
-                if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l:
-                    cm = re.search(r'"correctIdx":(\d+)', l)
-                    if cm:
-                        correct_idx = int(cm.group(1))
-                        break
-            if correct_idx is not None:
+        # 2) Wait for GO JSON line to get correctIdx (fast path - it should be nearby)
+        go_json_line = None
+        for _ in range(3):
+            go_json_line = consume_line(lambda l: '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l)
+            if go_json_line:
                 break
+            feed_pending(0.2)
 
-        if correct_idx is None:
+        correct_idx = None
+        if go_json_line:
+            cm = re.search(r'"correctIdx":(\d+)', go_json_line)
+            if cm:
+                correct_idx = int(cm.group(1))
+        else:
             print(f"  [警告] 题{go_round} 未获取到 correctIdx，本次随机选择")
 
         if correct_idx is not None:
