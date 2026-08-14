@@ -189,23 +189,13 @@ def main():
         open(log_file, 'w').close()
         print("  ✅ 日志文件已清空")
 
-    # Step 1: 卸载
-    print("\n[2/12] 卸载旧版...")
-    r = adb('shell pm uninstall com.wordbattle')
-    print(f"  {'✅' if 'Success' in r.stdout or 'not found' in r.stdout else '❌'} {r.stdout.strip()}")
-
-    # Step 3: 安装
-    print("\n[3/12] 自动安装...")
-    r = subprocess.run('python3 /data/wordbattle/scripts/auto_install.py', shell=True, capture_output=True, text=True, timeout=30)
-    print(f"  {'✅ 安装成功' if 'SUCCESS' in r.stdout else '❌ ' + r.stdout.strip()}")
-    if 'SUCCESS' not in r.stdout:
-        return
-    time.sleep(1)
+    # Step 2: 卸载/安装（跳过 - 手动安装）
+    print("\n[2/12] 跳过卸载/安装（APK已安装）")
 
     # Step 4: 启动
     print("\n[4/12] 启动 WordBattle...")
     adb('shell am start -n com.wordbattle/.MainActivity')
-    time.sleep(3)
+    time.sleep(5)  # 增加等待时间确保UI渲染完成
     screenshot('s4_start')
 
     # Step 5: 点击"主机+答题"
@@ -414,17 +404,18 @@ def main():
             break
 
         # 2) Parse correctIdx from GO and click answer
-        # Wait briefly for GO JSON line to appear in pending
-        feed_pending(0.5)
-
-        # Find the GO JSON line matching current round in pending to get correctIdx
+        # Wait for GO JSON line to appear in pending (up to 5s)
         correct_idx = None
-        for l in pending:
-            if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l:
-                cm = re.search(r'"correctIdx":(\d+)', l)
-                if cm:
-                    correct_idx = int(cm.group(1))
-                    break
+        for _ in range(50):
+            feed_pending(0.1)
+            for l in pending:
+                if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l:
+                    cm = re.search(r'"correctIdx":(\d+)', l)
+                    if cm:
+                        correct_idx = int(cm.group(1))
+                        break
+            if correct_idx is not None:
+                break
 
         if correct_idx is None:
             print(f"  [警告] 题{go_round} 未获取到 correctIdx，本次随机选择")
