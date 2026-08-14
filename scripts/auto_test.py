@@ -407,6 +407,9 @@ def main():
             break
 
         # 2) Parse correctIdx from GO and click answer
+        # Wait briefly for GO JSON line to appear in pending
+        feed_pending(0.5)
+
         # Find the GO JSON line in pending to get correctIdx
         correct_idx = None
         for l in pending:
