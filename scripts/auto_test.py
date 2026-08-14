@@ -410,14 +410,17 @@ def main():
         # Wait briefly for GO JSON line to appear in pending
         feed_pending(0.5)
 
-        # Find the GO JSON line in pending to get correctIdx
+        # Find the GO JSON line matching current round in pending to get correctIdx
         correct_idx = None
         for l in pending:
-            if '"correctIdx"' in l and '"type":"GO"' in l:
+            if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l:
                 cm = re.search(r'"correctIdx":(\d+)', l)
                 if cm:
                     correct_idx = int(cm.group(1))
                     break
+
+        if correct_idx is None:
+            print(f"  [警告] 题{go_round} 未获取到 correctIdx，本次随机选择")
 
         if correct_idx is not None:
             if answer_mode == "all_correct":
