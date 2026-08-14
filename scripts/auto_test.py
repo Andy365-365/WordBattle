@@ -349,12 +349,11 @@ def main():
         print(f"    {label}: ({bx}, {by})")
 
     if len(buttons) >= 4:
-        # 使用实测校准坐标 (scan_buttons.py 1px同步扫描结果)
-        # 实测中心: 选项0=773, 选项1=945, 选项2=1121, 选项3=1285
-        button_positions = [(540, 773), (540, 945), (540, 1121), (540, 1285)]
-        print(f"  [校准] 使用实测坐标: {button_positions}")
+        # 使用UI dump确认坐标
+        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
+        print(f"  [校准] 使用UI dump确认坐标: {button_positions}")
     else:
-        button_positions = [(540, 773), (540, 945), (540, 1121), (540, 1285)]
+        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
         print(f"  [校准] 按钮不足({len(buttons)})，使用实测默认坐标")
 
     # 回答第一题（GO 已到，需立即回答）
