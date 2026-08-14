@@ -220,14 +220,14 @@ def main():
         return
     time.sleep(0.5)
 
-    # Step 7: 设置5秒等待时间（Y>1200避开题目数行的"5"）
-    print("\n[7/12] 设置5秒等待时间...")
-    pos = find_button_by_y('5', 1200)
+    # Step 7: 设置15秒答题时间（给脚本足够反应时间）
+    print("\n[7/12] 设置15秒答题时间...")
+    pos = find_button_by_y('15', 1200)
     if pos:
         tap(*pos)
         print(f"  ✅ tap({pos[0]}, {pos[1]})")
     else:
-        print("  ⚠️ 没找到5秒按钮（默认就是5秒，继续）")
+        print("  ⚠️ 没找到15秒按钮（使用默认时间，继续）")
     time.sleep(0.5)
 
     # Step 8: 开始等待玩家
@@ -429,7 +429,7 @@ def main():
         else:
             choice_idx = random.randrange(len(button_positions))
 
-        time.sleep(0.3)
+        time.sleep(0.1)
         bx, by = button_positions[choice_idx]
         tap(bx, by)
         total_answers += 1
