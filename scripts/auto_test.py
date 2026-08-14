@@ -182,7 +182,14 @@ def main():
         return
     time.sleep(0.5)
 
-    # Step 2: 卸载
+    # Truncate log file to avoid old entries interfering
+    today_str = datetime.now().strftime("%Y%m%d")
+    log_file = f"/data/wordbattle/logs/remote_all_{today_str}.log"
+    if os.path.exists(log_file):
+        open(log_file, 'w').close()
+        print("  ✅ 日志文件已清空")
+
+    # Step 1: 卸载
     print("\n[2/12] 卸载旧版...")
     r = adb('shell pm uninstall com.wordbattle')
     print(f"  {'✅' if 'Success' in r.stdout or 'not found' in r.stdout else '❌'} {r.stdout.strip()}")
@@ -413,7 +420,7 @@ def main():
         # Find the GO JSON line matching current round in pending to get correctIdx
         correct_idx = None
         for l in pending:
-            if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l:
+            if '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l:
                 cm = re.search(r'"correctIdx":(\d+)', l)
                 if cm:
                     correct_idx = int(cm.group(1))
