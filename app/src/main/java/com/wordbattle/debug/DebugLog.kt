@@ -12,7 +12,7 @@ import java.util.Locale
 import java.util.concurrent.ConcurrentLinkedQueue
 
 object DebugLog {
-    const val VERSION = "v2.0-20260814-1518"
+    const val VERSION = "v2.0-20260814-2316"
 
     private val queue = ConcurrentLinkedQueue<String>()
     private var logFile: File? = null

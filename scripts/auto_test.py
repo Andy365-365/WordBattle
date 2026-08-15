@@ -1,27 +1,21 @@
 #!/usr/bin/env python3
-"""WordBattle 完整自动化测试"""
+"""WordBattle 完整自动化测试 v2 - 修复 pending 硬等问题"""
 import subprocess
 import time
 import re
 import random
 import os
+import select as _select
 from datetime import datetime
-import glob
 
 DEVICE = "b054d001"
 APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
 
-# Test mode: "random" (default), "all_correct", "all_wrong"
+# Test mode: "random", "all_correct", "all_wrong"
 answer_mode = "all_correct"
 
 def adb(cmd, timeout=15):
     return subprocess.run(f'adb -s {DEVICE} {cmd}', shell=True, capture_output=True, text=True, timeout=timeout)
-
-def dump_ui():
-    adb('shell uiautomator dump /sdcard/ui.xml')
-    adb('pull /sdcard/ui.xml /tmp/wb_ui.xml')
-    with open('/tmp/wb_ui.xml', 'r') as f:
-        return f.read()
 
 def tap(x, y):
     adb(f'shell input tap {x} {y}')
@@ -29,9 +23,14 @@ def tap(x, y):
 def screenshot(name):
     subprocess.run(f'adb -s {DEVICE} exec-out screencap -p > /tmp/{name}.png', shell=True, timeout=10)
 
+def dump_ui():
+    adb('shell uiautomator dump /sdcard/ui.xml')
+    adb('pull /sdcard/ui.xml /tmp/wb_ui.xml')
+    with open('/tmp/wb_ui.xml', 'r') as f:
+        return f.read()
+
 def parse_nodes(xml_text):
     nodes = []
-    # Use a more robust regex: match attributes with quotes (no greedy issues with /)
     for m in re.finditer(r'<node\s+([^>]*(?:"[^"]*"|\'[^\']*\'|\S+)*\s*)/?>', xml_text):
         attrs = m.group(1)
         text = re.search(r'text="([^"]*)"', attrs)
@@ -51,7 +50,6 @@ def pb(bounds_str):
     return (int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4))) if m else None
 
 def find_clickable_parent(nodes, target_bounds):
-    """Find smallest clickable parent containing target_bounds"""
     tx1, ty1, tx2, ty2 = target_bounds
     best = None
     for n in nodes:
@@ -68,7 +66,6 @@ def find_clickable_parent(nodes, target_bounds):
     return (best[1], best[2]) if best else None
 
 def find_button_center(text):
-    """Find clickable parent of first node with exact text"""
     nodes = parse_nodes(dump_ui())
     target = None
     for n in nodes:
@@ -83,7 +80,6 @@ def find_button_center(text):
     return find_clickable_parent(nodes, b)
 
 def find_button_by_y(text, min_y):
-    """Find clickable parent of first node with text whose bounds center Y > min_y"""
     nodes = parse_nodes(dump_ui())
     for n in nodes:
         if n['text'] != text:
@@ -96,23 +92,7 @@ def find_button_by_y(text, min_y):
             return find_clickable_parent(nodes, b)
     return None
 
-def get_status(nodes):
-    for n in nodes:
-        if n['text'].startswith('状态:'):
-            return n['text']
-    return None
-
-def get_question(nodes):
-    for n in nodes:
-        t = n['text']
-        if '第' in t and '/' in t:
-            return t
-    return None
-
 def find_answer_buttons(nodes):
-    """Find answer buttons - clickable nodes in the ANSWERING area, excluding nav/score buttons"""
-    # Skip by bounds position - answer buttons are in the middle area
-    # Exclude: top bar (exit), bottom (重新开始, 玩家比分), and non-button clickables
     buttons = []
     for n in nodes:
         if n['clickable'] != 'true' or n['enabled'] != 'true':
@@ -122,7 +102,6 @@ def find_answer_buttons(nodes):
             continue
         px1, py1, px2, py2 = b
         cx, cy = (px1+px2)//2, (py1+py2)//2
-        # Answer buttons are full-width buttons in middle area: y 600-1400
         if 600 <= py1 <= 1400 and (px2-px1) > 400:
             buttons.append((cx, cy, f'选项{len(buttons)+1}'))
     return buttons
@@ -130,42 +109,36 @@ def find_answer_buttons(nodes):
 def main():
     # Force restart log receiver
     print("[PRE] 强制重启日志接收脚本...")
-    # Kill all old instances aggressively
     subprocess.run("pkill -9 -f 'log_receiver.py'", shell=True)
     time.sleep(1)
-    # Verify port is free
     import socket
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect(("127.0.0.1", 8765))
         s.close()
-        print("  ⚠️  端口 8765 仍被占用，尝试 kill...")
+        print("  ! 端口 8765 仍被占用，尝试 kill...")
         subprocess.run("fuser -k 8765/tcp", shell=True)
         time.sleep(1)
     except ConnectionRefusedError:
-        pass  # Good, port is free
+        pass
 
-    # Start new
     proc = subprocess.Popen(
         ['python3', '/data/wordbattle/scripts/log_receiver.py', '8765'],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-        start_new_session=True
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True
     )
     time.sleep(1)
-    # Verify by connecting
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.settimeout(2)
         s.connect(("127.0.0.1", 8765))
         s.close()
-        print(f"  ✅ log_receiver running (PID: {proc.pid})")
+        print(f"  OK log_receiver running (PID: {proc.pid})")
     except:
-        print("  ❌ log_receiver 启动失败")
+        print("  FAIL log_receiver 启动失败")
         return
 
     print("=" * 60)
-    print("WordBattle 完整自动化测试")
+    print("WordBattle 完整自动化测试 v2")
     print("=" * 60)
 
     # Step 1: 唤醒
@@ -173,61 +146,60 @@ def main():
     for _ in range(3):
         r = adb('shell dumpsys power | grep mWakefulness')
         if 'Awake' in r.stdout:
-            print("  ✅ 已唤醒")
+            print("  OK 已唤醒")
             break
         adb('shell input keyevent 26')
         time.sleep(1)
     else:
-        print("  ❌ 唤醒失败")
+        print("  FAIL 唤醒失败")
         return
     time.sleep(0.5)
 
-    # Truncate log file to avoid old entries interfering
     today_str = datetime.now().strftime("%Y%m%d")
     log_file = f"/data/wordbattle/logs/remote_all_{today_str}.log"
     if os.path.exists(log_file):
         open(log_file, 'w').close()
-        print("  ✅ 日志文件已清空")
+        print("  OK 日志文件已清空")
 
-    # Step 2: 卸载/安装（跳过 - 手动安装）
-    print("\n[2/12] 跳过卸载/安装（APK已安装）")
+    # Step 2: 跳过
+    print("\n[2/12] 跳过卸载/安装")
 
     # Step 4: 启动
     print("\n[4/12] 启动 WordBattle...")
     adb('shell am start -n com.wordbattle/.MainActivity')
-    time.sleep(5)  # 增加等待时间确保UI渲染完成
+    time.sleep(8)  # 增加等待时间确保UI渲染完成
     screenshot('s4_start')
 
-    # Step 5: 点击"主机+答题"
+    # Step 5: 主机+答题
     print("\n[5/12] 点击'主机+答题'...")
     pos = find_button_center('主机+答题')
     if pos:
         tap(*pos)
-        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  ❌ 没找到按钮")
+        print("  FAIL 没找到按钮")
         return
     time.sleep(2)
 
-    # Step 6: 设置30题
+    # Step 6: 30题
     print("\n[6/12] 设置30题...")
     pos = find_button_by_y('30', 0)
     if pos:
         tap(*pos)
-        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  ❌ 没找到30题按钮")
+        print("  FAIL 没找到30题按钮")
         return
     time.sleep(0.5)
 
-    # Step 7: 设置15秒答题时间（给脚本足够反应时间）
+    # Step 7: 15秒答题时间
     print("\n[7/12] 设置15秒答题时间...")
     pos = find_button_by_y('15', 1200)
     if pos:
         tap(*pos)
-        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  ⚠️ 没找到15秒按钮（使用默认时间，继续）")
+        print("  WARN 没找到15秒按钮")
     time.sleep(0.5)
 
     # Step 8: 开始等待玩家
@@ -235,9 +207,9 @@ def main():
     pos = find_button_center('开始等待玩家')
     if pos:
         tap(*pos)
-        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  ❌ 没找到按钮")
+        print("  FAIL 没找到按钮")
         return
     time.sleep(3)
 
@@ -246,94 +218,97 @@ def main():
     pos = find_button_center('开始游戏')
     if pos:
         tap(*pos)
-        print(f"  ✅ tap({pos[0]}, {pos[1]})")
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
         time.sleep(3)
         pos = find_button_center('开始游戏')
         if pos:
             tap(*pos)
-            print(f"  ✅ tap({pos[0]}, {pos[1]}) (retry)")
+            print(f"  OK tap({pos[0]}, {pos[1]}) (retry)")
         else:
-            print("  ❌ 没找到按钮")
+            print("  FAIL 没找到按钮")
             return
     time.sleep(3)
     screenshot('s9_game')
 
-    # Step 10: 答题循环 (日志驱动)
+    # ===== 日志驱动答题 =====
     print(f"\n[10/12] 答题循环 (日志驱动)...")
     total_answers = 0
 
-    today_str = datetime.now().strftime("%Y%m%d")
-    log_file = f"/data/wordbattle/logs/remote_all_{today_str}.log"
-
-    # Record current line count (don't truncate - log_receiver keeps file handle)
+    # tail -f 从当前行开始
     start_line = 0
     if os.path.exists(log_file):
         with open(log_file) as f:
             start_line = sum(1 for _ in f)
 
-    # Use tail -f +N (start from line N+1, skip history)
     tail_proc_holder = [subprocess.Popen(
         ["tail", "-f", f"+{start_line + 1}", log_file],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-        text=True,
-        bufsize=1
+        stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+        text=True, bufsize=1
     )]
 
-    def tail_log(timeout=2.0):
-        """Read new lines from tail -f subprocess. Returns (lines, timed_out)."""
+    # === 核心改动：行级即时读取，不再批量硬等 ===
+    pending = []
+
+    def read_lines(timeout=1.0):
+        """读取 tail 输出，有新行就返回，不等满 timeout。
+        返回 (lines, timed_out_bool)。
+        一旦读到至少一行就立即返回；只有完全没数据时才等满 timeout。"""
         lines = []
         start = time.time()
         while time.time() - start < timeout:
             if tail_proc_holder[0].poll() is not None:
-                # File may have been recreated, restart tail with same offset
                 tail_proc_holder[0] = subprocess.Popen(
                     ["tail", "-f", f"+{start_line + 1}", log_file],
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.DEVNULL,
-                    text=True,
-                    bufsize=1
+                    stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+                    text=True, bufsize=1
                 )
-            import select
-            ready, _, _ = select.select([tail_proc_holder[0].stdout], [], [], 0.1)
+            ready, _, _ = _select.select([tail_proc_holder[0].stdout], [], [], 0.1)
             if ready:
                 line = tail_proc_holder[0].stdout.readline()
                 if line:
                     lines.append(line.strip())
+            # 一旦读到行就立即返回，不再硬等
+            if lines:
+                return lines, False
             time.sleep(0.05)
-        return lines, False if lines else True
+        return lines, True
 
-    # Pending line buffer: all tail_log reads go here, consumed by stage
-    pending = []
-
-    def consume_line(match_fn):
-        """Find first line matching match_fn in pending, remove it, return it."""
-        for idx, l in enumerate(pending):
-            if match_fn(l):
-                return pending.pop(idx)
-        return None
-
-    def feed_pending(timeout=1.0):
-        """Read new lines from tail and append to pending."""
-        lines, _ = tail_log(timeout)
+    def drain(timeout=0.0):
+        """不等待，把 tail buffer 里已有的行全部读完。"""
+        lines = []
+        while True:
+            r, _, _ = _select.select([tail_proc_holder[0].stdout], [], [], 0.01)
+            if not r:
+                break
+            line = tail_proc_holder[0].stdout.readline()
+            if line:
+                lines.append(line.strip())
+            else:
+                break
         pending.extend(lines)
 
-    # First: wait for the first GO event
-    print("  等待第一题 GO 信号...")
-    _first_line = None
-    for _ in range(30):  # 30s timeout
-        feed_pending(1.0)
-        _first_line = consume_line(lambda l: "广播 GO" in l)
-        if _first_line:
-            break
+    def wait_for(match_fn, timeout=10.0):
+        """等待 pending 中出现匹配的行。找到即返回该行并移除。
+        用 read_lines(短超时) 循环，确保不硬等。"""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            # 先检查 pending 里已有
+            for idx, l in enumerate(pending):
+                if match_fn(l):
+                    return pending.pop(idx)
+            # 读新数据（短超时，有数据就返回）
+            lines, _ = read_lines(0.5)
+            pending.extend(lines)
+        return None
 
-    if not _first_line:
-        print("  ❌ 未检测到 GO 信号")
-        return
+    def wait_and_clean(match_fn, timeout=10.0):
+        """wait_for 的旧写法兼容：从 pending 中找匹配并删除所有匹配行。"""
+        line = wait_for(match_fn, timeout)
+        return line
 
-    # === 校准选项按钮坐标（等 UI 稳定后再 dump）===
-    print("\n  [校准] 等待答题界面稳定...")
+    # === 校准选项按钮坐标 ===
+    print("  [校准] 等待答题界面稳定...")
     buttons = []
     for attempt in range(5):
         time.sleep(1)
@@ -348,78 +323,81 @@ def main():
     for bx, by, label in buttons:
         print(f"    {label}: ({bx}, {by})")
 
-    if len(buttons) >= 4:
-        # 使用UI dump确认坐标
-        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
-        print(f"  [校准] 使用UI dump确认坐标: {button_positions}")
-    else:
-        button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
-        print(f"  [校准] 按钮不足({len(buttons)})，使用实测默认坐标")
+    button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
 
-    # 回答第一题（GO 已到，需立即回答）
-    first_round = 1
-    m_first = re.search(r"广播 GO\s+第(\d+)题", _first_line)
-    if m_first:
-        first_round = int(m_first.group(1))
-    time.sleep(0.3)
-    choice_idx = random.randrange(len(button_positions))
+    # ===== 主循环：直接监听 GO JSON，跳过"广播 GO"中间步 =====
+    print("  等待第一题 GO 信号...")
+
+    # 等 GO JSON: "type":"GO" + "correctIdx"
+    first_go = wait_for(lambda l: '"type":"GO"' in l and '"correctIdx"' in l, timeout=30.0)
+    if not first_go:
+        print("  FAIL 未检测到 GO 信号")
+        return
+
+    first_round_m = re.search(r'"round":(\d+)', first_go)
+    first_round = int(first_round_m.group(1)) if first_round_m else 1
+
+    # 等客户端 UI 渲染完毕（日志 "收到: GO" = 按钮已渲染可点）
+    ui_ready = wait_for(lambda l: '收到: GO' in l, timeout=2.0)
+    if ui_ready:
+        drain()
+    # Compose 重渲染按钮需要时间，等渲染完成后 tap
+    time.sleep(3)
+
+    # 回答第一题
+    first_correct_m = re.search(r'"correctIdx":(\d+)', first_go)
+    if answer_mode == "all_correct" and first_correct_m:
+        choice_idx = int(first_correct_m.group(1))
+    elif answer_mode == "all_wrong" and first_correct_m:
+        choice_idx = (int(first_correct_m.group(1)) + 1) % 4
+    else:
+        choice_idx = random.randrange(len(button_positions))
+
     bx, by = button_positions[choice_idx]
     tap(bx, by)
     total_answers += 1
-    print(f"  [题{first_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) (共{total_answers}次)")
+    label = {"all_correct": "正确", "all_wrong": "错误", "random": "随机"}.get(answer_mode, "未知")
+    print(f"  [题{first_round}] 选项{choice_idx+1} ({bx},{by}) [模式:{label}] (共{total_answers}次)")
 
-    # 等待第一题 REVEAL (日志格式: "round":N  JSON)
-    for _ in range(15):
-        feed_pending(1.0)
-        for l in pending:
-            if "REVEAL" in l and f'"round":{first_round}' in l:
-                m2 = re.search(r'"correctIdx":(\d+)', l)
-                correct = m2.group(1) if m2 else "?"
-                print(f"  [题{first_round}] 答案: {correct}")
-                pending[:] = [l for l in pending if not ("REVEAL" in l and f'"round":{first_round}' in l)]
-                break
+    # 等第一题 REVEAL
+    reveal = wait_for(lambda l: "REVEAL" in l and f'"round":{first_round}' in l, timeout=15.0)
+    if reveal:
+        cm = re.search(r'"correctIdx":(\d+)', reveal)
+        correct = cm.group(1) if cm else "?"
+        winner_m = re.search(r'"winner":"([^"]+)"', reveal)
+        status = f"答案: {correct} ({'命中' if winner_m else '超时'})"
+        print(f"  [题{first_round}] {status}")
 
-    feed_pending(0.5)
+    # drain 清理
+    drain()
 
-    # Main loop: wait for GO -> tap answer -> wait for REVEAL -> repeat
-    for i in range(60):  # max rounds
-        # 1) Wait for GO signal from pending
-        go_round = None
-        go_line = consume_line(lambda l: "广播 GO" in l)
-        if go_line:
-            m = re.search(r"广播 GO\s+第(\d+)题", go_line)
-            if m:
-                go_round = int(m.group(1))
-
-        if not go_round:
-            feed_pending(20.0)  # Wait up to 20s for more lines
-            go_line = consume_line(lambda l: "广播 GO" in l)
-            if go_line:
-                m = re.search(r"广播 GO\s+第(\d+)题", go_line)
-                if m:
-                    go_round = int(m.group(1))
-
-        if not go_round:
+    # === 主循环 ===
+    for i in range(60):
+        # 1) 直接等 GO JSON
+        go_json = wait_for(lambda l: '"type":"GO"' in l and '"correctIdx"' in l, timeout=20.0)
+        if not go_json:
             print(f"  [轮{i}] 超时未收到 GO，退出")
             break
 
-        # 2) Wait for GO JSON line to get correctIdx (fast path - it should be nearby)
-        go_json_line = None
-        for _ in range(3):
-            go_json_line = consume_line(lambda l: '"type":"GO"' in l and f'"round":{go_round}' in l and '"correctIdx"' in l and 'v2.0-20260814' in l)
-            if go_json_line:
-                break
-            feed_pending(0.2)
+        go_round_m = re.search(r'"round":(\d+)', go_json)
+        go_round = int(go_round_m.group(1)) if go_round_m else (i + 2)
 
-        correct_idx = None
-        if go_json_line:
-            cm = re.search(r'"correctIdx":(\d+)', go_json_line)
-            if cm:
-                correct_idx = int(cm.group(1))
+        # drain 已有的行
+        drain()
+
+        # 等客户端 UI 渲染完毕（"GO: 题目=XXX" 出现 = 按钮已渲染可点）
+        ui_ready = wait_for(lambda l: 'GO: 题目=' in l and f'选项数=' in l, timeout=5.0)
+        if ui_ready:
+            drain()
         else:
-            print(f"  [警告] 题{go_round} 未获取到 correctIdx，本次随机选择")
+            print(f"  [警告] 题{go_round} 未等到 UI 渲染日志")
+        # Compose 重渲染按钮需要时间，等渲染完成后 tap
+        time.sleep(3)
 
-        if correct_idx is not None:
+        # 2) 提取 correctIdx
+        cm = re.search(r'"correctIdx":(\d+)', go_json)
+        if cm:
+            correct_idx = int(cm.group(1))
             if answer_mode == "all_correct":
                 choice_idx = correct_idx
             elif answer_mode == "all_wrong":
@@ -428,51 +406,39 @@ def main():
                 choice_idx = random.randrange(len(button_positions))
         else:
             choice_idx = random.randrange(len(button_positions))
+            print(f"  [警告] 题{go_round} 未获取 correctIdx，随机选择")
 
-        time.sleep(0.1)
+        # 3) tap (UI 已渲染，直接点)
         bx, by = button_positions[choice_idx]
         tap(bx, by)
         total_answers += 1
-        label = {"all_correct": "正确", "all_wrong": "错误", "random": "随机"}.get(answer_mode, "未知")
-        print(f"  [题{go_round}] 主机选择选项{choice_idx+1} ({bx}, {by}) [模式:{label}] (共{total_answers}次)")
+        print(f"  [题{go_round}] 选项{choice_idx+1} ({bx},{by}) [模式:{label}] (共{total_answers}次)")
 
-        # 3) Wait for REVEAL signal (日志格式: "round":N  JSON)
-        reveal_line = None
-        game_over = False
-        for _ in range(15):  # 15s timeout
-            feed_pending(1.0)
-            # Check for game end
-            if any("游戏结束" in l for l in pending):
-                game_over = True
-                break
-            # Peek for REVEAL of current round
-            for l in pending:
-                if "REVEAL" in l and f'"round":{go_round}' in l:
-                    reveal_line = l
-                    break
-            if reveal_line:
-                # Remove it from pending
-                pending[:] = [l for l in pending if not ("REVEAL" in l and f'"round":{go_round}' in l)]
-                break
+        # 4) 等 REVEAL
+        reveal = wait_for(lambda l: "REVEAL" in l and f'"round":{go_round}' in l, timeout=15.0)
+        game_over = any("游戏结束" in l for l in pending) if not reveal else False
 
         if game_over:
             print("  游戏已结束，退出答题循环")
             break
 
-        if reveal_line:
-            m2 = re.search(r'"correctIdx":(\d+)', reveal_line)
-            correct = m2.group(1) if m2 else "?"
-            print(f"  [题{go_round}] 答案: {correct}")
+        if reveal:
+            cm2 = re.search(r'"correctIdx":(\d+)', reveal)
+            correct = cm2.group(1) if cm2 else "?"
+            winner_m = re.search(r'"winner":"([^"]+)"', reveal)
+            status = f"答案: {correct} ({'命中' if winner_m else '超时'})"
+            print(f"  [题{go_round}] {status}")
 
-        # 4) Check if done
         if go_round >= 30:
             print("  已到第30题，等待揭晓...")
+            # drain 剩余日志
+            drain()
             break
 
-        # Feed pending while waiting for next GO (keeps buffer full)
-        feed_pending(0.5)
+        # drain 到下一轮 GO 出现之前
+        drain()
 
-    # Kill tail subprocess (blocks main() exit if not killed)
+    # Kill tail
     tail_proc_holder[0].terminate()
     try:
         tail_proc_holder[0].wait(timeout=3)
@@ -498,34 +464,25 @@ def main():
     time.sleep(0.5)
     adb('shell input keyevent 26')
     time.sleep(1)
-    r = adb('shell dumpsys power | grep mWakefulness')
-    print(f"  {'✅' if 'Asleep' in r.stdout else '⚠️'} {r.stdout.strip()}")
 
-    # Pull device log
-    print(f"\n[LOG] 拉取设备日志...")
-    r_pull = subprocess.run(f"adb -s {DEVICE} pull /storage/emulated/0/Download/ts/wordbattle_debug_host.log /tmp/wb_host.log", shell=True, capture_output=True, text=True)
+    # 拉取设备日志
+    r_pull = subprocess.run(f"adb -s {DEVICE} pull /storage/emulated/0/Download/ts/wordbattle_debug_host.log /tmp/wb_host.log",
+                            shell=True, capture_output=True, text=True)
     if r_pull.returncode == 0:
-        print("  ✅ 设备日志已拉取")
         with open('/tmp/wb_host.log', 'r') as f:
             lines = f.readlines()
-        print(f"  日志条数: {len(lines)}")
-        # Print key lines
-        key_lines = [l.strip() for l in lines if 'GO' in l or 'ANSWER' in l or 'REVEAL' in l or 'NEXT' in l or 'skip' in l.lower() or 'miss' in l.lower()]
-        print(f"  关键日志 ({len(key_lines)} 条):")
+        key_lines = [l.strip() for l in lines if any(k in l for k in ['GO','ANSWER','REVEAL','skip','miss'])]
+        print(f"\n  设备日志关键行 ({len(key_lines)}):")
         for l in key_lines[:50]:
             print(f"    {l}")
-    else:
-        print(f"  ❌ {r_pull.stderr.strip()}")
 
-    # Print remote log summary (daily file)
-    today = datetime.now().strftime("%Y%m%d")
-    remote_log = f"/data/wordbattle/logs/remote_all_{today}.log"
+    # 网络日志
+    remote_log = log_file
     if os.path.exists(remote_log):
         with open(remote_log, 'r') as f:
             rlines = f.readlines()
-        print(f"\n  网络日志条数: {len(rlines)}")
-        key_rlines = [l.strip() for l in rlines if 'GO' in l or 'ANSWER' in l or 'REVEAL' in l or 'NEXT' in l]
-        print(f"  关键日志 ({len(key_rlines)} 条):")
+        key_rlines = [l.strip() for l in rlines if any(k in l for k in ['GO','ANSWER','REVEAL'])]
+        print(f"\n  网络日志关键行 ({len(key_rlines)}):")
         for l in key_rlines[:50]:
             print(f"    {l}")
 

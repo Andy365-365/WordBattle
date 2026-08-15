@@ -158,12 +158,12 @@ class MainActivity : ComponentActivity() {
                         playerStatus = pStatus,
                         playerQuestion = pQuestion,
                         playerOptions = pOpts,
-                        onAnswer = { choice ->
+                        onAnswer = { round, choice ->
                             _playerStatus.value = "SUBMITTED"
                             appScope.launch {
                                 tcpClient?.send(GameMessage.ANSWER(
                                     playerId = myPlayerId,
-                                    round = (hostCurrentRound?.round ?: 0),
+                                    round = round,
                                     choice = choice,
                                     ts = System.currentTimeMillis()
                                 ))
@@ -215,15 +215,16 @@ class MainActivity : ComponentActivity() {
                 val status by _playerStatus.collectAsState()
                 PlayerGameScreen(
                     questionText = questionText,
+                    round = (hostCurrentRound?.round ?: 0),
                     options = options,
                     status = status,
                     page = page,
-                    onAnswer = { choice ->
+                    onAnswer = { round, choice ->
                         _playerStatus.value = "SUBMITTED"
                         appScope.launch {
                             tcpClient?.send(GameMessage.ANSWER(
                                 playerId = myPlayerId,
-                                round = (hostCurrentRound?.round ?: 0),
+                                round = round,
                                 choice = choice,
                                 ts = System.currentTimeMillis()
                             ))

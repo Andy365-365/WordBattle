@@ -24,7 +24,7 @@ fun HostGameScreen(
     playerStatus: String,
     playerQuestion: String,
     playerOptions: List<String>,
-    onAnswer: (Int) -> Unit,
+    onAnswer: (round: Int, choice: Int) -> Unit,
     onRestart: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -54,16 +54,18 @@ fun HostGameScreen(
             Text("快速答题:", fontSize = 16.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(8.dp))
             playerOptions.forEachIndexed { idx, opt ->
-                Button(
-                    onClick = {
-                        onAnswer(idx)
-                    },
-                    enabled = playerStatus == "ANSWERING",
-                    modifier = Modifier.fillMaxWidth().height(56.dp)
-                ) {
-                    Text(opt, fontSize = 18.sp)
+                key(roundState.round) {
+                    Button(
+                        onClick = {
+                            onAnswer(roundState.round, idx)
+                        },
+                        enabled = playerStatus == "ANSWERING",
+                        modifier = Modifier.fillMaxWidth().height(56.dp)
+                    ) {
+                        Text(opt, fontSize = 18.sp)
+                    }
+                    Spacer(Modifier.height(8.dp))
                 }
-                Spacer(Modifier.height(8.dp))
             }
             Spacer(Modifier.height(16.dp))
         } else if (playerStatus == "READY" || playerStatus == "WAITING") {

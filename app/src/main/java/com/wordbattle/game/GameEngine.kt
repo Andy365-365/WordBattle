@@ -27,6 +27,7 @@ class GameEngine(
 
     val players = mutableMapOf<String, PlayerState>()
     var currentRound: RoundState? = null
+    private val rounds = mutableListOf<RoundState>()  // 历史轮次，用于异步 handleAnswer 定位
     private var roundIndex: Int = -1
     private var timeoutJob: Job? = null
     private var answerListenerJob: Job? = null
@@ -58,6 +59,7 @@ class GameEngine(
         DebugLog.i("[Engine] startGame: ${players.size}人 开始")
         state = GameState.PLAYING
         roundIndex = -1
+        rounds.clear()
         players.values.forEach { it.score = 0 }
         answerListenerJob?.cancel()
         answerListenerJob = coroutineScope.launch {
@@ -76,6 +78,7 @@ class GameEngine(
         }
         val question = questions[roundIndex]
         val roundState = RoundState(round = roundIndex + 1)
+        rounds.add(roundState)
         currentRound = roundState
         DebugLog.i("[Engine] ====== 第${roundState.round}题: ${question.questionText} ======")
         onRoundChange(roundState, question)
@@ -99,8 +102,10 @@ class GameEngine(
     }
 
     private fun handleAnswer(answer: GameMessage.ANSWER) {
-        DebugLog.i("[Engine] handleAnswer: playerId=${answer.playerId} choice=${answer.choice}")
-        val round = currentRound ?: run { DebugLog.e("[Engine] handleAnswer: no currentRound"); return }
+        DebugLog.i("[Engine] handleAnswer: playerId=${answer.playerId} choice=${answer.choice} round=${answer.round}")
+        // 用 ANSWER 消息里的 round 定位题目，而非 currentRound（已被 nextRound 更新）
+        val round = rounds.find { it.round == answer.round }
+            ?: run { DebugLog.e("[Engine] handleAnswer: no round ${answer.round}"); return }
         if (round.claimedBy != null || round.isRevealed) {
             DebugLog.i("[Engine] handleAnswer: 已抢/已揭晓, 忽略")
             return
@@ -113,7 +118,8 @@ class GameEngine(
             DebugLog.w("[Engine] handleAnswer: 未知玩家 ${answer.playerId}")
             return
         }
-        val question = questions.getOrNull(roundIndex) ?: run { DebugLog.e("[Engine] handleAnswer: no question"); return }
+        val questionIdx = round.round - 1
+        val question = questions.getOrNull(questionIdx) ?: run { DebugLog.e("[Engine] handleAnswer: no question at idx $questionIdx"); return }
 
         if (answer.choice == question.correctIdx) {
             DebugLog.i("[Engine] handleAnswer: 答对! playerId=${answer.playerId}")

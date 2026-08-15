@@ -17,8 +17,9 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun PlayerGameScreen(
     questionText: String,
+    round: Int,
     options: List<String>,
-    onAnswer: (choice: Int) -> Unit,
+    onAnswer: (round: Int, choice: Int) -> Unit,
     onBack: () -> Unit,
     status: String = "WAITING",
     page: Int = 0
@@ -75,7 +76,7 @@ fun PlayerGameScreen(
             options.forEachIndexed { idx, opt ->
                 val label = "${('A'+idx).toChar()}"
                 Button(
-                    onClick = { if (canAnswer) onAnswer(idx) },
+                    onClick = { if (canAnswer) onAnswer(round, idx) },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(70.dp),
