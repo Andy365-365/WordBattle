@@ -131,6 +131,22 @@ fun DebugScreen(
                                     Text("OCR测试", color = Color(0xffff00ff))
                                 }
                             }
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(6.dp)
+                            ) {
+                                Text(
+                                    text = DebugLog.pushStatus(),
+                                    fontSize = 10.sp,
+                                    color = if (DebugLog.pushEnabled) Color(0xff00ff41) else Color(0xff888888)
+                                )
+                                TextButton(onClick = { DebugLog.setPushEnabled(!DebugLog.pushEnabled); refreshKey++ }) {
+                                    Text(
+                                        if (DebugLog.pushEnabled) "关闭推送" else "开启推送",
+                                        color = if (DebugLog.pushEnabled) Color(0xffff6b6b) else Color(0xff00ff41)
+                                    )
+                                }
+                            }
                         }
                     }
                 }
