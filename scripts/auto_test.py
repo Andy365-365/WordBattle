@@ -727,5 +727,15 @@ def main():
     print("测试完成！")
     print(f"{'=' * 60}")
 
+    # 收尾：息屏（KEYCODE_SLEEP 专灭屏键；223 不会像 KEYCODE_POWER 那样在熄屏时误唤醒）
+    print("\n[收尾] 息屏...")
+    adb('shell input keyevent 223')
+    time.sleep(1)
+    state = adb('shell dumpsys power | grep mWakefulness')
+    if 'Asleep' in state.stdout:
+        print("  OK 已息屏")
+    else:
+        print(f"  WARN 息屏状态={state.stdout.strip() or '未知'}")
+
 if __name__ == '__main__':
     main()
