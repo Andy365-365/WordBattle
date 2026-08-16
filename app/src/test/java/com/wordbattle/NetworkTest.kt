@@ -32,6 +32,21 @@ class GameMessageSerializationTest {
     }
 
     @Test
+    fun `JOIN observer role roundtrips`() {
+        val msg = GameMessage.JOIN(playerId = "", name = "auto-bot", role = "observer")
+        val str = json.encodeToString(GameMessage.serializer(), msg)
+        val decoded = json.decodeFromString<GameMessage.JOIN>(str)
+        assertEquals("observer", decoded.role)
+    }
+
+    @Test
+    fun `JOIN without role defaults to player`() {
+        // 老客户端不带 role 字段，必须按玩家处理（向后兼容）
+        val decoded = json.decodeFromString<GameMessage.JOIN>("""{"type":"JOIN","t":"JOIN","playerId":"","name":"p0"}""")
+        assertEquals("player", decoded.role)
+    }
+
+    @Test
     fun `WELCOME serializes and deserializes`() {
         val msg = GameMessage.WELCOME(playerId = "p0")
         val str = json.encodeToString(GameMessage.serializer(), msg)

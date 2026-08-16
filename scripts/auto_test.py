@@ -145,7 +145,9 @@ class GameTCP:
             self.alive = True
             # 关键：JOIN/WELCOME 握手在 reader 启动前完成（单线程，无 socket 竞争）。
             # 之前 reader 先启动，与主线程并发 recv 同一 socket，帧头错位导致整条流解析失败。
-            self._send({"type": "JOIN", "t": "JOIN", "playerId": "", "name": "auto-bot"})
+            # 以观察者身份 JOIN：收 PREPARE/GO/REVEAL 信号、回 READY 触发握手，
+            # 但不进玩家列表（不计分、结果页不显示）。
+            self._send({"type": "JOIN", "t": "JOIN", "playerId": "", "name": "auto-bot", "role": "observer"})
             msg = self._recv_one(3)
             if msg and msg.get('type') == 'WELCOME':
                 self.player_id = msg.get('playerId')

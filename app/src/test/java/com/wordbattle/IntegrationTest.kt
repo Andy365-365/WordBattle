@@ -18,6 +18,7 @@ class MockBridge : GameNetworkBridge {
     override val onAnswer: Flow<GameMessage.ANSWER> = _onAnswer
     override val onClientJoin: Flow<Pair<String, GameMessage.JOIN>> = _onClientJoin
     override val onReady: Channel<GameMessage.READY> = Channel(Channel.BUFFERED)
+    override var observerCount: Int = 0
 
     suspend fun injectAnswer(playerId: String, round: Int, choice: Int) {
         _onAnswer.emit(GameMessage.ANSWER(playerId = playerId, round = round, choice = choice, ts = System.currentTimeMillis()))

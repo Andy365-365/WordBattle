@@ -20,7 +20,8 @@ sealed class GameMessage {
     data class JOIN(
         val t: String = "JOIN",
         val playerId: String,   // 服务器分配
-        val name: String
+        val name: String,
+        val role: String = "player"  // "player"=参与计分 | "observer"=观察者(收信号/回READY, 不计分不显示)
     ) : GameMessage()
 
     @Serializable

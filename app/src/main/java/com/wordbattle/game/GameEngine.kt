@@ -14,6 +14,8 @@ interface GameNetworkBridge {
     val onAnswer: Flow<GameMessage.ANSWER>
     val onClientJoin: Flow<Pair<String, GameMessage.JOIN>>
     val onReady: Channel<GameMessage.READY>
+    /** 当前在场观察者数（收信号/回READY，不计分不显示）；>0 时启用 READY 握手 */
+    val observerCount: Int
 }
 
 class GameEngine(
@@ -53,6 +55,11 @@ class GameEngine(
     }
 
     fun playerJoined(playerId: String, joinMsg: GameMessage.JOIN) {
+        if (joinMsg.role == "observer") {
+            // 观察者：只收信号/回 READY，不进 players（不计分、不显示、不占答题名额）
+            DebugLog.i("[Engine] 观察者加入: $playerId name=${joinMsg.name} (不参与计分)")
+            return
+        }
         players[playerId] = PlayerState(id = playerId, name = joinMsg.name)
         DebugLog.i("[Engine] 玩家加入: $playerId name=${joinMsg.name} 共${players.size}人")
     }
@@ -87,11 +94,11 @@ class GameEngine(
         network.broadcast(GameMessage.PREPARE(round = roundState.round))
         DebugLog.d("broadcast: PREPARE")
         goJob = coroutineScope.launch {
-            // READY 握手：仅当有 auto 玩家（自动化测试 bot）在场时，等 bot 就绪再广播 GO，
+            // READY 握手：仅当有观察者（自动化测试信号端）在场时，等其 READY 再广播 GO，
             // 保证 GO 到达时终端屏幕已就绪、脚本正在等待 GO，轮次不错位。
-            // 真人对局保持原 500ms 节奏不变。等待超时(5s)照常 GO，防止卡死。
-            val hasAuto = players.values.any { it.name.contains("auto", ignoreCase = true) }
-            if (hasAuto) {
+            // 真人对局（无观察者）保持原 500ms 节奏不变。等待超时(5s)照常 GO，防止卡死。
+            val hasObserver = network.observerCount > 0
+            if (hasObserver) {
                 val t0 = System.currentTimeMillis()
                 // 只接受 round 匹配的 READY；过期的（如脚本连接晚补发的）消费后丢弃
                 var readyRound: Int? = null

@@ -25,6 +25,13 @@ class TcpServer(
     val onClientDisconnect = MutableSharedFlow<String>(extraBufferCapacity = 4)
     val onReady = Channel<GameMessage.READY>(Channel.BUFFERED)
 
+    // 观察者集合：收广播、可发 READY，但不进 GameEngine.players（不计分/不显示/不占名额）。
+    // 在服务器层注册+断线清理，跨局干净，避免残留导致后续游戏白等 READY 超时。
+    fun addObserver(playerId: String) { synchronized(observers) { observers.add(playerId) } }
+    fun removeObserver(playerId: String) { synchronized(observers) { observers.remove(playerId) } }
+    val observerCount: Int get() = synchronized(observers) { observers.size }
+    private val observers = mutableSetOf<String>()
+
     fun start(): Job {
         serverJob = scope.launch(Dispatchers.IO) {
             val server = ServerSocket()
@@ -59,7 +66,12 @@ class TcpServer(
                     val msg = parseMessage(data)
                     when (msg) {
                         is GameMessage.JOIN -> {
-                            DebugLog.i("[TcpServer] JOIN: name=${msg.name} -> playerId=$playerId")
+                            if (msg.role == "observer") {
+                                addObserver(playerId)
+                                DebugLog.i("[TcpServer] JOIN 观察者: name=${msg.name} -> playerId=$playerId (不计分不显示)")
+                            } else {
+                                DebugLog.i("[TcpServer] JOIN: name=${msg.name} -> playerId=$playerId")
+                            }
                             session.send(GameMessage.WELCOME(playerId = playerId))
                             DebugLog.d("[TcpServer] 回送 WELCOME: playerId=$playerId")
                             onClientJoin.emit(playerId to msg)
@@ -83,6 +95,7 @@ class TcpServer(
             } finally {
                 try { socket.close() } catch (_: Exception) {}
                 clients.remove(session)
+                removeObserver(playerId)  // 观察者断线清理，避免残留卡后续游戏
                 DebugLog.i("[TcpServer] 断开: $playerId")
                 onClientDisconnect.tryEmit(playerId)
             }
@@ -160,6 +173,7 @@ class TcpServer(
             override val onAnswer = self.onAnswer
             override val onClientJoin = self.onClientJoin
             override val onReady: Channel<GameMessage.READY> = self.onReady
+            override val observerCount: Int get() = self.observerCount
         }
     }
 
