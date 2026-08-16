@@ -10,15 +10,25 @@ import socket
 import struct
 import threading
 import json as _json
+import argparse
 from collections import deque
 from datetime import datetime
 
-DEVICE = "b054d001"
-APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
-DEVICE_IP = "192.168.50.187"  # 手机 IP（WordBattle 主机端 TCP 5201）
+# ===== 可配置参数（命令行覆盖，见 main 的 argparse）=====
+DEFAULTS = {
+    "device": "b054d001",
+    "ip": "192.168.50.187",       # 手机 IP（WordBattle 主机端 TCP 5201）
+    "rounds": 10,                 # 题数（设置页可选 5/10/20/30）
+    "seconds": 5,                 # 答题等待秒数（设置页可选 5/10/20/30/120）
+    "mode": "all_correct",        # 答题模式: all_correct / all_wrong / random
+}
 
-# Test mode: "random", "all_correct", "all_wrong"
-answer_mode = "all_correct"
+APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
+
+# 运行时实际生效的参数（main 里由 argparse 填充）
+DEVICE = DEFAULTS["device"]
+DEVICE_IP = DEFAULTS["ip"]
+answer_mode = DEFAULTS["mode"]
 
 def adb(cmd, timeout=15):
     return subprocess.run(f'adb -s {DEVICE} {cmd}', shell=True, capture_output=True, text=True, timeout=timeout)
@@ -97,6 +107,58 @@ def find_button_by_y(text, min_y):
         if cy > min_y:
             return find_clickable_parent(nodes, b)
     return None
+
+def find_button_under_label(nodes, label_text, btn_text, max_gap=320):
+    """通用按钮定位：找标签文字，在其正下方 max_gap 像素内找目标文本按钮。
+    解决设置页多 Row 同名按钮歧义（题数行和答题时间行都有 5/10/20/30）。
+    返回 (center_xy, 按钮bounds)；找不到返回 (None, None)。"""
+    lb = None
+    for n in nodes:
+        if n['text'] == label_text:
+            lb = pb(n['bounds'])
+            if lb:
+                break
+    if not lb:
+        return None, None
+    label_bottom = lb[3]
+    best = None
+    for n in nodes:
+        if n['text'] != btn_text:
+            continue
+        b = pb(n['bounds'])
+        if not b:
+            continue
+        cy = (b[1] + b[3]) // 2
+        if label_bottom <= cy <= label_bottom + max_gap:
+            if best is None or cy < (best[1][1] + best[1][3]) // 2:
+                best = ((b[0] + b[2]) // 2, b)
+    if not best:
+        return None, None
+    pos = find_clickable_parent(nodes, best[1]) or best
+    return pos, best[1]
+
+def dump_setup_page(label_text):
+    """诊断：打印设置页标签及其下方所有按钮（文本/bounds/中心），用于核对定位。"""
+    nodes = parse_nodes(dump_ui())
+    lb = None
+    for n in nodes:
+        if n['text'] == label_text:
+            lb = pb(n['bounds'])
+            break
+    if not lb:
+        print(f"  [诊断] 未找到标签: {label_text}")
+        return
+    print(f"  [诊断] 标签 '{label_text}' bounds={[lb[0],lb[1],lb[2],lb[3]]}")
+    for n in nodes:
+        if n['text'] not in ('5', '10', '20', '30', '120'):
+            continue
+        b = pb(n['bounds'])
+        if not b:
+            continue
+        cy = (b[1] + b[3]) // 2
+        if lb[3] <= cy <= lb[3] + 320:
+            cd = n.get('contentDescription', '')
+            print(f"    按钮 '{n['text']}' bounds=[{b[0]},{b[1]},{b[2]},{b[3]}] center=({(b[0]+b[2])//2},{cy}) clickable={n['clickable']} desc={cd!r}")
 
 def find_answer_buttons(nodes):
     buttons = []
@@ -233,6 +295,25 @@ class GameTCP:
             pass
 
 def main():
+    # ===== 命令行参数 =====
+    global DEVICE, DEVICE_IP, answer_mode
+    ap = argparse.ArgumentParser(description="WordBattle 自动化测试（TCP 握手 + ADB tap）")
+    ap.add_argument("--rounds", type=int, default=DEFAULTS["rounds"],
+                    choices=[5, 10, 20, 30], help="题数（设置页可选值，默认 10）")
+    ap.add_argument("--seconds", type=int, default=DEFAULTS["seconds"],
+                    choices=[5, 10, 20, 30, 120], help="答题等待秒数（默认 5）")
+    ap.add_argument("--mode", default=DEFAULTS["mode"],
+                    choices=["all_correct", "all_wrong", "random"], help="答题模式（默认 all_correct）")
+    ap.add_argument("--device", default=DEFAULTS["device"], help="ADB 设备序列号")
+    ap.add_argument("--ip", default=DEFAULTS["ip"], help="手机 IP（TCP 5201）")
+    args = ap.parse_args()
+    DEVICE = args.device
+    DEVICE_IP = args.ip
+    answer_mode = args.mode
+    rounds = args.rounds
+    seconds = args.seconds
+    print(f"参数: 题数={rounds} 答题秒数={seconds} 模式={answer_mode} 设备={DEVICE} IP={DEVICE_IP}")
+
     # Force restart log receiver
     print("[PRE] 强制重启日志接收脚本...")
     subprocess.run("pkill -9 -f 'log_receiver.py'", shell=True)
@@ -309,36 +390,29 @@ def main():
         return
     time.sleep(2)
 
-    # Step 6: 30题
-    print("\n[6/12] 设置30题...")
-    pos = find_button_by_y('30', 0)
+    # Step 6: 设置题数（以"题目数"标签锚定下方按钮，消除与答题时间行同名按钮的歧义）
+    print(f"\n[6/12] 设置{rounds}题...")
+    setup_nodes = parse_nodes(dump_ui())
+    pos, _b = find_button_under_label(setup_nodes, '题目数', str(rounds))
     if pos:
         tap(*pos)
         print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  FAIL 没找到30题按钮")
+        dump_setup_page('题目数')
+        print("  FAIL 没找到题数按钮")
         return
     time.sleep(0.5)
 
-    # Step 7: 5秒答题时间（显式点击；两个Row都有'5'，以标签文字锚定下方第一个'5'）
-    print("\n[7/12] 设置5秒答题时间...")
+    # Step 7: 设置答题时间（以"答题等待时间(秒)"标签锚定下方按钮）
+    print(f"\n[7/12] 设置{seconds}秒答题时间...")
     setup_nodes = parse_nodes(dump_ui())
-    label_bottom = None
-    for n in setup_nodes:
-        if n['text'] == '答题等待时间(秒)':
-            lb = pb(n['bounds'])
-            if lb:
-                label_bottom = lb[3]
-            break
-    if label_bottom is not None:
-        pos = find_button_by_y('5', label_bottom)
-        if pos:
-            tap(*pos)
-            print(f"  OK tap({pos[0]}, {pos[1]})")
-        else:
-            print("  WARN 没找到答题时间的5秒按钮（App默认即为5秒）")
+    pos, _b = find_button_under_label(setup_nodes, '答题等待时间(秒)', str(seconds))
+    if pos:
+        tap(*pos)
+        print(f"  OK tap({pos[0]}, {pos[1]})")
     else:
-        print("  WARN 没找到答题时间标签（App默认即为5秒）")
+        dump_setup_page('答题等待时间(秒)')
+        print(f"  WARN 没找到答题时间的{seconds}秒按钮（将使用App默认5秒）")
     time.sleep(0.5)
 
     # Step 8: 开始等待玩家
@@ -538,7 +612,7 @@ def main():
     rounds_played = 0
     hits = 0
     print(f"\n[10/12] 答题循环 (TCP握手驱动) tcp={'已连接' if game_tcp.alive else '未连接→日志兜底'}...")
-    for i in range(35):
+    for i in range(rounds + 5):  # 防御上限：题数+5 圈余量
         # 游戏结束？
         if game_tcp.alive and game_tcp.pop(lambda m: m.get('type') == 'GAME_OVER') is not None:
             print("  游戏结束，退出答题循环")
@@ -593,8 +667,8 @@ def main():
         else:
             print(f"  [题{round_no}] 屏幕不一致，本轮 tap 已跳过 (miss)")
 
-        if round_no >= 30:
-            print("  已到第30题，等待结果...")
+        if round_no >= rounds:
+            print(f"  已到第{rounds}题，等待结果...")
             break
 
     print(f"  答题统计: 命中 {hits}/{rounds_played}")
