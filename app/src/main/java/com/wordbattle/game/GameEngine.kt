@@ -4,6 +4,7 @@ import com.wordbattle.data.Question
 import com.wordbattle.debug.DebugLog
 import com.wordbattle.network.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 
 /** GameEngine 与网络交互的接口，方便单元测试 */
@@ -12,6 +13,7 @@ interface GameNetworkBridge {
     suspend fun sendTo(playerId: String, msg: GameMessage)
     val onAnswer: Flow<GameMessage.ANSWER>
     val onClientJoin: Flow<Pair<String, GameMessage.JOIN>>
+    val onReady: Channel<GameMessage.READY>
 }
 
 class GameEngine(
@@ -85,7 +87,25 @@ class GameEngine(
         network.broadcast(GameMessage.PREPARE(round = roundState.round))
         DebugLog.d("broadcast: PREPARE")
         goJob = coroutineScope.launch {
-            delay(500)
+            // READY 握手：仅当有 auto 玩家（自动化测试 bot）在场时，等 bot 就绪再广播 GO，
+            // 保证 GO 到达时终端屏幕已就绪、脚本正在等待 GO，轮次不错位。
+            // 真人对局保持原 500ms 节奏不变。等待超时(5s)照常 GO，防止卡死。
+            val hasAuto = players.values.any { it.name.contains("auto", ignoreCase = true) }
+            if (hasAuto) {
+                val t0 = System.currentTimeMillis()
+                // 只接受 round 匹配的 READY；过期的（如脚本连接晚补发的）消费后丢弃
+                var readyRound: Int? = null
+                withTimeoutOrNull(5000) {
+                    while (true) {
+                        val r = network.onReady.receiveCatching().getOrNull() ?: break
+                        if (r.round == roundState.round) { readyRound = r.round; break }
+                        DebugLog.w("[Engine] nextRound: 丢弃过期 READY round=${r.round} (期望 ${roundState.round})")
+                    }
+                }
+                DebugLog.i("[Engine] nextRound: READY 等待 ${System.currentTimeMillis() - t0}ms -> ${readyRound?.let { "收到 round=$it" } ?: "超时"}")
+            } else {
+                delay(500)
+            }
             if (state == GameState.PLAYING) {
                 DebugLog.i("[Engine] nextRound: 广播 GO 第${roundState.round}题")
                 network.broadcast(GameMessage.GO(
@@ -242,6 +262,7 @@ class GameEngine(
         revealJob?.cancel()
         revealJob = null
         answerListenerJob?.cancel()
+        try { network.onReady.cancel() } catch (_: Exception) {}
         state = GameState.WAITING
     }
 

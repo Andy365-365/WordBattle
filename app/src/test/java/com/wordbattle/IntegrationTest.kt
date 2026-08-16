@@ -3,6 +3,7 @@ package com.wordbattle.game
 import com.wordbattle.data.*
 import com.wordbattle.network.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import org.junit.*
 import org.junit.Assert.*
@@ -16,9 +17,13 @@ class MockBridge : GameNetworkBridge {
     override suspend fun sendTo(playerId: String, msg: GameMessage) { broadcasts.add(msg) }
     override val onAnswer: Flow<GameMessage.ANSWER> = _onAnswer
     override val onClientJoin: Flow<Pair<String, GameMessage.JOIN>> = _onClientJoin
+    override val onReady: Channel<GameMessage.READY> = Channel(Channel.BUFFERED)
 
     suspend fun injectAnswer(playerId: String, round: Int, choice: Int) {
         _onAnswer.emit(GameMessage.ANSWER(playerId = playerId, round = round, choice = choice, ts = System.currentTimeMillis()))
+    }
+    suspend fun injectReady(playerId: String, round: Int) {
+        onReady.send(GameMessage.READY(playerId = playerId, round = round))
     }
 }
 
@@ -30,7 +35,7 @@ class GameEngineTest {
 
     private fun makeBridgeAndEngine(questions: List<Question>, playerNames: List<String> = listOf("A")): Pair<MockBridge, GameEngine> {
         val bridge = MockBridge()
-        val engine = GameEngine(bridge, scope)
+        val engine = GameEngine(bridge, scope, WordRepository())
         playerNames.forEachIndexed { i, name ->
             engine.playerJoined("p$i", GameMessage.JOIN(playerId = "", name = name))
         }

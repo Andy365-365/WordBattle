@@ -159,6 +159,7 @@ class MainActivity : ComponentActivity() {
                         playerQuestion = pQuestion,
                         playerOptions = pOpts,
                         onAnswer = { round, choice ->
+                            DebugLog.i("[OBS] onClick(host): round=$round hostCurrentRound=${hostCurrentRound?.round} status=${_playerStatus.value} choice=$choice ts=${System.currentTimeMillis()}")
                             _playerStatus.value = "SUBMITTED"
                             appScope.launch {
                                 tcpClient?.send(GameMessage.ANSWER(
@@ -220,6 +221,7 @@ class MainActivity : ComponentActivity() {
                     status = status,
                     page = page,
                     onAnswer = { round, choice ->
+                        DebugLog.i("[OBS] onClick(player): round=$round hostCurrentRound=${hostCurrentRound?.round} status=${_playerStatus.value} choice=$choice ts=${System.currentTimeMillis()}")
                         _playerStatus.value = "SUBMITTED"
                         appScope.launch {
                             tcpClient?.send(GameMessage.ANSWER(

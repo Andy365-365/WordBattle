@@ -116,6 +116,15 @@ class GameMessageSerializationTest {
     }
 
     @Test
+    fun `READY serializes and deserializes`() {
+        val msg = GameMessage.READY(playerId = "auto-bot", round = 5)
+        val str = json.encodeToString(GameMessage.serializer(), msg)
+        val decoded = json.decodeFromString<GameMessage.READY>(str)
+        assertEquals("auto-bot", decoded.playerId)
+        assertEquals(5, decoded.round)
+    }
+
+    @Test
     fun `UdpBroadcast serializes and deserializes`() {
         val msg = UdpBroadcast(ip = "192.168.1.1", port = 5201, name = "host", dir = "EN_TO_ZH", total = 10)
         val str = json.encodeToString(UdpBroadcast.serializer(), msg)

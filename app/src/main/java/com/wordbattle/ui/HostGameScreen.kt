@@ -13,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.wordbattle.data.Question
+import com.wordbattle.debug.DebugLog
 import com.wordbattle.game.PlayerState
 import com.wordbattle.game.RoundState
 
@@ -49,6 +50,9 @@ fun HostGameScreen(
 
         // 只有收到开始答题信号后才显示题目和选项
         if (playerStatus == "ANSWERING" || playerStatus == "SUBMITTED") {
+            LaunchedEffect(roundState.round, playerStatus) {
+                DebugLog.i("[OBS] UI-render: round=${roundState.round} status=$playerStatus 选项数=${playerOptions.size} 题目=${playerQuestion.take(20)} ts=${System.currentTimeMillis()}")
+            }
             Text("题目: $playerQuestion", fontSize = 22.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(16.dp))
             Text("快速答题:", fontSize = 16.sp, fontWeight = FontWeight.Bold)

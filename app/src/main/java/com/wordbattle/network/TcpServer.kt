@@ -3,6 +3,7 @@ package com.wordbattle.network
 import com.wordbattle.debug.DebugLog
 import com.wordbattle.game.GameNetworkBridge
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.serialization.json.Json
 import java.net.ServerSocket
@@ -22,6 +23,7 @@ class TcpServer(
     val onAnswer = MutableSharedFlow<GameMessage.ANSWER>(extraBufferCapacity = 4)
     val onRestartAck = MutableSharedFlow<GameMessage.RESTART_ACK>(extraBufferCapacity = 4)
     val onClientDisconnect = MutableSharedFlow<String>(extraBufferCapacity = 4)
+    val onReady = Channel<GameMessage.READY>(Channel.BUFFERED)
 
     fun start(): Job {
         serverJob = scope.launch(Dispatchers.IO) {
@@ -66,6 +68,10 @@ class TcpServer(
                             DebugLog.i("[TcpServer] ANSWER: playerId=${msg.playerId} choice=${msg.choice}")
                             onAnswer.emit(msg)
                         }
+                        is GameMessage.READY -> {
+                            DebugLog.i("[TcpServer] READY: playerId=${msg.playerId} round=${msg.round}")
+                            onReady.trySend(msg)
+                        }
                         is GameMessage.RESTART_ACK -> {
                             onRestartAck.emit(msg)
                         }
@@ -89,6 +95,7 @@ class TcpServer(
             "JOIN" -> json.decodeFromString<GameMessage.JOIN>(jsonStr)
             "ANSWER" -> json.decodeFromString<GameMessage.ANSWER>(jsonStr)
             "RESTART_ACK" -> json.decodeFromString<GameMessage.RESTART_ACK>(jsonStr)
+            "READY" -> json.decodeFromString<GameMessage.READY>(jsonStr)
             else -> GameMessage.RESTART()
         }
     }
@@ -152,6 +159,7 @@ class TcpServer(
             override suspend fun sendTo(playerId: String, msg: GameMessage) = self.sendTo(playerId, msg)
             override val onAnswer = self.onAnswer
             override val onClientJoin = self.onClientJoin
+            override val onReady: Channel<GameMessage.READY> = self.onReady
         }
     }
 

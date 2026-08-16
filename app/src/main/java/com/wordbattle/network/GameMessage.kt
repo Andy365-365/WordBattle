@@ -48,6 +48,14 @@ sealed class GameMessage {
     ) : GameMessage()
 
     @Serializable
+    @SerialName("READY")
+    data class READY(
+        val t: String = "READY",
+        val playerId: String,
+        val round: Int
+    ) : GameMessage()
+
+    @Serializable
     @SerialName("GO")
     data class GO(
         val t: String = "GO",

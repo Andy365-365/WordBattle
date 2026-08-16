@@ -6,10 +6,16 @@ import re
 import random
 import os
 import select as _select
+import socket
+import struct
+import threading
+import json as _json
+from collections import deque
 from datetime import datetime
 
 DEVICE = "b054d001"
 APK = "/data/wordbattle/app/build/outputs/apk/host/debug/app-host-debug.apk"
+DEVICE_IP = "192.168.50.187"  # 手机 IP（WordBattle 主机端 TCP 5201）
 
 # Test mode: "random", "all_correct", "all_wrong"
 answer_mode = "all_correct"
@@ -106,6 +112,124 @@ def find_answer_buttons(nodes):
             buttons.append((cx, cy, f'选项{len(buttons)+1}'))
     return buttons
 
+def screen_question(nodes):
+    """从 UI dump 提取屏幕上当前显示的题目文本 (前20字)"""
+    for n in nodes:
+        if n['text'].startswith('题目:'):
+            return n['text'].replace('题目:', '').strip()[:20]
+    # 无答题区时找状态
+    for n in nodes:
+        if n['text'].startswith('状态:'):
+            return f"[无按钮区] {n['text']}"
+    return "?"
+
+
+class GameTCP:
+    """以玩家身份连接主机 TCP 5201（只做 READY 握手信号线，答题仍走 ADB tap）。
+    帧格式: 4字节大端长度前缀 + UTF-8 JSON（与 TcpCodec.kt 一致）。"""
+    def __init__(self, ip, port=5201):
+        self.ip = ip
+        self.port = port
+        self.sock = None
+        self.queue = deque()
+        self.player_id = None
+        self.lock = threading.Lock()
+        self.alive = False
+
+    def connect(self, timeout=5):
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            s.settimeout(timeout)
+            s.connect((self.ip, self.port))
+            self.sock = s
+            self.alive = True
+            # 关键：JOIN/WELCOME 握手在 reader 启动前完成（单线程，无 socket 竞争）。
+            # 之前 reader 先启动，与主线程并发 recv 同一 socket，帧头错位导致整条流解析失败。
+            self._send({"type": "JOIN", "t": "JOIN", "playerId": "", "name": "auto-bot"})
+            msg = self._recv_one(3)
+            if msg and msg.get('type') == 'WELCOME':
+                self.player_id = msg.get('playerId')
+            s.settimeout(None)
+            t = threading.Thread(target=self._reader, daemon=True)
+            t.start()
+            print(f"  [TCP] 连接成功 playerId={self.player_id} 首条消息={msg.get('type') if msg else None}")
+            return self.player_id is not None
+        except Exception as e:
+            print(f"  [TCP] 连接失败: {e}")
+            self.alive = False
+            return False
+
+    def _send(self, obj):
+        data = _json.dumps(obj, ensure_ascii=False).encode('utf-8')
+        with self.lock:
+            self.sock.sendall(struct.pack('>I', len(data)) + data)
+
+    def send_ready(self, round_no):
+        try:
+            self._send({"type": "READY", "t": "READY", "playerId": self.player_id or "p1", "round": round_no})
+            return True
+        except Exception:
+            return False
+
+    def _recv_one(self, timeout):
+        try:
+            self.sock.settimeout(timeout)
+            hdr = b''
+            while len(hdr) < 4:
+                chunk = self.sock.recv(4 - len(hdr))
+                if not chunk:
+                    return None
+                hdr += chunk
+            (ln,) = struct.unpack('>I', hdr)
+            body = b''
+            while len(body) < ln:
+                chunk = self.sock.recv(ln - len(body))
+                if not chunk:
+                    return None
+                body += chunk
+            self.sock.settimeout(None)
+            return _json.loads(body.decode('utf-8'))
+        except Exception:
+            return None
+
+    def _reader(self):
+        while self.alive and self.sock:
+            msg = self._recv_one(30)
+            if msg is None:
+                break
+            self.queue.append(msg)
+
+    def wait_for(self, match_fn, timeout=20.0):
+        """从 TCP 队列取匹配消息（毫秒级）；命中即从队列删除（防止陈旧消息反复命中），
+        未匹配的消息保留在队列中（供后续 GAME_OVER 等检测）。
+        超时返回 None，由调用方退回日志路径。"""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            # 先取快照再迭代：读线程并发 append 不会触发 "deque mutated during iteration"
+            snapshot = list(self.queue)
+            for m in snapshot:
+                if match_fn(m):
+                    try:
+                        self.queue.remove(m)  # 命中即删除，杜绝陈旧消息打转
+                    except ValueError:
+                        continue  # 已被其他等待者消费，继续找下一个
+                    return m
+            if time.time() < deadline - 0.1:
+                time.sleep(0.05)
+        return None
+
+    def pop(self, match_fn):
+        # wait_for 命中即删除，这里直接透传
+        return self.wait_for(match_fn, timeout=0.01)
+
+    def close(self):
+        self.alive = False
+        try:
+            if self.sock:
+                self.sock.close()
+        except Exception:
+            pass
+
 def main():
     # Force restart log receiver
     print("[PRE] 强制重启日志接收脚本...")
@@ -166,6 +290,8 @@ def main():
 
     # Step 4: 启动
     print("\n[4/12] 启动 WordBattle...")
+    adb('shell am force-stop com.wordbattle')
+    time.sleep(1)
     adb('shell am start -n com.wordbattle/.MainActivity')
     time.sleep(8)  # 增加等待时间确保UI渲染完成
     screenshot('s4_start')
@@ -192,14 +318,25 @@ def main():
         return
     time.sleep(0.5)
 
-    # Step 7: 15秒答题时间
-    print("\n[7/12] 设置15秒答题时间...")
-    pos = find_button_by_y('15', 1200)
-    if pos:
-        tap(*pos)
-        print(f"  OK tap({pos[0]}, {pos[1]})")
+    # Step 7: 5秒答题时间（显式点击；两个Row都有'5'，以标签文字锚定下方第一个'5'）
+    print("\n[7/12] 设置5秒答题时间...")
+    setup_nodes = parse_nodes(dump_ui())
+    label_bottom = None
+    for n in setup_nodes:
+        if n['text'] == '答题等待时间(秒)':
+            lb = pb(n['bounds'])
+            if lb:
+                label_bottom = lb[3]
+            break
+    if label_bottom is not None:
+        pos = find_button_by_y('5', label_bottom)
+        if pos:
+            tap(*pos)
+            print(f"  OK tap({pos[0]}, {pos[1]})")
+        else:
+            print("  WARN 没找到答题时间的5秒按钮（App默认即为5秒）")
     else:
-        print("  WARN 没找到15秒按钮")
+        print("  WARN 没找到答题时间标签（App默认即为5秒）")
     time.sleep(0.5)
 
     # Step 8: 开始等待玩家
@@ -212,6 +349,17 @@ def main():
         print("  FAIL 没找到按钮")
         return
     time.sleep(3)
+
+    # Step 8.5: 连接游戏 TCP（READY 握手信号线；答题仍走 ADB tap）
+    print("\n[8.5] 连接游戏 TCP 5201 (READY 握手)...")
+    game_tcp = GameTCP(DEVICE_IP)
+    if not game_tcp.connect(timeout=5):
+        time.sleep(2)
+        game_tcp.connect(timeout=5)
+    if game_tcp.alive:
+        print(f"  OK 已连接, playerId={game_tcp.player_id}")
+    else:
+        print("  WARN TCP 连不上，退回日志驱动模式")
 
     # Step 9: 开始游戏
     print("\n[9/12] 点击'开始游戏'...")
@@ -231,9 +379,8 @@ def main():
     time.sleep(3)
     screenshot('s9_game')
 
-    # ===== 日志驱动答题 =====
-    print(f"\n[10/12] 答题循环 (日志驱动)...")
-    total_answers = 0
+    # ===== 答题日志兜底（tail -f）=====
+    print(f"\n[10/12] 答题日志兜底就绪...")
 
     # tail -f 从当前行开始
     start_line = 0
@@ -308,135 +455,149 @@ def main():
         return line
 
     # === 校准选项按钮坐标 ===
-    print("  [校准] 等待答题界面稳定...")
-    buttons = []
-    for attempt in range(5):
-        time.sleep(1)
-        xml = dump_ui()
-        nodes = parse_nodes(xml)
-        buttons = find_answer_buttons(nodes)
-        if len(buttons) >= 4:
-            break
-        print(f"  [校准] 尝试{attempt+1}: 找到{len(buttons)}个按钮，重试...")
+    # 握手模式下第一题 GO 前屏幕停留在"准备中"（无按钮），校准改为在第一题 dump 验证时完成
     screenshot('game_answers')
-    print(f"  [校准] 找到 {len(buttons)} 个按钮:")
-    for bx, by, label in buttons:
-        print(f"    {label}: ({bx}, {by})")
-
     button_positions = [(540, 770), (540, 946), (540, 1122), (540, 1298)]
-
-    # ===== 主循环：直接监听 GO JSON，跳过"广播 GO"中间步 =====
-    print("  等待第一题 GO 信号...")
-
-    # 等 GO JSON: "type":"GO" + "correctIdx"
-    first_go = wait_for(lambda l: '"type":"GO"' in l and '"correctIdx"' in l, timeout=30.0)
-    if not first_go:
-        print("  FAIL 未检测到 GO 信号")
-        return
-
-    first_round_m = re.search(r'"round":(\d+)', first_go)
-    first_round = int(first_round_m.group(1)) if first_round_m else 1
-
-    # 等客户端 UI 渲染完毕（日志 "收到: GO" = 按钮已渲染可点）
-    ui_ready = wait_for(lambda l: '收到: GO' in l, timeout=2.0)
-    if ui_ready:
-        drain()
-    # Compose 重渲染按钮需要时间，等渲染完成后 tap
-    time.sleep(3)
-
-    # 回答第一题
-    first_correct_m = re.search(r'"correctIdx":(\d+)', first_go)
-    if answer_mode == "all_correct" and first_correct_m:
-        choice_idx = int(first_correct_m.group(1))
-    elif answer_mode == "all_wrong" and first_correct_m:
-        choice_idx = (int(first_correct_m.group(1)) + 1) % 4
-    else:
-        choice_idx = random.randrange(len(button_positions))
-
-    bx, by = button_positions[choice_idx]
-    tap(bx, by)
-    total_answers += 1
     label = {"all_correct": "正确", "all_wrong": "错误", "random": "随机"}.get(answer_mode, "未知")
-    print(f"  [题{first_round}] 选项{choice_idx+1} ({bx},{by}) [模式:{label}] (共{total_answers}次)")
 
-    # 等第一题 REVEAL
-    reveal = wait_for(lambda l: "REVEAL" in l and f'"round":{first_round}' in l, timeout=15.0)
-    if reveal:
-        cm = re.search(r'"correctIdx":(\d+)', reveal)
-        correct = cm.group(1) if cm else "?"
-        winner_m = re.search(r'"winner":"([^"]+)"', reveal)
-        status = f"答案: {correct} ({'命中' if winner_m else '超时'})"
-        print(f"  [题{first_round}] {status}")
+    def now_ms():
+        return time.strftime('%H:%M:%S') + f".{int((time.time() % 1) * 1000):03d}"
 
-    # drain 清理
-    drain()
+    def pick_choice(correct_idx, n_opts):
+        if answer_mode == "all_correct":
+            return correct_idx
+        if answer_mode == "all_wrong":
+            return (correct_idx + 1) % n_opts
+        return random.randrange(n_opts)
 
-    # === 主循环 ===
-    for i in range(60):
-        # 1) 直接等 GO JSON
-        go_json = wait_for(lambda l: '"type":"GO"' in l and '"correctIdx"' in l, timeout=20.0)
-        if not go_json:
-            print(f"  [轮{i}] 超时未收到 GO，退出")
+    def get_prepare(timeout=15.0):
+        if game_tcp.alive:
+            m = game_tcp.wait_for(
+                lambda x: x.get('type') == 'PREPARE' or (x.get('type') == 'GO' and x.get('correctIdx', -1) >= 0),
+                timeout=timeout)
+            if m is not None:
+                # GO 先于 PREPARE 被看到 = 脚本连接晚、错过了本轮 PREPARE（本轮窗口可能已错过）
+                return {'type': 'PREPARE', 'round': m.get('round', -1), 'go_already': m.get('type') == 'GO'}
+        # TCP 失效 → 日志兜底（日志中 PREPARE 不带轮次号，READY 不依赖轮次号）
+        line = wait_for(lambda l: 'broadcast: PREPARE' in l or '收到: PREPARE' in l, timeout=5.0)
+        if line:
+            return {'type': 'PREPARE', 'round': -1}
+        return None
+
+    def get_go(timeout=15.0):
+        if game_tcp.alive:
+            m = game_tcp.wait_for(lambda x: x.get('type') == 'GO' and x.get('correctIdx', -1) >= 0, timeout=timeout)
+            if m is not None:
+                return m
+        line = wait_for(lambda l: '"type":"GO"' in l and '"correctIdx"' in l, timeout=10.0)
+        if line:
+            r = re.search(r'"round":(\d+)', line)
+            q = re.search(r'"question":"([^"]*)"', line)
+            c = re.search(r'"correctIdx":(\d+)', line)
+            return {'round': int(r.group(1)) if r else -1,
+                    'question': q.group(1) if q else '',
+                    'correctIdx': int(c.group(1)) if c else -1}
+        return None
+
+    def verify_and_tap(go, round_no, is_first):
+        """GO 后 dump 屏幕，验证题目与 GO 一致再 tap（不一致会重试 dump）。
+        返回 (result, choice_idx)；result ∈ hit/miss。"""
+        nonlocal button_positions
+        go_q = go.get('question', '')
+        t_go = time.time()
+        for attempt in range(3):
+            try:
+                nodes = parse_nodes(dump_ui())
+            except Exception as e:
+                print(f"  [OBS-SCRIPT] T={now_ms()} [题{round_no}] dump失败: {e}")
+                time.sleep(0.3)
+                continue
+            sq = screen_question(nodes)
+            ok = (sq == go_q[:20]) if go_q else False
+            if is_first:
+                btns = find_answer_buttons(nodes)
+                if len(btns) >= 4:
+                    button_positions = [(b[0], b[1]) for b in btns[:4]]
+                    print(f"  [校准] 使用实际按钮坐标: {button_positions}")
+            if ok:
+                choice_idx = pick_choice(go.get('correctIdx', 0), 4)
+                bx, by = button_positions[choice_idx]
+                dt = time.time() - t_go
+                print(f"  [OBS-SCRIPT] T={now_ms()} [题{round_no}] 屏幕=<{sq}> GO期望=<{go_q[:20]}> 一致=是 dump+渲染={dt:.1f}s")
+                print(f"  [OBS-SCRIPT] T={now_ms()} [题{round_no}] tap({bx},{by}) choice={choice_idx} round={round_no}")
+                tap(bx, by)
+                return 'hit', choice_idx
+            print(f"  [OBS-SCRIPT] T={now_ms()} [题{round_no}] 屏幕=<{sq}> GO期望=<{go_q[:20]}> 一致=否 重试{attempt+1}")
+            time.sleep(0.3)
+        return 'miss', -1
+
+    # ===== 主循环：TCP 握手驱动（PREPARE→READY→GO→tap），日志作兜底 =====
+    total_answers = 0
+    rounds_played = 0
+    hits = 0
+    print(f"\n[10/12] 答题循环 (TCP握手驱动) tcp={'已连接' if game_tcp.alive else '未连接→日志兜底'}...")
+    for i in range(35):
+        # 游戏结束？
+        if game_tcp.alive and game_tcp.pop(lambda m: m.get('type') == 'GAME_OVER') is not None:
+            print("  游戏结束，退出答题循环")
             break
 
-        go_round_m = re.search(r'"round":(\d+)', go_json)
-        go_round = int(go_round_m.group(1)) if go_round_m else (i + 2)
-
-        # drain 已有的行
-        drain()
-
-        # 等客户端 UI 渲染完毕（"GO: 题目=XXX" 出现 = 按钮已渲染可点）
-        ui_ready = wait_for(lambda l: 'GO: 题目=' in l and f'选项数=' in l, timeout=5.0)
-        if ui_ready:
-            drain()
-        else:
-            print(f"  [警告] 题{go_round} 未等到 UI 渲染日志")
-        # Compose 重渲染按钮需要时间，等渲染完成后 tap
-        time.sleep(3)
-
-        # 2) 提取 correctIdx
-        cm = re.search(r'"correctIdx":(\d+)', go_json)
-        if cm:
-            correct_idx = int(cm.group(1))
-            if answer_mode == "all_correct":
-                choice_idx = correct_idx
-            elif answer_mode == "all_wrong":
-                choice_idx = (correct_idx + 1) % 4
+        # 1) 等 PREPARE
+        prep = get_prepare(timeout=15.0)
+        if prep is None:
+            if game_tcp.alive and game_tcp.pop(lambda m: m.get('type') == 'GAME_OVER') is not None:
+                print("  游戏结束（PREPARE 超时后检测到 GAME_OVER），退出答题循环")
             else:
-                choice_idx = random.randrange(len(button_positions))
-        else:
-            choice_idx = random.randrange(len(button_positions))
-            print(f"  [警告] 题{go_round} 未获取 correctIdx，随机选择")
+                print(f"  [轮{i}] 未收到 PREPARE，退出")
+            break
 
-        # 3) tap (UI 已渲染，直接点)
-        bx, by = button_positions[choice_idx]
-        tap(bx, by)
+        # 2) 回 READY（App 收到后才广播 GO、才开始倒计时）
+        # go_already=True：错过了 PREPARE、GO 已发出（脚本连接晚）。补发 READY 供 App 消费丢弃，
+        # 本轮窗口可能已错过，由 dump 验证如实报告 miss，下一轮恢复握手。
+        sent = False
+        if game_tcp.alive:
+            sent = game_tcp.send_ready(prep.get('round', 1))
+            if prep.get('go_already'):
+                print(f"  [OBS-SCRIPT] T={now_ms()} [轮{i}] ! 错过PREPARE，GO已发出，本轮可能超时")
+        print(f"  [OBS-SCRIPT] T={now_ms()} [轮{i}] PREPARE round={prep.get('round')} READY已发={sent}")
+
+        # 3) 等 GO
+        go = get_go(timeout=15.0)
+        if go is None:
+            print(f"  [轮{i}] 未收到 GO，退出")
+            break
+        round_no = go.get('round', i + 1)
+        print(f"  [OBS-SCRIPT] T={now_ms()} [轮{i}] GO收到 round={round_no} 题目=<{go.get('question', '')[:20]}> correctIdx={go.get('correctIdx')}")
+
+        # 4) dump 验证屏幕题目一致后 tap
+        result, choice_idx = verify_and_tap(go, round_no, is_first=(rounds_played == 0))
         total_answers += 1
-        print(f"  [题{go_round}] 选项{choice_idx+1} ({bx},{by}) [模式:{label}] (共{total_answers}次)")
+        rounds_played += 1
 
-        # 4) 等 REVEAL
-        reveal = wait_for(lambda l: "REVEAL" in l and f'"round":{go_round}' in l, timeout=15.0)
-        game_over = any("游戏结束" in l for l in pending) if not reveal else False
+        # 5) 等 REVEAL 确认命中
+        rev = None
+        if game_tcp.alive:
+            rev = game_tcp.wait_for(lambda m: m.get('type') == 'REVEAL' and m.get('round') == round_no, timeout=8.0)
+        if rev is None:
+            line = wait_for(lambda l: "REVEAL" in l and f'"round":{round_no}' in l, timeout=5.0)
+            if line:
+                rev = {'winner': 'p0' if '"winner":"p0"' in line else None}
+        winner = rev.get('winner') if rev else None
+        if result == 'hit':
+            status = f"命中 (winner={winner})" if winner else "屏幕一致但未判命中"
+            if winner:
+                hits += 1
+            print(f"  [题{round_no}] 选项{choice_idx + 1} [模式:{label}] -> {status}")
+        else:
+            print(f"  [题{round_no}] 屏幕不一致，本轮 tap 已跳过 (miss)")
 
-        if game_over:
-            print("  游戏已结束，退出答题循环")
+        if round_no >= 30:
+            print("  已到第30题，等待结果...")
             break
 
-        if reveal:
-            cm2 = re.search(r'"correctIdx":(\d+)', reveal)
-            correct = cm2.group(1) if cm2 else "?"
-            winner_m = re.search(r'"winner":"([^"]+)"', reveal)
-            status = f"答案: {correct} ({'命中' if winner_m else '超时'})"
-            print(f"  [题{go_round}] {status}")
+    print(f"  答题统计: 命中 {hits}/{rounds_played}")
 
-        if go_round >= 30:
-            print("  已到第30题，等待揭晓...")
-            # drain 剩余日志
-            drain()
-            break
-
-        # drain 到下一轮 GO 出现之前
-        drain()
+    game_tcp.close()
 
     # Kill tail
     tail_proc_holder[0].terminate()

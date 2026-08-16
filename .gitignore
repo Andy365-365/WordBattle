@@ -6,3 +6,5 @@ app/build/
 *.iws
 .idea/
 logs/
+__pycache__/
+*.pyc
