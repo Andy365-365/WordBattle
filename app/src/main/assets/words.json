@@ -2,5832 +2,3888 @@
   {
     "word": "ready",
     "translation": "准备好（做某事）的",
-    "distractors": [
+    "zhDistractors": [
       "弥漫，充满",
       "不作声的",
       "发狂地；无法控制地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 3,
-    "unit": "Starter"
-  },
-  {
-    "word": "准备好（做某事）的",
-    "translation": "ready",
-    "distractors": [
+    "enDistractors": [
       "situation",
       "forest",
       "everybody"
     ],
-    "level": "ZH_TO_EN",
     "page": 3,
     "unit": "Starter"
   },
   {
     "word": "textbook",
     "translation": "教科书，教材，课本",
-    "distractors": [
+    "zhDistractors": [
       "从一边到另一边；穿过",
       "把（某物或某人）带至（新的地点或位置）",
       "受大众喜爱的，受欢迎的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 3,
-    "unit": "Starter"
-  },
-  {
-    "word": "教科书，教材，课本",
-    "translation": "textbook",
-    "distractors": [
+    "enDistractors": [
       "news",
       "meaning",
       "rose"
     ],
-    "level": "ZH_TO_EN",
     "page": 3,
     "unit": "Starter"
   },
   {
     "word": "eraser",
     "translation": "橡皮",
-    "distractors": [
+    "zhDistractors": [
       "英雄",
       "灯笼；提灯",
       "糖"
     ],
-    "level": "EN_TO_ZH",
-    "page": 3,
-    "unit": "Starter"
-  },
-  {
-    "word": "橡皮",
-    "translation": "eraser",
-    "distractors": [
+    "enDistractors": [
       "ground",
       "forget",
       "ocean"
     ],
-    "level": "ZH_TO_EN",
     "page": 3,
     "unit": "Starter"
   },
   {
     "word": "geography",
     "translation": "地理",
-    "distractors": [
+    "zhDistractors": [
       "周末",
       "历险；奇遇",
       "昏暗的；黑暗的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 4,
-    "unit": "Starter"
-  },
-  {
-    "word": "地理",
-    "translation": "geography",
-    "distractors": [
+    "enDistractors": [
       "dead",
       "wolf",
       "fact"
     ],
-    "level": "ZH_TO_EN",
     "page": 4,
     "unit": "Starter"
   },
   {
     "word": "biology",
     "translation": "生物",
-    "distractors": [
+    "zhDistractors": [
       "棉花",
       "灯笼；提灯",
       "喂养，饲养，给……食物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 4,
-    "unit": "Starter"
-  },
-  {
-    "word": "生物",
-    "translation": "biology",
-    "distractors": [
+    "enDistractors": [
       "hug",
       "celebrate",
       "realise"
     ],
-    "level": "ZH_TO_EN",
     "page": 4,
     "unit": "Starter"
   },
   {
     "word": "history",
     "translation": "历史",
-    "distractors": [
+    "zhDistractors": [
       "某物；某事；某些东西",
       "练习",
       "圆形的，环形的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 4,
-    "unit": "Starter"
-  },
-  {
-    "word": "历史",
-    "translation": "history",
-    "distractors": [
+    "enDistractors": [
       "piece",
       "yard",
       "fill"
     ],
-    "level": "ZH_TO_EN",
     "page": 4,
     "unit": "Starter"
   },
   {
     "word": "grey",
     "translation": "灰色的",
-    "distractors": [
+    "zhDistractors": [
       "排球（运动）",
       "说笑话；开玩笑",
       "不平常的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 5,
-    "unit": "Starter"
-  },
-  {
-    "word": "灰色的",
-    "translation": "grey",
-    "distractors": [
+    "enDistractors": [
       "usually",
       "fact",
       "power"
     ],
-    "level": "ZH_TO_EN",
     "page": 5,
     "unit": "Starter"
   },
   {
     "word": "jacket",
     "translation": "夹克，短上衣",
-    "distractors": [
+    "zhDistractors": [
       "保护；防护",
       "欢欣，愉快，喜悦",
       "搁板，架子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 5,
-    "unit": "Starter"
-  },
-  {
-    "word": "夹克，短上衣",
-    "translation": "jacket",
-    "distractors": [
+    "enDistractors": [
       "engineer",
       "feed",
       "dark"
     ],
-    "level": "ZH_TO_EN",
     "page": 5,
     "unit": "Starter"
   },
   {
     "word": "T-shirt",
     "translation": "T恤衫，短袖运动衫",
-    "distractors": [
+    "zhDistractors": [
       "文化",
       "俱乐部",
       "每个人，人人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 5,
-    "unit": "Starter"
-  },
-  {
-    "word": "T恤衫，短袖运动衫",
-    "translation": "T-shirt",
-    "distractors": [
+    "enDistractors": [
       "pollution",
       "really",
       "collect"
     ],
-    "level": "ZH_TO_EN",
     "page": 5,
     "unit": "Starter"
   },
   {
     "word": "uniform",
     "translation": "制服",
-    "distractors": [
+    "zhDistractors": [
       "可怕的，骇人的，恐怖的",
       "狼",
       "高山，山岳"
     ],
-    "level": "EN_TO_ZH",
-    "page": 5,
-    "unit": "Starter"
-  },
-  {
-    "word": "制服",
-    "translation": "uniform",
-    "distractors": [
+    "enDistractors": [
       "kiss",
       "power",
       "storm"
     ],
-    "level": "ZH_TO_EN",
     "page": 5,
     "unit": "Starter"
   },
   {
     "word": "forget",
     "translation": "忘记，遗忘",
-    "distractors": [
+    "zhDistractors": [
       "换（衣服）",
       "生长",
       "升高，上升"
     ],
-    "level": "EN_TO_ZH",
-    "page": 5,
-    "unit": "Starter"
-  },
-  {
-    "word": "忘记，遗忘",
-    "translation": "forget",
-    "distractors": [
+    "enDistractors": [
       "pollution",
       "stay",
       "itself"
     ],
-    "level": "ZH_TO_EN",
     "page": 5,
     "unit": "Starter"
   },
   {
     "word": "together",
     "translation": "一起，共同，一齐，一块儿",
-    "distractors": [
+    "zhDistractors": [
       "离开",
       "水饺",
       "博物馆，博物院"
     ],
-    "level": "EN_TO_ZH",
-    "page": 6,
-    "unit": "Starter"
-  },
-  {
-    "word": "一起，共同，一齐，一块儿",
-    "translation": "together",
-    "distractors": [
+    "enDistractors": [
       "guitar",
       "dumpling",
       "start"
     ],
-    "level": "ZH_TO_EN",
     "page": 6,
     "unit": "Starter"
   },
   {
     "word": "lab",
     "translation": "实验室",
-    "distractors": [
+    "zhDistractors": [
       "庭院",
       "从一边到另一边；穿过",
       "历险；奇遇"
     ],
-    "level": "EN_TO_ZH",
-    "page": 6,
-    "unit": "Starter"
-  },
-  {
-    "word": "实验室",
-    "translation": "lab",
-    "distractors": [
+    "enDistractors": [
       "within",
       "journey",
       "shocked"
     ],
-    "level": "ZH_TO_EN",
     "page": 6,
     "unit": "Starter"
   },
   {
     "word": "start",
     "translation": "开始",
-    "distractors": [
+    "zhDistractors": [
       "咖啡",
       "吃惊的，震惊的",
       "渴的，口渴的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 8,
-    "unit": "Starter"
-  },
-  {
-    "word": "开始",
-    "translation": "start",
-    "distractors": [
+    "enDistractors": [
       "recognise",
       "cotton",
       "challenge"
     ],
-    "level": "ZH_TO_EN",
     "page": 8,
     "unit": "Starter"
   },
   {
     "word": "everyone",
     "translation": "每个人，人人",
-    "distractors": [
+    "zhDistractors": [
       "棉花",
       "极好的，吸引人的，有趣的",
       "自然的，天然的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "每个人，人人",
-    "translation": "everyone",
-    "distractors": [
+    "enDistractors": [
       "position",
       "dry",
       "fun"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "explore",
     "translation": "探索；探讨，探究",
-    "distractors": [
+    "zhDistractors": [
       "句子",
       "历史",
       "塑料制的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "探索；探讨，探究",
-    "translation": "explore",
-    "distractors": [
+    "enDistractors": [
       "mirror",
       "yourself",
       "workshop"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "fun",
     "translation": "乐趣",
-    "distractors": [
+    "zhDistractors": [
       "拖车，挂车",
       "极好的，吸引人的，有趣的",
       "鸽子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "乐趣",
-    "translation": "fun",
-    "distractors": [
+    "enDistractors": [
       "madly",
       "touching",
       "human"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "introduce",
     "translation": "介绍",
-    "distractors": [
+    "zhDistractors": [
       "心（脏）",
       "给（车辆或机器）提供动力",
       "暴风雨（雪）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "介绍",
-    "translation": "introduce",
-    "distractors": [
+    "enDistractors": [
       "grey",
       "fun",
       "dumpling"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "yourself",
     "translation": "(pl.yourselves)你自己",
-    "distractors": [
+    "zhDistractors": [
       "向着，朝着（某个方向）",
       "摇动",
       "使（某人）突然意识到"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "(pl.yourselves)你自己",
-    "translation": "yourself",
-    "distractors": [
+    "enDistractors": [
       "within",
       "polite",
       "culture"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "hobby",
     "translation": "业余爱好，嗜好",
-    "distractors": [
+    "zhDistractors": [
       "根",
       "T恤衫，短袖运动衫",
       "某物；某事；某些东西"
     ],
-    "level": "EN_TO_ZH",
-    "page": 9,
-    "unit": "Starter"
-  },
-  {
-    "word": "业余爱好，嗜好",
-    "translation": "hobby",
-    "distractors": [
+    "enDistractors": [
       "round",
       "without",
       "enjoy"
     ],
-    "level": "ZH_TO_EN",
     "page": 9,
     "unit": "Starter"
   },
   {
     "word": "nervous",
     "translation": "神经紧张的；焦虑不安的",
-    "distractors": [
+    "zhDistractors": [
       "可怕的，骇人的，恐怖的",
       "高山，山岳",
       "职位，职务"
     ],
-    "level": "EN_TO_ZH",
-    "page": 10,
-    "unit": "Starter"
-  },
-  {
-    "word": "神经紧张的；焦虑不安的",
-    "translation": "nervous",
-    "distractors": [
+    "enDistractors": [
       "challenge",
       "engineer",
       "sail"
     ],
-    "level": "ZH_TO_EN",
     "page": 10,
     "unit": "Starter"
   },
   {
     "word": "join",
     "translation": "成为……的一员，加入",
-    "distractors": [
+    "zhDistractors": [
       "吉他",
       "工程师；设计师",
       "块；片；段；截"
     ],
-    "level": "EN_TO_ZH",
-    "page": 13,
-    "unit": "Starter"
-  },
-  {
-    "word": "成为……的一员，加入",
-    "translation": "join",
-    "distractors": [
+    "enDistractors": [
       "plan",
       "dry",
       "museum"
     ],
-    "level": "ZH_TO_EN",
     "page": 13,
     "unit": "Starter"
   },
   {
     "word": "without",
     "translation": "缺乏，没有",
-    "distractors": [
+    "zhDistractors": [
       "不在的，缺席的",
       "准备好（做某事）的",
       "放松，休息"
     ],
-    "level": "EN_TO_ZH",
-    "page": 16,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "缺乏，没有",
-    "translation": "without",
-    "distractors": [
+    "enDistractors": [
       "beaver",
       "along",
       "journey"
     ],
-    "level": "ZH_TO_EN",
     "page": 16,
     "unit": "Unit 1"
   },
   {
     "word": "sentence",
     "translation": "句子",
-    "distractors": [
+    "zhDistractors": [
       "眼泪，泪水",
       "舞台",
       "生物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "句子",
-    "translation": "sentence",
-    "distractors": [
+    "enDistractors": [
       "yourself",
       "join",
       "absent"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "mistake",
     "translation": "错误",
-    "distractors": [
+    "zhDistractors": [
       "周末",
       "风",
       "每个人，人人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "错误",
-    "translation": "mistake",
-    "distractors": [
+    "enDistractors": [
       "without",
       "rise",
       "fantastic"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "polite",
     "translation": "有礼貌的，客气的",
-    "distractors": [
+    "zhDistractors": [
       "大自然，自然界",
       "制服",
       "把（某物或某人）带至（新的地点或位置）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "有礼貌的，客气的",
-    "translation": "polite",
-    "distractors": [
+    "enDistractors": [
       "regret",
       "traditional",
       "instrument"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "mind",
     "translation": "头脑；思想，思维",
-    "distractors": [
+    "zhDistractors": [
       "不久，即刻，很快",
       "升高，上升",
       "水塘，水洼"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "头脑；思想，思维",
-    "translation": "mind",
-    "distractors": [
+    "enDistractors": [
       "dark",
       "something",
       "journey"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "hers",
     "translation": "她的",
-    "distractors": [
+    "zhDistractors": [
       "乐趣",
       "问题，难题；困难",
       "不在的，缺席的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "她的",
-    "translation": "hers",
-    "distractors": [
+    "enDistractors": [
       "care",
       "electric",
       "research"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "dry",
     "translation": "干的，干燥的",
-    "distractors": [
+    "zhDistractors": [
       "每个人，人人",
       "乐器",
       "一餐；饭"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "干的，干燥的",
-    "translation": "dry",
-    "distractors": [
+    "enDistractors": [
       "magic",
       "towards",
       "ground"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "meaning",
     "translation": "意义，意思，含义",
-    "distractors": [
+    "zhDistractors": [
       "自然的，天然的",
       "几乎，差不多",
       "灯笼；提灯"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "意义，意思，含义",
-    "translation": "meaning",
-    "distractors": [
+    "enDistractors": [
       "thirsty",
       "round",
       "hers"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "fact",
     "translation": "事实；真相",
-    "distractors": [
+    "zhDistractors": [
       "儿子",
       "冲，奔",
       "速度，速率"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "事实；真相",
-    "translation": "fact",
-    "distractors": [
+    "enDistractors": [
       "something",
       "though",
       "soon"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "need",
     "translation": "需要",
-    "distractors": [
+    "zhDistractors": [
       "乐趣",
       "废料，废弃物",
       "放松，休息"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "需要",
-    "translation": "need",
-    "distractors": [
+    "enDistractors": [
       "feed",
       "forest",
       "research"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "remember",
     "translation": "记住，记得",
-    "distractors": [
+    "zhDistractors": [
       "地理",
       "惊人的；了不起的",
       "病人，患者"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "记住，记得",
-    "translation": "remember",
-    "distractors": [
+    "enDistractors": [
       "notebook",
       "maybe",
       "high"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "really",
     "translation": "确实地，的确",
-    "distractors": [
+    "zhDistractors": [
       "千米，公里",
       "死的，去世的",
       "气味"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "确实地，的确",
-    "translation": "really",
-    "distractors": [
+    "enDistractors": [
       "workshop",
       "emergency",
       "yourself"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "important",
     "translation": "重要的，重大的",
-    "distractors": [
+    "zhDistractors": [
       "邮递员，邮差",
       "说笑话；开玩笑",
       "业余爱好，嗜好"
     ],
-    "level": "EN_TO_ZH",
-    "page": 17,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "重要的，重大的",
-    "translation": "important",
-    "distractors": [
+    "enDistractors": [
       "Christmas",
       "care",
       "duty"
     ],
-    "level": "ZH_TO_EN",
     "page": 17,
     "unit": "Unit 1"
   },
   {
     "word": "plan",
     "translation": "计划",
-    "distractors": [
+    "zhDistractors": [
       "渴的，口渴的",
       "丰富，充足，众多，大量",
       "悬挂"
     ],
-    "level": "EN_TO_ZH",
-    "page": 21,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "计划",
-    "translation": "plan",
-    "distractors": [
+    "enDistractors": [
       "wolf",
       "adventure",
       "within"
     ],
-    "level": "ZH_TO_EN",
     "page": 21,
     "unit": "Unit 1"
   },
   {
     "word": "problem",
     "translation": "问题，难题；困难",
-    "distractors": [
+    "zhDistractors": [
       "认出；认识；辨认出",
       "感人的，动人的",
       "吻"
     ],
-    "level": "EN_TO_ZH",
-    "page": 22,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "问题，难题；困难",
-    "translation": "problem",
-    "distractors": [
+    "enDistractors": [
       "support",
       "meal",
       "hit"
     ],
-    "level": "ZH_TO_EN",
     "page": 22,
     "unit": "Unit 1"
   },
   {
     "word": "homework",
     "translation": "家庭作业，功课",
-    "distractors": [
+    "zhDistractors": [
       "病人，患者",
       "消息",
       "工程师；设计师"
     ],
-    "level": "EN_TO_ZH",
-    "page": 22,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "家庭作业，功课",
-    "translation": "homework",
-    "distractors": [
+    "enDistractors": [
       "weak",
       "feed",
       "celebrate"
     ],
-    "level": "ZH_TO_EN",
     "page": 22,
     "unit": "Unit 1"
   },
   {
     "word": "task",
     "translation": "工作，任务",
-    "distractors": [
+    "zhDistractors": [
       "足够",
       "友好的，友善的",
       "氧"
     ],
-    "level": "EN_TO_ZH",
-    "page": 23,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "工作，任务",
-    "translation": "task",
-    "distractors": [
+    "enDistractors": [
       "news",
       "maybe",
       "disease"
     ],
-    "level": "ZH_TO_EN",
     "page": 23,
     "unit": "Unit 1"
   },
   {
     "word": "advice",
     "translation": "意见，建议；忠告，劝告",
-    "distractors": [
+    "zhDistractors": [
       "鸽子",
       "点头",
       "干的，干燥的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 23,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "意见，建议；忠告，劝告",
-    "translation": "advice",
-    "distractors": [
+    "enDistractors": [
       "join",
       "news",
       "breathe"
     ],
-    "level": "ZH_TO_EN",
     "page": 23,
     "unit": "Unit 1"
   },
   {
     "word": "journey",
     "translation": "旅行，旅程；历程，过程",
-    "distractors": [
+    "zhDistractors": [
       "计划",
       "夹克，短上衣",
       "制服"
     ],
-    "level": "EN_TO_ZH",
-    "page": 24,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "旅行，旅程；历程，过程",
-    "translation": "journey",
-    "distractors": [
+    "enDistractors": [
       "pigeon",
       "pull",
       "guitar"
     ],
-    "level": "ZH_TO_EN",
     "page": 24,
     "unit": "Unit 1"
   },
   {
     "word": "something",
     "translation": "某物；某事；某些东西",
-    "distractors": [
+    "zhDistractors": [
       "刀",
       "虚弱的，不强壮的",
       "实验室"
     ],
-    "level": "EN_TO_ZH",
-    "page": 24,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "某物；某事；某些东西",
-    "translation": "something",
-    "distractors": [
+    "enDistractors": [
       "strict",
       "serious",
       "shape"
     ],
-    "level": "ZH_TO_EN",
     "page": 24,
     "unit": "Unit 1"
   },
   {
     "word": "thought",
     "translation": "意见，主意，观点",
-    "distractors": [
+    "zhDistractors": [
       "握住，抓住；抱住",
       "可怕的，骇人的，恐怖的",
       "圣诞节（期间）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 24,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "意见，主意，观点",
-    "translation": "thought",
-    "distractors": [
+    "enDistractors": [
       "mountain",
       "heart",
       "several"
     ],
-    "level": "ZH_TO_EN",
     "page": 24,
     "unit": "Unit 1"
   },
   {
     "word": "life",
     "translation": "生活",
-    "distractors": [
+    "zhDistractors": [
       "圆形的，环形的",
       "挑战，具有挑战性的事物",
       "缺乏，没有"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "生活",
-    "translation": "life",
-    "distractors": [
+    "enDistractors": [
       "dark",
       "carry",
       "health"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "pool",
     "translation": "水塘，水洼",
-    "distractors": [
+    "zhDistractors": [
       "缺乏，没有",
       "渴的，口渴的",
       "欢快的；充满生气的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "水塘，水洼",
-    "translation": "pool",
-    "distractors": [
+    "enDistractors": [
       "rush",
       "miss",
       "grey"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "protect",
     "translation": "保护；防护",
-    "distractors": [
+    "zhDistractors": [
       "博物馆，博物院",
       "很少，罕见，不常",
       "停留，逗留，留下"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "保护；防护",
-    "translation": "protect",
-    "distractors": [
+    "enDistractors": [
       "remember",
       "really",
       "celebrate"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "wind",
     "translation": "风",
-    "distractors": [
+    "zhDistractors": [
       "可怕的，骇人的，恐怖的",
       "宽的，宽阔的",
       "根"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "风",
-    "translation": "wind",
-    "distractors": [
+    "enDistractors": [
       "plenty",
       "medical",
       "arrive"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "wide",
     "translation": "宽的，宽阔的",
-    "distractors": [
+    "zhDistractors": [
       "停留，逗留，留下",
       "感人的，动人的",
       "家庭作业，功课"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "宽的，宽阔的",
-    "translation": "wide",
-    "distractors": [
+    "enDistractors": [
       "grey",
       "regret",
       "yourself"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "sail",
     "translation": "驾驶（船只）",
-    "distractors": [
+    "zhDistractors": [
       "镜子",
       "工程师；设计师",
       "夹克，短上衣"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "驾驶（船只）",
-    "translation": "sail",
-    "distractors": [
+    "enDistractors": [
       "challenge",
       "geography",
       "weekend"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "through",
     "translation": "从一端至另一端，穿过，通过",
-    "distractors": [
+    "zhDistractors": [
       "邮递员，邮差",
       "驾驶（船只）",
       "不同的，不一样的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "从一端至另一端，穿过，通过",
-    "translation": "through",
-    "distractors": [
+    "enDistractors": [
       "notebook",
       "yourself",
       "madly"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "storm",
     "translation": "暴风雨（雪）",
-    "distractors": [
+    "zhDistractors": [
       "根",
       "昏暗的；黑暗的",
       "干的，干燥的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "暴风雨（雪）",
-    "translation": "storm",
-    "distractors": [
+    "enDistractors": [
       "weak",
       "emergency",
       "leave"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "towards",
     "translation": "向着，朝着（某个方向）",
-    "distractors": [
+    "zhDistractors": [
       "渡渡鸟",
       "准备好（做某事）的",
       "健康（状况）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "向着，朝着（某个方向）",
-    "translation": "towards",
-    "distractors": [
+    "enDistractors": [
       "popular",
       "magic",
       "fill"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "hope",
     "translation": "希望，期望，指望",
-    "distractors": [
+    "zhDistractors": [
       "地，地面",
       "不作声的",
       "可怕的，骇人的，恐怖的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 25,
-    "unit": "Unit 1"
-  },
-  {
-    "word": "希望，期望，指望",
-    "translation": "hope",
-    "distractors": [
+    "enDistractors": [
       "hunt",
       "guitar",
       "enjoy"
     ],
-    "level": "ZH_TO_EN",
     "page": 25,
     "unit": "Unit 1"
   },
   {
     "word": "electric",
     "translation": "用电的；电动的",
-    "distractors": [
+    "zhDistractors": [
       "发光，发亮",
       "吉他",
       "教科书，教材，课本"
     ],
-    "level": "EN_TO_ZH",
-    "page": 32,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "用电的；电动的",
-    "translation": "electric",
-    "distractors": [
+    "enDistractors": [
       "missing",
       "culture",
       "history"
     ],
-    "level": "ZH_TO_EN",
     "page": 32,
     "unit": "Unit 2"
   },
   {
     "word": "guitar",
     "translation": "吉他",
-    "distractors": [
+    "zhDistractors": [
       "挑战，具有挑战性的事物",
       "足够",
       "塑料制的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 32,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "吉他",
-    "translation": "guitar",
-    "distractors": [
+    "enDistractors": [
       "wolf",
       "position",
       "change"
     ],
-    "level": "ZH_TO_EN",
     "page": 32,
     "unit": "Unit 2"
   },
   {
     "word": "band",
     "translation": "乐队，乐团",
-    "distractors": [
+    "zhDistractors": [
       "收集，采集；使集中",
       "发光，发亮",
       "一餐；饭"
     ],
-    "level": "EN_TO_ZH",
-    "page": 32,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "乐队，乐团",
-    "translation": "band",
-    "distractors": [
+    "enDistractors": [
       "something",
       "dark",
       "rescue"
     ],
-    "level": "ZH_TO_EN",
     "page": 32,
     "unit": "Unit 2"
   },
   {
     "word": "sound",
     "translation": "声音",
-    "distractors": [
+    "zhDistractors": [
       "丰富，充足，众多，大量",
       "森林，林区",
       "拒绝，回绝"
     ],
-    "level": "EN_TO_ZH",
-    "page": 32,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "声音",
-    "translation": "sound",
-    "distractors": [
+    "enDistractors": [
       "stay",
       "geography",
       "hold"
     ],
-    "level": "ZH_TO_EN",
     "page": 32,
     "unit": "Unit 2"
   },
   {
     "word": "different",
     "translation": "不同的，不一样的",
-    "distractors": [
+    "zhDistractors": [
       "刀",
       "确实地，的确",
       "笔记本"
     ],
-    "level": "EN_TO_ZH",
-    "page": 32,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "不同的，不一样的",
-    "translation": "different",
-    "distractors": [
+    "enDistractors": [
       "dodo",
       "awake",
       "notebook"
     ],
-    "level": "ZH_TO_EN",
     "page": 32,
     "unit": "Unit 2"
   },
   {
     "word": "suddenly",
     "translation": "突然，突如其来地",
-    "distractors": [
+    "zhDistractors": [
       "放松，休息",
       "宽的，宽阔的",
       "历史"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "突然，突如其来地",
-    "translation": "suddenly",
-    "distractors": [
+    "enDistractors": [
       "everybody",
       "biology",
       "remember"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "hit",
     "translation": "使（某人）突然意识到",
-    "distractors": [
+    "zhDistractors": [
       "邮递员，邮差",
       "整个的，全部的",
       "突然，突如其来地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "使（某人）突然意识到",
-    "translation": "hit",
-    "distractors": [
+    "enDistractors": [
       "lantern",
       "root",
       "rush"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "rush",
     "translation": "冲，奔",
-    "distractors": [
+    "zhDistractors": [
       "英雄",
       "认出；认识；辨认出",
       "吃惊的，震惊的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "冲，奔",
-    "translation": "rush",
-    "distractors": [
+    "enDistractors": [
       "fill",
       "forest",
       "chat"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "decide",
     "translation": "决定",
-    "distractors": [
+    "zhDistractors": [
       "跟着，跟随",
       "昏暗的；黑暗的",
       "打猎；猎杀"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "决定",
-    "translation": "decide",
-    "distractors": [
+    "enDistractors": [
       "earthquake",
       "smile",
       "joy"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "practice",
     "translation": "练习",
-    "distractors": [
+    "zhDistractors": [
       "说笑话；开玩笑",
       "决定",
       "呼吸"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "练习",
-    "translation": "practice",
-    "distractors": [
+    "enDistractors": [
       "queen",
       "emergency",
       "joke"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "stage",
     "translation": "舞台",
-    "distractors": [
+    "zhDistractors": [
       "旅行，旅程；历程，过程",
       "心（脏）",
       "工作，任务"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "舞台",
-    "translation": "stage",
-    "distractors": [
+    "enDistractors": [
       "reunion",
       "decision",
       "news"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "nod",
     "translation": "点头",
-    "distractors": [
+    "zhDistractors": [
       "声音",
       "吃惊的，震惊的",
       "眼泪，泪水"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "点头",
-    "translation": "nod",
-    "distractors": [
+    "enDistractors": [
       "serious",
       "sugar",
       "sound"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "instrument",
     "translation": "乐器",
-    "distractors": [
+    "zhDistractors": [
       "叶，叶子",
       "保护；防护",
       "文化"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "乐器",
-    "translation": "instrument",
-    "distractors": [
+    "enDistractors": [
       "result",
       "seldom",
       "awake"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "everybody",
     "translation": "每个人，人人",
-    "distractors": [
+    "zhDistractors": [
       "排球（运动）",
       "黄瓜",
       "有魔力的，神奇的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "每个人，人人",
-    "translation": "everybody",
-    "distractors": [
+    "enDistractors": [
       "textbook",
       "guitar",
       "practice"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "smile",
     "translation": "笑容v.微笑",
-    "distractors": [
+    "zhDistractors": [
       "风",
       "岛，岛屿",
       "用电的；电动的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "笑容v.微笑",
-    "translation": "smile",
-    "distractors": [
+    "enDistractors": [
       "wide",
       "classmate",
       "reunion"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "enjoy",
     "translation": "喜欢；享受……的乐趣",
-    "distractors": [
+    "zhDistractors": [
       "俱乐部",
       "神经紧张的；焦虑不安的",
       "路，道路，公路"
     ],
-    "level": "EN_TO_ZH",
-    "page": 33,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "喜欢；享受……的乐趣",
-    "translation": "enjoy",
-    "distractors": [
+    "enDistractors": [
       "joy",
       "regret",
       "itself"
     ],
-    "level": "ZH_TO_EN",
     "page": 33,
     "unit": "Unit 2"
   },
   {
     "word": "skate",
     "translation": "滑冰，溜冰",
-    "distractors": [
+    "zhDistractors": [
       "练习",
       "人类；人",
       "沟通；连接"
     ],
-    "level": "EN_TO_ZH",
-    "page": 35,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "滑冰，溜冰",
-    "translation": "skate",
-    "distractors": [
+    "enDistractors": [
       "realise",
       "classmate",
       "care"
     ],
-    "level": "ZH_TO_EN",
     "page": 35,
     "unit": "Unit 2"
   },
   {
     "word": "club",
     "translation": "俱乐部",
-    "distractors": [
+    "zhDistractors": [
       "一起，共同，一齐，一块儿",
       "团圆，团聚",
       "至关重要的；必不可少的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 35,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "俱乐部",
-    "translation": "club",
-    "distractors": [
+    "enDistractors": [
       "eraser",
       "challenge",
       "breathe"
     ],
-    "level": "ZH_TO_EN",
     "page": 35,
     "unit": "Unit 2"
   },
   {
     "word": "volleyball",
     "translation": "排球（运动）",
-    "distractors": [
+    "zhDistractors": [
       "拥抱",
       "英雄",
       "庭院"
     ],
-    "level": "EN_TO_ZH",
-    "page": 35,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "排球（运动）",
-    "translation": "volleyball",
-    "distractors": [
+    "enDistractors": [
       "across",
       "kiss",
       "absent"
     ],
-    "level": "ZH_TO_EN",
     "page": 35,
     "unit": "Unit 2"
   },
   {
     "word": "traditional",
     "translation": "传统的；习俗的；惯例的",
-    "distractors": [
+    "zhDistractors": [
       "医学的；医疗的",
       "用电的；电动的",
       "支持"
     ],
-    "level": "EN_TO_ZH",
-    "page": 35,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "传统的；习俗的；惯例的",
-    "translation": "traditional",
-    "distractors": [
+    "enDistractors": [
       "homework",
       "situation",
       "emergency"
     ],
-    "level": "ZH_TO_EN",
     "page": 35,
     "unit": "Unit 2"
   },
   {
     "word": "hold",
     "translation": "握住，抓住；抱住",
-    "distractors": [
+    "zhDistractors": [
       "从一端至另一端，穿过，通过",
       "闲聊，闲谈，聊天",
       "吻"
     ],
-    "level": "EN_TO_ZH",
-    "page": 38,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "握住，抓住；抱住",
-    "translation": "hold",
-    "distractors": [
+    "enDistractors": [
       "volleyball",
       "whole",
       "balloon"
     ],
-    "level": "ZH_TO_EN",
     "page": 38,
     "unit": "Unit 2"
   },
   {
     "word": "ground",
     "translation": "地，地面",
-    "distractors": [
+    "zhDistractors": [
       "受大众喜爱的，受欢迎的",
       "缺乏，没有",
       "速度，速率"
     ],
-    "level": "EN_TO_ZH",
-    "page": 39,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "地，地面",
-    "translation": "ground",
-    "distractors": [
+    "enDistractors": [
       "adventure",
       "laugh",
       "miss"
     ],
-    "level": "ZH_TO_EN",
     "page": 39,
     "unit": "Unit 2"
   },
   {
     "word": "weak",
     "translation": "虚弱的，不强壮的",
-    "distractors": [
+    "zhDistractors": [
       "俱乐部",
       "镜子",
       "知道；明白；认识到"
     ],
-    "level": "EN_TO_ZH",
-    "page": 39,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "虚弱的，不强壮的",
-    "translation": "weak",
-    "distractors": [
+    "enDistractors": [
       "position",
       "biscuit",
       "suddenly"
     ],
-    "level": "ZH_TO_EN",
     "page": 39,
     "unit": "Unit 2"
   },
   {
     "word": "high",
     "translation": "高的",
-    "distractors": [
+    "zhDistractors": [
       "午夜",
       "紧急情况，不测事件",
       "废料，废弃物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 39,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "高的",
-    "translation": "high",
-    "distractors": [
+    "enDistractors": [
       "fantastic",
       "awake",
       "engineer"
     ],
-    "level": "ZH_TO_EN",
     "page": 39,
     "unit": "Unit 2"
   },
   {
     "word": "nature",
     "translation": "大自然，自然界",
-    "distractors": [
+    "zhDistractors": [
       "自己，自身",
       "女演员",
       "气味"
     ],
-    "level": "EN_TO_ZH",
-    "page": 39,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "大自然，自然界",
-    "translation": "nature",
-    "distractors": [
+    "enDistractors": [
       "firework",
       "adventure",
       "son"
     ],
-    "level": "ZH_TO_EN",
     "page": 39,
     "unit": "Unit 2"
   },
   {
     "word": "adventure",
     "translation": "历险；奇遇",
-    "distractors": [
+    "zhDistractors": [
       "生长",
       "说笑话；开玩笑",
       "也许，大概，可能"
     ],
-    "level": "EN_TO_ZH",
-    "page": 41,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "历险；奇遇",
-    "translation": "adventure",
-    "distractors": [
+    "enDistractors": [
       "polite",
       "leaf",
       "almost"
     ],
-    "level": "ZH_TO_EN",
     "page": 41,
     "unit": "Unit 2"
   },
   {
     "word": "awake",
     "translation": "醒着的",
-    "distractors": [
+    "zhDistractors": [
       "问题，难题；困难",
       "可是，不过，然而",
       "教科书，教材，课本"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "醒着的",
-    "translation": "awake",
-    "distractors": [
+    "enDistractors": [
       "news",
       "collect",
       "lonely"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "midnight",
     "translation": "午夜",
-    "distractors": [
+    "zhDistractors": [
       "家庭作业，功课",
       "不作声的",
       "俱乐部"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "午夜",
-    "translation": "midnight",
-    "distractors": [
+    "enDistractors": [
       "cotton",
       "marry",
       "silent"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "heart",
     "translation": "心（脏）",
-    "distractors": [
+    "zhDistractors": [
       "使（某人）突然意识到",
       "神经紧张的；焦虑不安的",
       "送出，发出"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "心（脏）",
-    "translation": "heart",
-    "distractors": [
+    "enDistractors": [
       "duty",
       "suddenly",
       "usually"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "almost",
     "translation": "几乎，差不多",
-    "distractors": [
+    "zhDistractors": [
       "结婚；娶；嫁",
       "氧",
       "庆祝"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "几乎，差不多",
-    "translation": "almost",
-    "distractors": [
+    "enDistractors": [
       "uniform",
       "homework",
       "medical"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "shake",
     "translation": "摇动",
-    "distractors": [
+    "zhDistractors": [
       "河狸，海狸",
       "顺着，沿着",
       "成为……的一员，加入"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "摇动",
-    "translation": "shake",
-    "distractors": [
+    "enDistractors": [
       "really",
       "health",
       "seed"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "classmate",
     "translation": "同班同学",
-    "distractors": [
+    "zhDistractors": [
       "庭院",
       "足够",
       "忘记，遗忘"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "同班同学",
-    "translation": "classmate",
-    "distractors": [
+    "enDistractors": [
       "history",
       "pigeon",
       "start"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "lonely",
     "translation": "孤单的，寂寞的",
-    "distractors": [
+    "zhDistractors": [
       "拉；扯；拖",
       "跟着，跟随",
       "满的；满是……的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "孤单的，寂寞的",
-    "translation": "lonely",
-    "distractors": [
+    "enDistractors": [
       "shine",
       "balloon",
       "change"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "magic",
     "translation": "有魔力的，神奇的",
-    "distractors": [
+    "zhDistractors": [
       "极好的，吸引人的，有趣的",
       "跟着，跟随",
       "神经紧张的；焦虑不安的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "有魔力的，神奇的",
-    "translation": "magic",
-    "distractors": [
+    "enDistractors": [
       "cotton",
       "pork",
       "wolf"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "joy",
     "translation": "欢欣，愉快，喜悦",
-    "distractors": [
+    "zhDistractors": [
       "沟通；连接",
       "圆形的，环形的",
       "庆祝"
     ],
-    "level": "EN_TO_ZH",
-    "page": 40,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "欢欣，愉快，喜悦",
-    "translation": "joy",
-    "distractors": [
+    "enDistractors": [
       "problem",
       "nature",
       "wolf"
     ],
-    "level": "ZH_TO_EN",
     "page": 40,
     "unit": "Unit 2"
   },
   {
     "word": "notebook",
     "translation": "笔记本",
-    "distractors": [
+    "zhDistractors": [
       "橡皮",
       "吉他",
       "暴风雨（雪）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 41,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "笔记本",
-    "translation": "notebook",
-    "distractors": [
+    "enDistractors": [
       "pollution",
       "husband",
       "connect"
     ],
-    "level": "ZH_TO_EN",
     "page": 41,
     "unit": "Unit 2"
   },
   {
     "word": "shelf",
     "translation": "搁板，架子",
-    "distractors": [
+    "zhDistractors": [
       "挑战，具有挑战性的事物",
       "休息（时间）",
       "希望，期望，指望"
     ],
-    "level": "EN_TO_ZH",
-    "page": 41,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "搁板，架子",
-    "translation": "shelf",
-    "distractors": [
+    "enDistractors": [
       "enjoy",
       "rise",
       "ready"
     ],
-    "level": "ZH_TO_EN",
     "page": 41,
     "unit": "Unit 2"
   },
   {
     "word": "leave",
     "translation": "离开",
-    "distractors": [
+    "zhDistractors": [
       "历险；奇遇",
       "周末",
       "吻"
     ],
-    "level": "EN_TO_ZH",
-    "page": 41,
-    "unit": "Unit 2"
-  },
-  {
-    "word": "离开",
-    "translation": "leave",
-    "distractors": [
+    "enDistractors": [
       "engineer",
       "unusual",
       "guitar"
     ],
-    "level": "ZH_TO_EN",
     "page": 41,
     "unit": "Unit 2"
   },
   {
     "word": "silent",
     "translation": "不作声的",
-    "distractors": [
+    "zhDistractors": [
       "突然，突如其来地",
       "决定",
       "大学"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "不作声的",
-    "translation": "silent",
-    "distractors": [
+    "enDistractors": [
       "seed",
       "shelf",
       "balloon"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "along",
     "translation": "顺着，沿着",
-    "distractors": [
+    "zhDistractors": [
       "句子",
       "黄瓜",
       "重要的，重大的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "顺着，沿着",
-    "translation": "along",
-    "distractors": [
+    "enDistractors": [
       "hold",
       "jacket",
       "within"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "mountain",
     "translation": "高山，山岳",
-    "distractors": [
+    "zhDistractors": [
       "医学的；医疗的",
       "圣诞节（期间）",
       "人类；人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "高山，山岳",
-    "translation": "mountain",
-    "distractors": [
+    "enDistractors": [
       "everybody",
       "oxygen",
       "wide"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "road",
     "translation": "路，道路，公路",
-    "distractors": [
+    "zhDistractors": [
       "无趣的，无聊的，乏味的",
       "渴的，口渴的",
       "河狸，海狸"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "路，道路，公路",
-    "translation": "road",
-    "distractors": [
+    "enDistractors": [
       "important",
       "through",
       "follow"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "strict",
     "translation": "严格的，严厉的",
-    "distractors": [
+    "zhDistractors": [
       "暴风雨（雪）",
       "形，形状，外形",
       "海洋，大海"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "严格的，严厉的",
-    "translation": "strict",
-    "distractors": [
+    "enDistractors": [
       "chat",
       "quarter",
       "breathe"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "follow",
     "translation": "跟着，跟随",
-    "distractors": [
+    "zhDistractors": [
       "团圆，团聚",
       "更喜欢",
       "需要"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "跟着，跟随",
-    "translation": "follow",
-    "distractors": [
+    "enDistractors": [
       "towards",
       "hobby",
       "sound"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "postman",
     "translation": "邮递员，邮差",
-    "distractors": [
+    "zhDistractors": [
       "旅行，旅程；历程，过程",
       "千米，公里",
       "闲聊，闲谈，聊天"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "邮递员，邮差",
-    "translation": "postman",
-    "distractors": [
+    "enDistractors": [
       "pollution",
       "result",
       "scary"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "touching",
     "translation": "感人的，动人的",
-    "distractors": [
+    "zhDistractors": [
       "沟通；连接",
       "不在的，缺席的",
       "决定"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "感人的，动人的",
-    "translation": "touching",
-    "distractors": [
+    "enDistractors": [
       "hobby",
       "patient",
       "smile"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "son",
     "translation": "儿子",
-    "distractors": [
+    "zhDistractors": [
       "严格的，严厉的",
       "极好的，吸引人的，有趣的",
       "几个，数个，一些"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "儿子",
-    "translation": "son",
-    "distractors": [
+    "enDistractors": [
       "different",
       "save",
       "emergency"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "serve",
     "translation": "为……工作；供职",
-    "distractors": [
+    "zhDistractors": [
       "欢快的；充满生气的",
       "邮递员，邮差",
       "突然，突如其来地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "为……工作；供职",
-    "translation": "serve",
-    "distractors": [
+    "enDistractors": [
       "plenty",
       "health",
       "biscuit"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "absent",
     "translation": "不在的，缺席的",
-    "distractors": [
+    "zhDistractors": [
       "叶，叶子",
       "同班同学",
       "速度，速率"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "不在的，缺席的",
-    "translation": "absent",
-    "distractors": [
+    "enDistractors": [
       "almost",
       "shelf",
       "instrument"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "seldom",
     "translation": "很少，罕见，不常",
-    "distractors": [
+    "zhDistractors": [
       "镜子",
       "摇动",
       "自然的，天然的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "很少，罕见，不常",
-    "translation": "seldom",
-    "distractors": [
+    "enDistractors": [
       "hunt",
       "maybe",
       "root"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "position",
     "translation": "职位，职务",
-    "distractors": [
+    "zhDistractors": [
       "向着，朝着（某个方向）",
       "到达，抵达",
       "英雄"
     ],
-    "level": "EN_TO_ZH",
-    "page": 48,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "职位，职务",
-    "translation": "position",
-    "distractors": [
+    "enDistractors": [
       "feed",
       "peaceful",
       "scary"
     ],
-    "level": "ZH_TO_EN",
     "page": 48,
     "unit": "Unit 3"
   },
   {
     "word": "carry",
     "translation": "把（某物或某人）带至（新的地点或位置）",
-    "distractors": [
+    "zhDistractors": [
       "T恤衫，短袖运动衫",
       "很少，罕见，不常",
       "为……工作；供职"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "把（某物或某人）带至（新的地点或位置）",
-    "translation": "carry",
-    "distractors": [
+    "enDistractors": [
       "strict",
       "wide",
       "Christmas"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "across",
     "translation": "从一边到另一边；穿过",
-    "distractors": [
+    "zhDistractors": [
       "严重的",
       "气球",
       "支持"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "从一边到另一边；穿过",
-    "translation": "across",
-    "distractors": [
+    "enDistractors": [
       "important",
       "firework",
       "seed"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "tear",
     "translation": "眼泪，泪水",
-    "distractors": [
+    "zhDistractors": [
       "顺着，沿着",
       "高的",
       "感人的，动人的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "眼泪，泪水",
-    "translation": "tear",
-    "distractors": [
+    "enDistractors": [
       "care",
       "dodo",
       "introduce"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "hide",
     "translation": "把……藏起来，隐藏",
-    "distractors": [
+    "zhDistractors": [
       "地震",
       "形势，情况，状况，局面",
       "渴的，口渴的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "把……藏起来，隐藏",
-    "translation": "hide",
-    "distractors": [
+    "enDistractors": [
       "hang",
       "follow",
       "across"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "care",
     "translation": "关心",
-    "distractors": [
+    "zhDistractors": [
       "医学的；医疗的",
       "吃惊的，震惊的",
       "自然的，天然的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "关心",
-    "translation": "care",
-    "distractors": [
+    "enDistractors": [
       "culture",
       "joy",
       "send"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "hug",
     "translation": "拥抱",
-    "distractors": [
+    "zhDistractors": [
       "岛，岛屿",
       "T恤衫，短袖运动衫",
       "健康（状况）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "拥抱",
-    "translation": "hug",
-    "distractors": [
+    "enDistractors": [
       "mirror",
       "stay",
       "decision"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "kiss",
     "translation": "吻",
-    "distractors": [
+    "zhDistractors": [
       "研究，调查",
       "重要的，重大的",
       "气味"
     ],
-    "level": "EN_TO_ZH",
-    "page": 49,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "吻",
-    "translation": "kiss",
-    "distractors": [
+    "enDistractors": [
       "traditional",
       "uniform",
       "treat"
     ],
-    "level": "ZH_TO_EN",
     "page": 49,
     "unit": "Unit 3"
   },
   {
     "word": "marry",
     "translation": "结婚；娶；嫁",
-    "distractors": [
+    "zhDistractors": [
       "灯笼；提灯",
       "使（某人）突然意识到",
       "需要"
     ],
-    "level": "EN_TO_ZH",
-    "page": 51,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "结婚；娶；嫁",
-    "translation": "marry",
-    "distractors": [
+    "enDistractors": [
       "miss",
       "bamboo",
       "shocked"
     ],
-    "level": "ZH_TO_EN",
     "page": 51,
     "unit": "Unit 3"
   },
   {
     "word": "queen",
     "translation": "女王",
-    "distractors": [
+    "zhDistractors": [
       "形势，情况，状况，局面",
       "健康（状况）",
       "自然的，天然的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 53,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "女王",
-    "translation": "queen",
-    "distractors": [
+    "enDistractors": [
       "several",
       "uniform",
       "situation"
     ],
-    "level": "ZH_TO_EN",
     "page": 53,
     "unit": "Unit 3"
   },
   {
     "word": "actress",
     "translation": "女演员",
-    "distractors": [
+    "zhDistractors": [
       "气味",
       "成为……的一员，加入",
       "确实地，的确"
     ],
-    "level": "EN_TO_ZH",
-    "page": 54,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "女演员",
-    "translation": "actress",
-    "distractors": [
+    "enDistractors": [
       "reunion",
       "skate",
       "themselves"
     ],
-    "level": "ZH_TO_EN",
     "page": 54,
     "unit": "Unit 3"
   },
   {
     "word": "change",
     "translation": "换（衣服）",
-    "distractors": [
+    "zhDistractors": [
       "女王",
       "向着，朝着（某个方向）",
       "挑战，具有挑战性的事物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 55,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "换（衣服）",
-    "translation": "change",
-    "distractors": [
+    "enDistractors": [
       "mirror",
       "earthquake",
       "human"
     ],
-    "level": "ZH_TO_EN",
     "page": 55,
     "unit": "Unit 3"
   },
   {
     "word": "serious",
     "translation": "严重的",
-    "distractors": [
+    "zhDistractors": [
       "女王",
       "圣诞节（期间）",
       "咖啡"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "严重的",
-    "translation": "serious",
-    "distractors": [
+    "enDistractors": [
       "notebook",
       "task",
       "dry"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "disease",
     "translation": "疾病，病",
-    "distractors": [
+    "zhDistractors": [
       "和平的，非暴力的",
       "高山，山岳",
       "关心"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "疾病，病",
-    "translation": "disease",
-    "distractors": [
+    "enDistractors": [
       "popular",
       "joy",
       "rush"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "stay",
     "translation": "停留，逗留，留下",
-    "distractors": [
+    "zhDistractors": [
       "可怕的，骇人的，恐怖的",
       "一餐；饭",
       "不平常的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "停留，逗留，留下",
-    "translation": "stay",
-    "distractors": [
+    "enDistractors": [
       "through",
       "advice",
       "yourself"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "trailer",
     "translation": "拖车，挂车",
-    "distractors": [
+    "zhDistractors": [
       "根",
       "孤单的，寂寞的",
       "糖"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "拖车，挂车",
-    "translation": "trailer",
-    "distractors": [
+    "enDistractors": [
       "something",
       "stay",
       "nervous"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "pull",
     "translation": "拉；扯；拖",
-    "distractors": [
+    "zhDistractors": [
       "干的，干燥的",
       "呼吸",
       "工程师；设计师"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "拉；扯；拖",
-    "translation": "pull",
-    "distractors": [
+    "enDistractors": [
       "volleyball",
       "wind",
       "research"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "bright",
     "translation": "欢快的；充满生气的",
-    "distractors": [
+    "zhDistractors": [
       "渡渡鸟",
       "从一边到另一边；穿过",
       "结婚；娶；嫁"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "欢快的；充满生气的",
-    "translation": "bright",
-    "distractors": [
+    "enDistractors": [
       "engineer",
       "through",
       "soon"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "refuse",
     "translation": "拒绝，回绝",
-    "distractors": [
+    "zhDistractors": [
       "每个人，人人",
       "惊人的；了不起的",
       "灰色的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "拒绝，回绝",
-    "translation": "refuse",
-    "distractors": [
+    "enDistractors": [
       "missing",
       "regret",
       "nature"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "result",
     "translation": "结果，后果",
-    "distractors": [
+    "zhDistractors": [
       "生长",
       "生物",
       "有魔力的，神奇的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "结果，后果",
-    "translation": "result",
-    "distractors": [
+    "enDistractors": [
       "university",
       "band",
       "yourself"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "power",
     "translation": "给（车辆或机器）提供动力",
-    "distractors": [
+    "zhDistractors": [
       "支持",
       "竹，竹子",
       "大学"
     ],
-    "level": "EN_TO_ZH",
-    "page": 56,
-    "unit": "Unit 3"
-  },
-  {
-    "word": "给（车辆或机器）提供动力",
-    "translation": "power",
-    "distractors": [
+    "enDistractors": [
       "scary",
       "serious",
       "leaf"
     ],
-    "level": "ZH_TO_EN",
     "page": 56,
     "unit": "Unit 3"
   },
   {
     "word": "unusual",
     "translation": "不平常的",
-    "distractors": [
+    "zhDistractors": [
       "饼干",
       "暴风雨（雪）",
       "气味"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "不平常的",
-    "translation": "unusual",
-    "distractors": [
+    "enDistractors": [
       "realise",
       "send",
       "journey"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "university",
     "translation": "大学",
-    "distractors": [
+    "zhDistractors": [
       "工作，任务",
       "渡渡鸟",
       "地理"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "大学",
-    "translation": "university",
-    "distractors": [
+    "enDistractors": [
       "rose",
       "hold",
       "save"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "treat",
     "translation": "请客，款待，招待",
-    "distractors": [
+    "zhDistractors": [
       "关心",
       "后悔（做了某事）；对……感到遗憾",
       "计划"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "请客，款待，招待",
-    "translation": "treat",
-    "distractors": [
+    "enDistractors": [
       "meal",
       "husband",
       "yard"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "realise",
     "translation": "知道；明白；认识到",
-    "distractors": [
+    "zhDistractors": [
       "确实地，的确",
       "从一边到另一边；穿过",
       "笑容v.微笑"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "知道；明白；认识到",
-    "translation": "realise",
-    "distractors": [
+    "enDistractors": [
       "tear",
       "shape",
       "grey"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "dumpling",
     "translation": "水饺",
-    "distractors": [
+    "zhDistractors": [
       "摇动",
       "收集，采集；使集中",
       "人类；人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "水饺",
-    "translation": "dumpling",
-    "distractors": [
+    "enDistractors": [
       "chat",
       "forget",
       "uniform"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "whole",
     "translation": "整个的，全部的",
-    "distractors": [
+    "zhDistractors": [
       "吉他",
       "吻",
       "拒绝，回绝"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "整个的，全部的",
-    "translation": "whole",
-    "distractors": [
+    "enDistractors": [
       "news",
       "queen",
       "midnight"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "cucumber",
     "translation": "黄瓜",
-    "distractors": [
+    "zhDistractors": [
       "家庭作业，功课",
       "博物馆，博物院",
       "制服"
     ],
-    "level": "EN_TO_ZH",
-    "page": 64,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "黄瓜",
-    "translation": "cucumber",
-    "distractors": [
+    "enDistractors": [
       "whole",
       "itself",
       "plastic"
     ],
-    "level": "ZH_TO_EN",
     "page": 64,
     "unit": "Unit 4"
   },
   {
     "word": "hang",
     "translation": "悬挂",
-    "distractors": [
+    "zhDistractors": [
       "橡皮",
       "到达，抵达",
       "烟火，烟花"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "悬挂",
-    "translation": "hang",
-    "distractors": [
+    "enDistractors": [
       "oxygen",
       "plan",
       "amazing"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "balloon",
     "translation": "气球",
-    "distractors": [
+    "zhDistractors": [
       "从一端至另一端，穿过，通过",
       "医学的；医疗的",
       "塑料制的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "气球",
-    "translation": "balloon",
-    "distractors": [
+    "enDistractors": [
       "island",
       "wind",
       "plenty"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "lantern",
     "translation": "灯笼；提灯",
-    "distractors": [
+    "zhDistractors": [
       "虚弱的，不强壮的",
       "污染",
       "拒绝，回绝"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "灯笼；提灯",
-    "translation": "lantern",
-    "distractors": [
+    "enDistractors": [
       "within",
       "museum",
       "queen"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "joke",
     "translation": "说笑话；开玩笑",
-    "distractors": [
+    "zhDistractors": [
       "病人，患者",
       "一餐；饭",
       "点头"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "说笑话；开玩笑",
-    "translation": "joke",
-    "distractors": [
+    "enDistractors": [
       "hobby",
       "root",
       "notebook"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "shocked",
     "translation": "吃惊的，震惊的",
-    "distractors": [
+    "zhDistractors": [
       "有魔力的，神奇的",
       "受大众喜爱的，受欢迎的",
       "无趣的，无聊的，乏味的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "吃惊的，震惊的",
-    "translation": "shocked",
-    "distractors": [
+    "enDistractors": [
       "traditional",
       "missing",
       "regret"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "laugh",
     "translation": "发出笑声，（大）笑",
-    "distractors": [
+    "zhDistractors": [
       "成人，成年人",
       "工作，任务",
       "使（某人）突然意识到"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "发出笑声，（大）笑",
-    "translation": "laugh",
-    "distractors": [
+    "enDistractors": [
       "fantastic",
       "joke",
       "polite"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "pork",
     "translation": "猪肉",
-    "distractors": [
+    "zhDistractors": [
       "英雄",
       "灯笼；提灯",
       "喂养，饲养，给……食物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "猪肉",
-    "translation": "pork",
-    "distractors": [
+    "enDistractors": [
       "dark",
       "care",
       "coffee"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "round",
     "translation": "圆形的，环形的",
-    "distractors": [
+    "zhDistractors": [
       "研究，调查",
       "保护；防护",
       "可是，不过，然而"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "圆形的，环形的",
-    "translation": "round",
-    "distractors": [
+    "enDistractors": [
       "change",
       "stage",
       "start"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "shape",
     "translation": "形，形状，外形",
-    "distractors": [
+    "zhDistractors": [
       "意义，意思，含义",
       "很少，罕见，不常",
       "结婚；娶；嫁"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "形，形状，外形",
-    "translation": "shape",
-    "distractors": [
+    "enDistractors": [
       "feed",
       "problem",
       "recognise"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "reunion",
     "translation": "团圆，团聚",
-    "distractors": [
+    "zhDistractors": [
       "吉他",
       "开始",
       "灰色的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "团圆，团聚",
-    "translation": "reunion",
-    "distractors": [
+    "enDistractors": [
       "balloon",
       "wind",
       "hobby"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "piece",
     "translation": "块；片；段；截",
-    "distractors": [
+    "zhDistractors": [
       "车间，工场",
       "自然的，天然的",
       "海洋，大海"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "块；片；段；截",
-    "translation": "piece",
-    "distractors": [
+    "enDistractors": [
       "earthquake",
       "stage",
       "serve"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "knife",
     "translation": "刀",
-    "distractors": [
+    "zhDistractors": [
       "重要的，重大的",
       "高山，山岳",
       "团圆，团聚"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "刀",
-    "translation": "knife",
-    "distractors": [
+    "enDistractors": [
       "save",
       "treat",
       "sugar"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "smell",
     "translation": "气味",
-    "distractors": [
+    "zhDistractors": [
       "缺乏，没有",
       "研究，调查",
       "大学"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "气味",
-    "translation": "smell",
-    "distractors": [
+    "enDistractors": [
       "grow",
       "stage",
       "enough"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "fill",
     "translation": "弥漫，充满",
-    "distractors": [
+    "zhDistractors": [
       "糖",
       "旅行，旅程；历程，过程",
       "认出；认识；辨认出"
     ],
-    "level": "EN_TO_ZH",
-    "page": 65,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "弥漫，充满",
-    "translation": "fill",
-    "distractors": [
+    "enDistractors": [
       "shape",
       "geography",
       "full"
     ],
-    "level": "ZH_TO_EN",
     "page": 65,
     "unit": "Unit 4"
   },
   {
     "word": "Christmas",
     "translation": "圣诞节（期间）",
-    "distractors": [
+    "zhDistractors": [
       "夹克，短上衣",
       "每个人，人人",
       "废料，废弃物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 70,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "圣诞节（期间）",
-    "translation": "Christmas",
-    "distractors": [
+    "enDistractors": [
       "adventure",
       "club",
       "T-shirt"
     ],
-    "level": "ZH_TO_EN",
     "page": 70,
     "unit": "Unit 4"
   },
   {
     "word": "waste",
     "translation": "废料，废弃物",
-    "distractors": [
+    "zhDistractors": [
       "意见，建议；忠告，劝告",
       "俱乐部",
       "孤单的，寂寞的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 70,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "废料，废弃物",
-    "translation": "waste",
-    "distractors": [
+    "enDistractors": [
       "refuse",
       "within",
       "relax"
     ],
-    "level": "ZH_TO_EN",
     "page": 70,
     "unit": "Unit 4"
   },
   {
     "word": "pollution",
     "translation": "污染",
-    "distractors": [
+    "zhDistractors": [
       "突然，突如其来地",
       "种子，籽",
       "乐队，乐团"
     ],
-    "level": "EN_TO_ZH",
-    "page": 70,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "污染",
-    "translation": "pollution",
-    "distractors": [
+    "enDistractors": [
       "fantastic",
       "celebrate",
       "introduce"
     ],
-    "level": "ZH_TO_EN",
     "page": 70,
     "unit": "Unit 4"
   },
   {
     "word": "plastic",
     "translation": "塑料制的",
-    "distractors": [
+    "zhDistractors": [
       "很少，罕见，不常",
       "惊人的；了不起的",
       "醒着的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 70,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "塑料制的",
-    "translation": "plastic",
-    "distractors": [
+    "enDistractors": [
       "traditional",
       "ground",
       "something"
     ],
-    "level": "ZH_TO_EN",
     "page": 70,
     "unit": "Unit 4"
   },
   {
     "word": "celebrate",
     "translation": "庆祝",
-    "distractors": [
+    "zhDistractors": [
       "找不到的",
       "严重的",
       "水塘，水洼"
     ],
-    "level": "EN_TO_ZH",
-    "page": 70,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "庆祝",
-    "translation": "celebrate",
-    "distractors": [
+    "enDistractors": [
       "relax",
       "wolf",
       "hers"
     ],
-    "level": "ZH_TO_EN",
     "page": 70,
     "unit": "Unit 4"
   },
   {
     "word": "meal",
     "translation": "一餐；饭",
-    "distractors": [
+    "zhDistractors": [
       "它们自己；他们自己；她们自己",
       "几乎，差不多",
       "严重的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 71,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "一餐；饭",
-    "translation": "meal",
-    "distractors": [
+    "enDistractors": [
       "shine",
       "piece",
       "forest"
     ],
-    "level": "ZH_TO_EN",
     "page": 71,
     "unit": "Unit 4"
   },
   {
     "word": "duty",
     "translation": "职责，义务",
-    "distractors": [
+    "zhDistractors": [
       "岛，岛屿",
       "它们自己；他们自己；她们自己",
       "滑冰，溜冰"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "职责，义务",
-    "translation": "duty",
-    "distractors": [
+    "enDistractors": [
       "dodo",
       "change",
       "send"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "shine",
     "translation": "发光，发亮",
-    "distractors": [
+    "zhDistractors": [
       "感人的，动人的",
       "女王",
       "烟火，烟花"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "发光，发亮",
-    "translation": "shine",
-    "distractors": [
+    "enDistractors": [
       "start",
       "shelf",
       "dry"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 4"
   },
   {
     "word": "usually",
     "translation": "通常地；惯常地",
-    "distractors": [
+    "zhDistractors": [
       "需要",
       "医学的；医疗的",
       "突然，突如其来地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "通常地；惯常地",
-    "translation": "usually",
-    "distractors": [
+    "enDistractors": [
       "band",
       "strict",
       "plastic"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "break",
     "translation": "中断，暂停",
-    "distractors": [
+    "zhDistractors": [
       "眼泪，泪水",
       "把……藏起来，隐藏",
       "教科书，教材，课本"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "中断，暂停",
-    "translation": "break",
-    "distractors": [
+    "enDistractors": [
       "seldom",
       "cotton",
       "join"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "emergency",
     "translation": "紧急情况，不测事件",
-    "distractors": [
+    "zhDistractors": [
       "需要",
       "生长",
       "发狂地；无法控制地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "紧急情况，不测事件",
-    "translation": "emergency",
-    "distractors": [
+    "enDistractors": [
       "bright",
       "send",
       "rose"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "miss",
     "translation": "错过",
-    "distractors": [
+    "zhDistractors": [
       "通常地；惯常地",
       "练习",
       "邮递员，邮差"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "错过",
-    "translation": "miss",
-    "distractors": [
+    "enDistractors": [
       "yard",
       "hide",
       "amazing"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "thirsty",
     "translation": "渴的，口渴的",
-    "distractors": [
+    "zhDistractors": [
       "女演员",
       "部分",
       "送出，发出"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "渴的，口渴的",
-    "translation": "thirsty",
-    "distractors": [
+    "enDistractors": [
       "midnight",
       "adventure",
       "something"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "challenge",
     "translation": "挑战，具有挑战性的事物",
-    "distractors": [
+    "zhDistractors": [
       "中断，暂停",
       "缺乏，没有",
       "不作声的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "挑战，具有挑战性的事物",
-    "translation": "challenge",
-    "distractors": [
+    "enDistractors": [
       "marry",
       "celebrate",
       "pork"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "patient",
     "translation": "病人，患者",
-    "distractors": [
+    "zhDistractors": [
       "庆祝",
       "职位，职务",
       "污染"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "病人，患者",
-    "translation": "patient",
-    "distractors": [
+    "enDistractors": [
       "health",
       "band",
       "celebrate"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "situation",
     "translation": "形势，情况，状况，局面",
-    "distractors": [
+    "zhDistractors": [
       "冲，奔",
       "意想不到的事",
       "夹克，短上衣"
     ],
-    "level": "EN_TO_ZH",
-    "page": 72,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "形势，情况，状况，局面",
-    "translation": "situation",
-    "distractors": [
+    "enDistractors": [
       "hide",
       "important",
       "hang"
     ],
-    "level": "ZH_TO_EN",
     "page": 72,
     "unit": "Unit 4"
   },
   {
     "word": "regret",
     "translation": "后悔（做了某事）；对……感到遗憾",
-    "distractors": [
+    "zhDistractors": [
       "形，形状，外形",
       "舞台",
       "文化"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "后悔（做了某事）；对……感到遗憾",
-    "translation": "regret",
-    "distractors": [
+    "enDistractors": [
       "shape",
       "cotton",
       "health"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 4"
   },
   {
     "word": "decision",
     "translation": "决定，抉择",
-    "distractors": [
+    "zhDistractors": [
       "病人，患者",
       "受大众喜爱的，受欢迎的",
       "块；片；段；截"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "决定，抉择",
-    "translation": "decision",
-    "distractors": [
+    "enDistractors": [
       "health",
       "almost",
       "miss"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 4"
   },
   {
     "word": "support",
     "translation": "支持",
-    "distractors": [
+    "zhDistractors": [
       "森林，林区",
       "排球（运动）",
       "镜子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 4"
-  },
-  {
-    "word": "支持",
-    "translation": "support",
-    "distractors": [
+    "enDistractors": [
       "grow",
       "traditional",
       "advice"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 4"
   },
   {
     "word": "medical",
     "translation": "医学的；医疗的",
-    "distractors": [
+    "zhDistractors": [
       "为……工作；供职",
       "病人，患者",
       "很少，罕见，不常"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "医学的；医疗的",
-    "translation": "medical",
-    "distractors": [
+    "enDistractors": [
       "problem",
       "shape",
       "lab"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 5"
   },
   {
     "word": "firework",
     "translation": "烟火，烟花",
-    "distractors": [
+    "zhDistractors": [
       "生物",
       "喜欢；享受……的乐趣",
       "历险；奇遇"
     ],
-    "level": "EN_TO_ZH",
-    "page": 73,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "烟火，烟花",
-    "translation": "firework",
-    "distractors": [
+    "enDistractors": [
       "jacket",
       "support",
       "electric"
     ],
-    "level": "ZH_TO_EN",
     "page": 73,
     "unit": "Unit 5"
   },
   {
     "word": "within",
     "translation": "在（建筑或地区）里",
-    "distractors": [
+    "zhDistractors": [
       "排球（运动）",
       "停留，逗留，留下",
       "竹，竹子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 80,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "在（建筑或地区）里",
-    "translation": "within",
-    "distractors": [
+    "enDistractors": [
       "ready",
       "result",
       "relax"
     ],
-    "level": "ZH_TO_EN",
     "page": 80,
     "unit": "Unit 5"
   },
   {
     "word": "quarter",
     "translation": "一刻钟，十五分钟",
-    "distractors": [
+    "zhDistractors": [
       "地，地面",
       "黄瓜",
       "气球"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "一刻钟，十五分钟",
-    "translation": "quarter",
-    "distractors": [
+    "enDistractors": [
       "history",
       "earthquake",
       "workshop"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "workshop",
     "translation": "车间，工场",
-    "distractors": [
+    "zhDistractors": [
       "吃惊的，震惊的",
       "地，地面",
       "业余爱好，嗜好"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "车间，工场",
-    "translation": "workshop",
-    "distractors": [
+    "enDistractors": [
       "change",
       "plan",
       "break"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "leaf",
     "translation": "叶，叶子",
-    "distractors": [
+    "zhDistractors": [
       "形势，情况，状况，局面",
       "灰色的",
       "醒着的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "叶，叶子",
-    "translation": "leaf",
-    "distractors": [
+    "enDistractors": [
       "decision",
       "hug",
       "silent"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "collect",
     "translation": "收集，采集；使集中",
-    "distractors": [
+    "zhDistractors": [
       "地理",
       "也许，大概，可能",
       "圣诞节（期间）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "收集，采集；使集中",
-    "translation": "collect",
-    "distractors": [
+    "enDistractors": [
       "bamboo",
       "meal",
       "human"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "root",
     "translation": "根",
-    "distractors": [
+    "zhDistractors": [
       "结果，后果",
       "庭院",
       "更喜欢"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "根",
-    "translation": "root",
-    "distractors": [
+    "enDistractors": [
       "treat",
       "key",
       "rescue"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "send",
     "translation": "送出，发出",
-    "distractors": [
+    "zhDistractors": [
       "糖",
       "部分",
       "地，地面"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "送出，发出",
-    "translation": "send",
-    "distractors": [
+    "enDistractors": [
       "oxygen",
       "something",
       "joy"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "rise",
     "translation": "升高，上升",
-    "distractors": [
+    "zhDistractors": [
       "废料，废弃物",
       "放松，休息",
       "儿子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "升高，上升",
-    "translation": "rise",
-    "distractors": [
+    "enDistractors": [
       "classmate",
       "advice",
       "lantern"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "sugar",
     "translation": "糖",
-    "distractors": [
+    "zhDistractors": [
       "风",
       "挑战，具有挑战性的事物",
       "医学的；医疗的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "糖",
-    "translation": "sugar",
-    "distractors": [
+    "enDistractors": [
       "save",
       "fun",
       "join"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "oxygen",
     "translation": "氧",
-    "distractors": [
+    "zhDistractors": [
       "足够",
       "打猎；猎杀",
       "无趣的，无聊的，乏味的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "氧",
-    "translation": "oxygen",
-    "distractors": [
+    "enDistractors": [
       "coffee",
       "biscuit",
       "pull"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "human",
     "translation": "人类；人",
-    "distractors": [
+    "zhDistractors": [
       "笑容v.微笑",
       "发狂地；无法控制地",
       "女演员"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "人类；人",
-    "translation": "human",
-    "distractors": [
+    "enDistractors": [
       "forest",
       "hide",
       "dodo"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "though",
     "translation": "可是，不过，然而",
-    "distractors": [
+    "zhDistractors": [
       "职位，职务",
       "休息（时间）",
       "每个人，人人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "可是，不过，然而",
-    "translation": "though",
-    "distractors": [
+    "enDistractors": [
       "pigeon",
       "club",
       "son"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "breathe",
     "translation": "呼吸",
-    "distractors": [
+    "zhDistractors": [
       "吻",
       "闲聊，闲谈，聊天",
       "意见，建议；忠告，劝告"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "呼吸",
-    "translation": "breathe",
-    "distractors": [
+    "enDistractors": [
       "popular",
       "cucumber",
       "nervous"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "soon",
     "translation": "不久，即刻，很快",
-    "distractors": [
+    "zhDistractors": [
       "事实；真相",
       "记住，记得",
       "儿子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "不久，即刻，很快",
-    "translation": "soon",
-    "distractors": [
+    "enDistractors": [
       "ocean",
       "electric",
       "island"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "dark",
     "translation": "昏暗的；黑暗的",
-    "distractors": [
+    "zhDistractors": [
       "团圆，团聚",
       "棉花",
       "有魔力的，神奇的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "昏暗的；黑暗的",
-    "translation": "dark",
-    "distractors": [
+    "enDistractors": [
       "pigeon",
       "explore",
       "sail"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "rest",
     "translation": "休息（时间）",
-    "distractors": [
+    "zhDistractors": [
       "喜欢；享受……的乐趣",
       "笑容v.微笑",
       "女演员"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "休息（时间）",
-    "translation": "rest",
-    "distractors": [
+    "enDistractors": [
       "themselves",
       "wind",
       "disease"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "natural",
     "translation": "自然的，天然的",
-    "distractors": [
+    "zhDistractors": [
       "更喜欢",
       "心（脏）",
       "儿子"
     ],
-    "level": "EN_TO_ZH",
-    "page": 81,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "自然的，天然的",
-    "translation": "natural",
-    "distractors": [
+    "enDistractors": [
       "leave",
       "engineer",
       "forest"
     ],
-    "level": "ZH_TO_EN",
     "page": 81,
     "unit": "Unit 5"
   },
   {
     "word": "seed",
     "translation": "种子，籽",
-    "distractors": [
+    "zhDistractors": [
       "水塘，水洼",
       "从一端至另一端，穿过，通过",
       "可怕的，骇人的，恐怖的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 83,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "种子，籽",
-    "translation": "seed",
-    "distractors": [
+    "enDistractors": [
       "sugar",
       "refuse",
       "piece"
     ],
-    "level": "ZH_TO_EN",
     "page": 83,
     "unit": "Unit 5"
   },
   {
     "word": "grow",
     "translation": "生长",
-    "distractors": [
+    "zhDistractors": [
       "错过",
       "河狸，海狸",
       "可怕的，骇人的，恐怖的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 83,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "生长",
-    "translation": "grow",
-    "distractors": [
+    "enDistractors": [
       "scary",
       "bamboo",
       "hobby"
     ],
-    "level": "ZH_TO_EN",
     "page": 83,
     "unit": "Unit 5"
   },
   {
     "word": "part",
     "translation": "部分",
-    "distractors": [
+    "zhDistractors": [
       "忘记，遗忘",
       "弥漫，充满",
       "昏暗的；黑暗的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 83,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "部分",
-    "translation": "part",
-    "distractors": [
+    "enDistractors": [
       "shape",
       "patient",
       "cucumber"
     ],
-    "level": "ZH_TO_EN",
     "page": 83,
     "unit": "Unit 5"
   },
   {
     "word": "culture",
     "translation": "文化",
-    "distractors": [
+    "zhDistractors": [
       "种子，籽",
       "喜欢；享受……的乐趣",
       "可是，不过，然而"
     ],
-    "level": "EN_TO_ZH",
-    "page": 85,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "文化",
-    "translation": "culture",
-    "distractors": [
+    "enDistractors": [
       "queen",
       "joy",
       "nod"
     ],
-    "level": "ZH_TO_EN",
     "page": 85,
     "unit": "Unit 5"
   },
   {
     "word": "health",
     "translation": "健康（状况）",
-    "distractors": [
+    "zhDistractors": [
       "也许，大概，可能",
       "烟火，烟花",
       "探索；探讨，探究"
     ],
-    "level": "EN_TO_ZH",
-    "page": 87,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "健康（状况）",
-    "translation": "health",
-    "distractors": [
+    "enDistractors": [
       "stage",
       "unusual",
       "hold"
     ],
-    "level": "ZH_TO_EN",
     "page": 87,
     "unit": "Unit 5"
   },
   {
     "word": "rose",
     "translation": "玫瑰；蔷薇",
-    "distractors": [
+    "zhDistractors": [
       "女演员",
       "灰色的",
       "挑战，具有挑战性的事物"
     ],
-    "level": "EN_TO_ZH",
-    "page": 87,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "玫瑰；蔷薇",
-    "translation": "rose",
-    "distractors": [
+    "enDistractors": [
       "waste",
       "change",
       "duty"
     ],
-    "level": "ZH_TO_EN",
     "page": 87,
     "unit": "Unit 5"
   },
   {
     "word": "cotton",
     "translation": "棉花",
-    "distractors": [
+    "zhDistractors": [
       "氧",
       "发出笑声，（大）笑",
       "关心"
     ],
-    "level": "EN_TO_ZH",
-    "page": 87,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "棉花",
-    "translation": "cotton",
-    "distractors": [
+    "enDistractors": [
       "rescue",
       "culture",
       "joke"
     ],
-    "level": "ZH_TO_EN",
     "page": 87,
     "unit": "Unit 5"
   },
   {
     "word": "bamboo",
     "translation": "竹，竹子",
-    "distractors": [
+    "zhDistractors": [
       "狼",
       "死的，去世的",
       "秘密"
     ],
-    "level": "EN_TO_ZH",
-    "page": 87,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "竹，竹子",
-    "translation": "bamboo",
-    "distractors": [
+    "enDistractors": [
       "prefer",
       "though",
       "pool"
     ],
-    "level": "ZH_TO_EN",
     "page": 87,
     "unit": "Unit 5"
   },
   {
     "word": "popular",
     "translation": "受大众喜爱的，受欢迎的",
-    "distractors": [
+    "zhDistractors": [
       "关心",
       "俱乐部",
       "团圆，团聚"
     ],
-    "level": "EN_TO_ZH",
-    "page": 88,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "受大众喜爱的，受欢迎的",
-    "translation": "popular",
-    "distractors": [
+    "enDistractors": [
       "key",
       "plan",
       "soon"
     ],
-    "level": "ZH_TO_EN",
     "page": 88,
     "unit": "Unit 5"
   },
   {
     "word": "key",
     "translation": "至关重要的；必不可少的",
-    "distractors": [
+    "zhDistractors": [
       "确实地，的确",
       "友好的，友善的",
       "沟通；连接"
     ],
-    "level": "EN_TO_ZH",
-    "page": 88,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "至关重要的；必不可少的",
-    "translation": "key",
-    "distractors": [
+    "enDistractors": [
       "mind",
       "whole",
       "stage"
     ],
-    "level": "ZH_TO_EN",
     "page": 88,
     "unit": "Unit 5"
   },
   {
     "word": "news",
     "translation": "消息",
-    "distractors": [
+    "zhDistractors": [
       "同班同学",
       "顺着，沿着",
       "成人，成年人"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "消息",
-    "translation": "news",
-    "distractors": [
+    "enDistractors": [
       "magic",
       "skate",
       "start"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 5"
   },
   {
     "word": "prefer",
     "translation": "更喜欢",
-    "distractors": [
+    "zhDistractors": [
       "受大众喜爱的，受欢迎的",
       "练习",
       "悬挂"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "更喜欢",
-    "translation": "prefer",
-    "distractors": [
+    "enDistractors": [
       "bamboo",
       "jacket",
       "different"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 5"
   },
   {
     "word": "coffee",
     "translation": "咖啡",
-    "distractors": [
+    "zhDistractors": [
       "种子，籽",
       "不久，即刻，很快",
       "森林，林区"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 5"
-  },
-  {
-    "word": "咖啡",
-    "translation": "coffee",
-    "distractors": [
+    "enDistractors": [
       "save",
       "uniform",
       "suddenly"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 5"
   },
   {
     "word": "secret",
     "translation": "秘密",
-    "distractors": [
+    "zhDistractors": [
       "笑容v.微笑",
       "医学的；医疗的",
       "意想不到的事"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "秘密",
-    "translation": "secret",
-    "distractors": [
+    "enDistractors": [
       "full",
       "plan",
       "grow"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "husband",
     "translation": "丈夫",
-    "distractors": [
+    "zhDistractors": [
       "探索；探讨，探究",
       "岛，岛屿",
       "一餐；饭"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "丈夫",
-    "translation": "husband",
-    "distractors": [
+    "enDistractors": [
       "homework",
       "knife",
       "hug"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "adult",
     "translation": "成人，成年人",
-    "distractors": [
+    "zhDistractors": [
       "找不到的",
       "英雄",
       "氧"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "成人，成年人",
-    "translation": "adult",
-    "distractors": [
+    "enDistractors": [
       "uniform",
       "island",
       "weekend"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "weekend",
     "translation": "周末",
-    "distractors": [
+    "zhDistractors": [
       "忘记，遗忘",
       "向着，朝着（某个方向）",
       "给（车辆或机器）提供动力"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "周末",
-    "translation": "weekend",
-    "distractors": [
+    "enDistractors": [
       "task",
       "need",
       "towards"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "chat",
     "translation": "闲聊，闲谈，聊天",
-    "distractors": [
+    "zhDistractors": [
       "意见，主意，观点",
       "不同的，不一样的",
       "圣诞节（期间）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "闲聊，闲谈，聊天",
-    "translation": "chat",
-    "distractors": [
+    "enDistractors": [
       "power",
       "through",
       "polite"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "relax",
     "translation": "放松，休息",
-    "distractors": [
+    "zhDistractors": [
       "练习",
       "闲聊，闲谈，聊天",
       "通常地；惯常地"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "放松，休息",
-    "translation": "relax",
-    "distractors": [
+    "enDistractors": [
       "realise",
       "feed",
       "round"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "yard",
     "translation": "庭院",
-    "distractors": [
+    "zhDistractors": [
       "发出笑声，（大）笑",
       "业余爱好，嗜好",
       "渡渡鸟"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "庭院",
-    "translation": "yard",
-    "distractors": [
+    "enDistractors": [
       "mirror",
       "breathe",
       "shine"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "biscuit",
     "translation": "饼干",
-    "distractors": [
+    "zhDistractors": [
       "森林，林区",
       "灰色的",
       "拥抱"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "饼干",
-    "translation": "biscuit",
-    "distractors": [
+    "enDistractors": [
       "itself",
       "rescue",
       "weak"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "connect",
     "translation": "沟通；连接",
-    "distractors": [
+    "zhDistractors": [
       "塑料制的",
       "笑容v.微笑",
       "探索；探讨，探究"
     ],
-    "level": "EN_TO_ZH",
-    "page": 89,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "沟通；连接",
-    "translation": "connect",
-    "distractors": [
+    "enDistractors": [
       "nod",
       "hide",
       "position"
     ],
-    "level": "ZH_TO_EN",
     "page": 89,
     "unit": "Unit 6"
   },
   {
     "word": "pigeon",
     "translation": "鸽子",
-    "distractors": [
+    "zhDistractors": [
       "风",
       "渡渡鸟",
       "滑冰，溜冰"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "鸽子",
-    "translation": "pigeon",
-    "distractors": [
+    "enDistractors": [
       "adult",
       "history",
       "geography"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "surprise",
     "translation": "意想不到的事",
-    "distractors": [
+    "zhDistractors": [
       "氧",
       "神经紧张的；焦虑不安的",
       "团圆，团聚"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "意想不到的事",
-    "translation": "surprise",
-    "distractors": [
+    "enDistractors": [
       "fill",
       "actress",
       "lonely"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "boring",
     "translation": "无趣的，无聊的，乏味的",
-    "distractors": [
+    "zhDistractors": [
       "灯笼；提灯",
       "忘记，遗忘",
       "练习"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "无趣的，无聊的，乏味的",
-    "translation": "boring",
-    "distractors": [
+    "enDistractors": [
       "realise",
       "joy",
       "coffee"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "feed",
     "translation": "喂养，饲养，给……食物",
-    "distractors": [
+    "zhDistractors": [
       "文化",
       "不在的，缺席的",
       "职责，义务"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "喂养，饲养，给……食物",
-    "translation": "feed",
-    "distractors": [
+    "enDistractors": [
       "marry",
       "secret",
       "refuse"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "madly",
     "translation": "发狂地；无法控制地",
-    "distractors": [
+    "zhDistractors": [
       "知道；明白；认识到",
       "惊人的；了不起的",
       "拉；扯；拖"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "发狂地；无法控制地",
-    "translation": "madly",
-    "distractors": [
+    "enDistractors": [
       "midnight",
       "trailer",
       "practice"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "scary",
     "translation": "可怕的，骇人的，恐怖的",
-    "distractors": [
+    "zhDistractors": [
       "教科书，教材，课本",
       "(pl.yourselves)你自己",
       "忘记，遗忘"
     ],
-    "level": "EN_TO_ZH",
-    "page": 96,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "可怕的，骇人的，恐怖的",
-    "translation": "scary",
-    "distractors": [
+    "enDistractors": [
       "hang",
       "along",
       "speed"
     ],
-    "level": "ZH_TO_EN",
     "page": 96,
     "unit": "Unit 6"
   },
   {
     "word": "research",
     "translation": "研究，调查",
-    "distractors": [
+    "zhDistractors": [
       "庭院",
       "和平的，非暴力的",
       "英雄"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "研究，调查",
-    "translation": "research",
-    "distractors": [
+    "enDistractors": [
       "husband",
       "madly",
       "everyone"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "recognise",
     "translation": "认出；认识；辨认出",
-    "distractors": [
+    "zhDistractors": [
       "紧急情况，不测事件",
       "地，地面",
       "停留，逗留，留下"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "认出；认识；辨认出",
-    "translation": "recognise",
-    "distractors": [
+    "enDistractors": [
       "leaf",
       "boring",
       "homework"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "themselves",
     "translation": "它们自己；他们自己；她们自己",
-    "distractors": [
+    "zhDistractors": [
       "渴的，口渴的",
       "眼泪，泪水",
       "顺着，沿着"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "它们自己；他们自己；她们自己",
-    "translation": "themselves",
-    "distractors": [
+    "enDistractors": [
       "really",
       "news",
       "hit"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "mirror",
     "translation": "镜子",
-    "distractors": [
+    "zhDistractors": [
       "夹克，短上衣",
       "和平的，非暴力的",
       "邮递员，邮差"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "镜子",
-    "translation": "mirror",
-    "distractors": [
+    "enDistractors": [
       "culture",
       "awake",
       "beaver"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "itself",
     "translation": "自己，自身",
-    "distractors": [
+    "zhDistractors": [
       "计划",
       "橡皮",
       "更喜欢"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "自己，自身",
-    "translation": "itself",
-    "distractors": [
+    "enDistractors": [
       "boring",
       "laugh",
       "save"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "maybe",
     "translation": "也许，大概，可能",
-    "distractors": [
+    "zhDistractors": [
       "很少，罕见，不常",
       "旅行，旅程；历程，过程",
       "历史"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "也许，大概，可能",
-    "translation": "maybe",
-    "distractors": [
+    "enDistractors": [
       "joy",
       "human",
       "different"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "several",
     "translation": "几个，数个，一些",
-    "distractors": [
+    "zhDistractors": [
       "速度，速率",
       "拥抱",
       "水饺"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "几个，数个，一些",
-    "translation": "several",
-    "distractors": [
+    "enDistractors": [
       "decide",
       "wolf",
       "joke"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "kilometre",
     "translation": "千米，公里",
-    "distractors": [
+    "zhDistractors": [
       "制服",
       "错误",
       "足够"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "千米，公里",
-    "translation": "kilometre",
-    "distractors": [
+    "enDistractors": [
       "miss",
       "forest",
       "collect"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "speed",
     "translation": "速度，速率",
-    "distractors": [
+    "zhDistractors": [
       "饼干",
       "眼泪，泪水",
       "开始"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "速度，速率",
-    "translation": "speed",
-    "distractors": [
+    "enDistractors": [
       "firework",
       "news",
       "coffee"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "amazing",
     "translation": "惊人的；了不起的",
-    "distractors": [
+    "zhDistractors": [
       "生长",
       "向着，朝着（某个方向）",
       "闲聊，闲谈，聊天"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "惊人的；了不起的",
-    "translation": "amazing",
-    "distractors": [
+    "enDistractors": [
       "forget",
       "hobby",
       "rescue"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "enough",
     "translation": "足够",
-    "distractors": [
+    "zhDistractors": [
       "历史",
       "渡渡鸟",
       "受大众喜爱的，受欢迎的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 97,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "足够",
-    "translation": "enough",
-    "distractors": [
+    "enDistractors": [
       "wide",
       "awake",
       "change"
     ],
-    "level": "ZH_TO_EN",
     "page": 97,
     "unit": "Unit 6"
   },
   {
     "word": "beaver",
     "translation": "河狸，海狸",
-    "distractors": [
+    "zhDistractors": [
       "惊人的；了不起的",
       "玫瑰；蔷薇",
       "制服"
     ],
-    "level": "EN_TO_ZH",
-    "page": 99,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "河狸，海狸",
-    "translation": "beaver",
-    "distractors": [
+    "enDistractors": [
       "T-shirt",
       "fun",
       "pull"
     ],
-    "level": "ZH_TO_EN",
     "page": 99,
     "unit": "Unit 6"
   },
   {
     "word": "wolf",
     "translation": "狼",
-    "distractors": [
+    "zhDistractors": [
       "欢快的；充满生气的",
       "烟火，烟花",
       "给（车辆或机器）提供动力"
     ],
-    "level": "EN_TO_ZH",
-    "page": 99,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "狼",
-    "translation": "wolf",
-    "distractors": [
+    "enDistractors": [
       "marry",
       "hide",
       "full"
     ],
-    "level": "ZH_TO_EN",
     "page": 99,
     "unit": "Unit 6"
   },
   {
     "word": "engineer",
     "translation": "工程师；设计师",
-    "distractors": [
+    "zhDistractors": [
       "历险；奇遇",
       "头脑；思想，思维",
       "风"
     ],
-    "level": "EN_TO_ZH",
-    "page": 99,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "工程师；设计师",
-    "translation": "engineer",
-    "distractors": [
+    "enDistractors": [
       "grey",
       "without",
       "reunion"
     ],
-    "level": "ZH_TO_EN",
     "page": 99,
     "unit": "Unit 6"
   },
   {
     "word": "hero",
     "translation": "英雄",
-    "distractors": [
+    "zhDistractors": [
       "休息（时间）",
       "整个的，全部的",
       "重要的，重大的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 101,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "英雄",
-    "translation": "hero",
-    "distractors": [
+    "enDistractors": [
       "dry",
       "through",
       "peaceful"
     ],
-    "level": "ZH_TO_EN",
     "page": 101,
     "unit": "Unit 6"
   },
   {
     "word": "rescue",
     "translation": "营救，救援",
-    "distractors": [
+    "zhDistractors": [
       "知道；明白；认识到",
       "生长",
       "车间，工场"
     ],
-    "level": "EN_TO_ZH",
-    "page": 102,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "营救，救援",
-    "translation": "rescue",
-    "distractors": [
+    "enDistractors": [
       "ground",
       "speed",
       "nervous"
     ],
-    "level": "ZH_TO_EN",
     "page": 102,
     "unit": "Unit 6"
   },
   {
     "word": "earthquake",
     "translation": "地震",
-    "distractors": [
+    "zhDistractors": [
       "决定",
       "庭院",
       "工作，任务"
     ],
-    "level": "EN_TO_ZH",
-    "page": 102,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "地震",
-    "translation": "earthquake",
-    "distractors": [
+    "enDistractors": [
       "follow",
       "plastic",
       "practice"
     ],
-    "level": "ZH_TO_EN",
     "page": 102,
     "unit": "Unit 6"
   },
   {
     "word": "missing",
     "translation": "找不到的",
-    "distractors": [
+    "zhDistractors": [
       "实验室",
       "某物；某事；某些东西",
       "成为……的一员，加入"
     ],
-    "level": "EN_TO_ZH",
-    "page": 102,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "找不到的",
-    "translation": "missing",
-    "distractors": [
+    "enDistractors": [
       "sentence",
       "journey",
       "enough"
     ],
-    "level": "ZH_TO_EN",
     "page": 102,
     "unit": "Unit 6"
   },
   {
     "word": "save",
     "translation": "救，拯救，挽救",
-    "distractors": [
+    "zhDistractors": [
       "笑容v.微笑",
       "水塘，水洼",
       "到达，抵达"
     ],
-    "level": "EN_TO_ZH",
-    "page": 102,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "救，拯救，挽救",
-    "translation": "save",
-    "distractors": [
+    "enDistractors": [
       "thought",
       "important",
       "missing"
     ],
-    "level": "ZH_TO_EN",
     "page": 102,
     "unit": "Unit 6"
   },
   {
     "word": "dead",
     "translation": "死的，去世的",
-    "distractors": [
+    "zhDistractors": [
       "镜子",
       "工程师；设计师",
       "地震"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "死的，去世的",
-    "translation": "dead",
-    "distractors": [
+    "enDistractors": [
       "grey",
       "key",
       "pork"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "dodo",
     "translation": "渡渡鸟",
-    "distractors": [
+    "zhDistractors": [
       "紧急情况，不测事件",
       "休息（时间）",
       "生活"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "渡渡鸟",
-    "translation": "dodo",
-    "distractors": [
+    "enDistractors": [
       "realise",
       "decision",
       "nature"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   },
   {
     "word": "museum",
     "translation": "博物馆，博物院",
-    "distractors": [
+    "zhDistractors": [
       "找不到的",
       "跟着，跟随",
       "意想不到的事"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "博物馆，博物院",
-    "translation": "museum",
-    "distractors": [
+    "enDistractors": [
       "plan",
       "queen",
       "journey"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "island",
     "translation": "岛，岛屿",
-    "distractors": [
+    "zhDistractors": [
       "更喜欢",
       "停留，逗留，留下",
       "摇动"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "岛，岛屿",
-    "translation": "island",
-    "distractors": [
+    "enDistractors": [
       "absent",
       "thought",
       "ready"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "ocean",
     "translation": "海洋，大海",
-    "distractors": [
+    "zhDistractors": [
       "制服",
       "气味",
       "吃惊的，震惊的"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "海洋，大海",
-    "translation": "ocean",
-    "distractors": [
+    "enDistractors": [
       "something",
       "arrive",
       "mistake"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "plenty",
     "translation": "丰富，充足，众多，大量",
-    "distractors": [
+    "zhDistractors": [
       "使（某人）突然意识到",
       "计划",
       "更喜欢"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "丰富，充足，众多，大量",
-    "translation": "plenty",
-    "distractors": [
+    "enDistractors": [
       "pull",
       "key",
       "meal"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "friendly",
     "translation": "友好的，友善的",
-    "distractors": [
+    "zhDistractors": [
       "感人的，动人的",
       "高的",
       "岛，岛屿"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "友好的，友善的",
-    "translation": "friendly",
-    "distractors": [
+    "enDistractors": [
       "need",
       "sentence",
       "usually"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "peaceful",
     "translation": "和平的，非暴力的",
-    "distractors": [
+    "zhDistractors": [
       "头脑；思想，思维",
       "健康（状况）",
       "职责，义务"
     ],
-    "level": "EN_TO_ZH",
-    "page": 104,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "和平的，非暴力的",
-    "translation": "peaceful",
-    "distractors": [
+    "enDistractors": [
       "care",
       "scary",
       "polite"
     ],
-    "level": "ZH_TO_EN",
     "page": 104,
     "unit": "Unit 6"
   },
   {
     "word": "arrive",
     "translation": "到达，抵达",
-    "distractors": [
+    "zhDistractors": [
       "镜子",
       "渴的，口渴的",
       "(pl.yourselves)你自己"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "到达，抵达",
-    "translation": "arrive",
-    "distractors": [
+    "enDistractors": [
       "popular",
       "challenge",
       "feed"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   },
   {
     "word": "forest",
     "translation": "森林，林区",
-    "distractors": [
+    "zhDistractors": [
       "重要的，重大的",
       "使（某人）突然意识到",
       "悬挂"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "森林，林区",
-    "translation": "forest",
-    "distractors": [
+    "enDistractors": [
       "pork",
       "hug",
       "museum"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   },
   {
     "word": "hunt",
     "translation": "打猎；猎杀",
-    "distractors": [
+    "zhDistractors": [
       "点头",
       "教科书，教材，课本",
       "足够"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "打猎；猎杀",
-    "translation": "hunt",
-    "distractors": [
+    "enDistractors": [
       "towards",
       "key",
       "remember"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   },
   {
     "word": "full",
     "translation": "满的；满是……的",
-    "distractors": [
+    "zhDistractors": [
       "也许，大概，可能",
       "干的，干燥的",
       "排球（运动）"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "满的；满是……的",
-    "translation": "full",
-    "distractors": [
+    "enDistractors": [
       "without",
       "hope",
       "remember"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   },
   {
     "word": "fantastic",
     "translation": "极好的，吸引人的，有趣的",
-    "distractors": [
+    "zhDistractors": [
       "高山，山岳",
       "介绍",
       "实验室"
     ],
-    "level": "EN_TO_ZH",
-    "page": 105,
-    "unit": "Unit 6"
-  },
-  {
-    "word": "极好的，吸引人的，有趣的",
-    "translation": "fantastic",
-    "distractors": [
+    "enDistractors": [
       "classmate",
       "chat",
       "remember"
     ],
-    "level": "ZH_TO_EN",
     "page": 105,
     "unit": "Unit 6"
   }

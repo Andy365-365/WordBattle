@@ -48,16 +48,16 @@ class GameEngineTest {
     @Test
     fun `题库加载`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
         assertEquals(1, q.size)
-        assertEquals(0, q[0].correctIdx)
+        assertEquals("你好", q[0].options[q[0].correctIdx])
     }
 
     @Test
     fun `玩家加入`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
         val (bridge, engine) = makeBridgeAndEngine(q, listOf("A", "B"))
         assertEquals(2, engine.players.size)
@@ -68,7 +68,7 @@ class GameEngineTest {
     @Test
     fun `出题广播PREPARE`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
         val (bridge, engine) = makeBridgeAndEngine(q)
         engine.nextRound()
@@ -81,7 +81,7 @@ class GameEngineTest {
     @Test
     fun `出题广播GO`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
         val (bridge, engine) = makeBridgeAndEngine(q)
         engine.nextRound()
@@ -95,29 +95,31 @@ class GameEngineTest {
     @Test
     fun `答对加分`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
+        val correctIdx = q[0].correctIdx
         val (bridge, engine) = makeBridgeAndEngine(q)
         engine.nextRound()
         delay(2200)
-        bridge.injectAnswer("p0", 1, 0)
+        bridge.injectAnswer("p0", 1, correctIdx)
         delay(300)
         assertEquals(1, engine.players["p0"]?.score ?: -1)
         val reveals = bridge.broadcasts.filterIsInstance<GameMessage.REVEAL>()
         assertEquals(1, reveals.size)
-        assertEquals(0, reveals[0].correctIdx)
+        assertEquals(correctIdx, reveals[0].correctIdx)
         assertEquals("p0", reveals[0].winner)
     }
 
     @Test
     fun `答错不加分`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
+        val wrongIdx = if (q[0].correctIdx != 0) 0 else 1
         val (bridge, engine) = makeBridgeAndEngine(q)
         engine.nextRound()
         delay(2200)
-        bridge.injectAnswer("p0", 1, 1)
+        bridge.injectAnswer("p0", 1, wrongIdx)
         delay(300)
         assertEquals(0, engine.players["p0"]?.score ?: -1)
         assertTrue(engine.currentRound!!.wrongPlayers.contains("p0"))
@@ -126,14 +128,15 @@ class GameEngineTest {
     @Test
     fun `先答对者优先`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
+        val correctIdx = q[0].correctIdx
         val (bridge, engine) = makeBridgeAndEngine(q, listOf("A", "B"))
         engine.nextRound()
         delay(2200)
-        bridge.injectAnswer("p1", 1, 0)
+        bridge.injectAnswer("p1", 1, correctIdx)
         delay(200)
-        bridge.injectAnswer("p0", 1, 0)
+        bridge.injectAnswer("p0", 1, correctIdx)
         delay(200)
         assertEquals(1, engine.players["p1"]?.score ?: -1)
         assertEquals(0, engine.players["p0"]?.score ?: -1)
@@ -142,14 +145,15 @@ class GameEngineTest {
     @Test
     fun `游戏结束排名`() = runBlocking {
         val repo = WordRepository()
-        repo.load("[{\"word\":\"hello\",\"meaning\":\"你好\",\"options\":[\"你好\",\"hi\",\"bye\",\"thanks\"]}]")
+        repo.load("[{\"word\":\"hello\",\"translation\":\"你好\",\"zhDistractors\":[\"hi\",\"bye\",\"thanks\"],\"enDistractors\":[]}]")
         val q = repo.generateQuestions("EN_TO_ZH", 1)
+        val correctIdx = q[0].correctIdx
         val (bridge, engine) = makeBridgeAndEngine(q, listOf("A", "B"))
         var ranking: List<RankEntry>? = null
         engine.onGameEnd = { ranking = it }
         engine.nextRound()
         delay(2200)
-        bridge.injectAnswer("p0", 1, 0)
+        bridge.injectAnswer("p0", 1, correctIdx)
         delay(1500)
         assertNotNull(ranking)
         assertEquals(2, ranking!!.size)

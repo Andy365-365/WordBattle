@@ -29,10 +29,6 @@ class PracticeSession(
     var questions: List<Question> = emptyList()
     var recordAt: List<WrongWord> = emptyList()   // 每题对应的原始记录
 
-    // 干扰项候选池（每个方向抽一次，复用）
-    private var zhPool: List<String> = emptyList()
-    private var enPool: List<String> = emptyList()
-
     fun key(rec: WrongWord) = "${rec.word}|${rec.direction}"
 
     /** 当前题显示用的星级 */
@@ -44,18 +40,6 @@ class PracticeSession(
     /** 抽题开始：词数 < 题数时循环取（重复出现是"连对 3 次归零"的触发途径） */
     fun start(count: Int) {
         val shuffled = records.shuffled()
-        if (shuffled.isNotEmpty() && zhPool.isEmpty() && enPool.isEmpty()) {
-            try {
-                zhPool = wordRepo.generateQuestions("EN_TO_ZH", 300)
-                    .map { it.options[it.correctIdx] }
-                    .distinct().shuffled()
-                enPool = wordRepo.generateQuestions("ZH_TO_EN", 300)
-                    .map { it.questionText }
-                    .distinct().shuffled()
-            } catch (e: Exception) {
-                DebugLog.e("[Practice] 干扰项池构建失败", e.message ?: "")
-            }
-        }
         val picked = if (shuffled.isEmpty()) emptyList() else
             (0 until count).map { i -> shuffled[i % shuffled.size] }
         recordAt = picked
@@ -66,20 +50,8 @@ class PracticeSession(
         DebugLog.i("[Practice] 开始: user=$username 题数=${questions.size} 词数=${shuffled.size}")
     }
 
-    private fun buildQuestion(round: Int, rec: WrongWord): Question {
-        val enToZh = rec.direction == "EN_TO_ZH"
-        val questionText = if (enToZh) rec.word else rec.meaning
-        val correctAnswer = if (enToZh) rec.meaning else rec.word
-        val pool = (if (enToZh) zhPool else enPool)
-            .filter { it != questionText }.shuffled().take(3)
-        val options = (listOf(correctAnswer) + pool).shuffled()
-        return Question(
-            round = round,
-            questionText = questionText,
-            options = options,
-            correctIdx = options.indexOf(correctAnswer)
-        )
-    }
+    private fun buildQuestion(round: Int, rec: WrongWord): Question =
+        wordRepo.buildSingleQuestion(rec.direction, rec.word, rec.meaning, round)
 
     data class SubmitResult(val isCorrect: Boolean, val timedOut: Boolean, val starAfter: Int)
 

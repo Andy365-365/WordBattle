@@ -37,7 +37,12 @@ class WrongWordRepository(context: Context) {
         context.getSharedPreferences("wrong_words", Context.MODE_PRIVATE)
 
     private val KEY_LIST = "wrong_word_list"
-    private val json = kotlinx.serialization.json.Json { ignoreUnknownKeys = true }
+    // encodeDefaults：starLevel=1 / wrongCount=1 等默认值也写盘，
+    // 保证持久化 JSON 字段完整自洽（避免依赖反序列化时的默认值回落）
+    private val json = kotlinx.serialization.json.Json {
+        ignoreUnknownKeys = true
+        encodeDefaults = true
+    }
 
     /** 所有错题记录 */
     fun getAll(): List<WrongWord> {

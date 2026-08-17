@@ -149,10 +149,14 @@ class GameMessageSerializationTest {
     }
 
     @Test
-    fun `GO message contains t field`() {
+    fun `GO message roundtrips with type marker`() {
         val msg = GameMessage.GO(round = 1, question = "q", options = listOf("a","b","c","d"), timer = 10)
         val str = json.encodeToString(GameMessage.serializer(), msg)
-        assertTrue(str.contains("\"t\""))
+        // 多态序列化带类型标签 "GO"
         assertTrue(str.contains("\"GO\""))
+        // 解码回具体类型，t 字段（类型标识，默认 "GO"）应还原
+        val decoded = json.decodeFromString<GameMessage.GO>(str)
+        assertEquals("GO", decoded.t)
+        assertEquals(1, decoded.round)
     }
 }
