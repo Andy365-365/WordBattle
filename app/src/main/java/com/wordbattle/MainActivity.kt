@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.wordbattle.data.Question
+import com.wordbattle.data.RoundRecord
 import com.wordbattle.data.UserRepository
 import com.wordbattle.data.WordRepository
 import com.wordbattle.game.*
@@ -62,6 +63,45 @@ class MainActivity : ComponentActivity() {
     private var myPlayerId by mutableStateOf("")
     private var hostAsPlayer = false
     private var playerRanking by mutableStateOf<List<RankEntry>>(emptyList())
+
+    // ===== 赛后复盘：本轮记录（内存临时，一局一局覆盖）=====
+    // key: round -> 该题的 (question, options)；REVEAL 时取出比对
+    private val goBuffer = mutableMapOf<Int, Pair<String, List<String>>>()
+    // 本轮已提交的 (round, choice)；REVEAL 时未提交 = 超时
+    private val myAnswers = mutableMapOf<Int, Int>()
+    private var roundRecords by mutableStateOf<List<RoundRecord>>(emptyList())
+    private var roundDirection by mutableStateOf("EN_TO_ZH")
+
+    /**
+     * REVEAL 到达时调用：本地比对本题选择并追加 RoundRecord。
+     * 英文单词提取：EN_TO_ZH 时 question 即英文词；ZH_TO_EN 时 options[correctIdx] 即英文词。
+     */
+    private fun recordRoundAnswer(msg: GameMessage.REVEAL, direction: String) {
+        val go = goBuffer[msg.round] ?: return
+        val (question, options) = go
+        val correctText = options.getOrNull(msg.correctIdx) ?: ""
+        val choice = myAnswers[msg.round]
+        val userText = choice?.let { options.getOrNull(it) }
+        val isCorrect = choice == msg.correctIdx
+        val word = if (direction == "ZH_TO_EN") correctText else question
+        roundRecords = roundRecords + RoundRecord(
+            round = msg.round,
+            word = word,
+            question = question,
+            correctAnswer = correctText,
+            userAnswer = userText,
+            isCorrect = isCorrect,
+            timedOut = choice == null
+        )
+        DebugLog.i("[Review] 第${msg.round}题记录: word=$word correct=$isCorrect timeout=${choice == null}")
+    }
+
+    /** GAME_OVER 后清空本轮临时列表（离开复盘页时同样调用） */
+    private fun clearRoundRecords() {
+        goBuffer.clear()
+        myAnswers.clear()
+        roundRecords = emptyList()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,6 +176,7 @@ class MainActivity : ComponentActivity() {
                 playerName = "我",
                 playerCount = hostPlayerCount,
                 onStart = {
+                    clearRoundRecords()  // 新一局开始，清空上轮记录
                     gameEngine?.startGame()
                     udpDiscovery.updateStatus("ANSWERING")
                     appScope.launch {
@@ -160,6 +201,7 @@ class MainActivity : ComponentActivity() {
                         playerOptions = pOpts,
                         onAnswer = { round, choice ->
                             DebugLog.i("[OBS] onClick(host): round=$round hostCurrentRound=${hostCurrentRound?.round} status=${_playerStatus.value} choice=$choice ts=${System.currentTimeMillis()}")
+                            myAnswers[round] = choice
                             _playerStatus.value = "SUBMITTED"
                             appScope.launch {
                                 tcpClient?.send(GameMessage.ANSWER(
@@ -179,12 +221,30 @@ class MainActivity : ComponentActivity() {
             Screen.HOST_RESULT -> {
                 ResultScreen(
                     ranking = hostRanking,
+                    wrongRecords = roundRecords.filter { !it.isCorrect },
                     onRestart = {
+                        clearRoundRecords()
                         gameEngine?.restart()
                         udpDiscovery.updateStatus("ANSWERING")
                         navigateTo(Screen.HOST_GAME)
                     },
-                    onBack = { stopHostMode(); navigateTo(Screen.HOME) }
+                    onBack = { clearRoundRecords(); stopHostMode(); navigateTo(Screen.HOME) },
+                    onReview = { navigateTo(Screen.REVIEW) }
+                )
+            }
+
+            Screen.REVIEW -> {
+                val records = roundRecords
+                ReviewScreen(
+                    records = records.filter { !it.isCorrect },
+                    correctCount = records.count { it.isCorrect },
+                    onPractice = {
+                        // 错题练习为二期功能，暂提示
+                        DebugLog.i("[Review] 练习这些词: 功能二期实现")
+                        clearRoundRecords()
+                        navigateTo(Screen.HOME)
+                    },
+                    onBack = { clearRoundRecords(); navigateTo(Screen.HOME) }
                 )
             }
 
@@ -222,6 +282,7 @@ class MainActivity : ComponentActivity() {
                     page = page,
                     onAnswer = { round, choice ->
                         DebugLog.i("[OBS] onClick(player): round=$round hostCurrentRound=${hostCurrentRound?.round} status=${_playerStatus.value} choice=$choice ts=${System.currentTimeMillis()}")
+                        myAnswers[round] = choice
                         _playerStatus.value = "SUBMITTED"
                         appScope.launch {
                             tcpClient?.send(GameMessage.ANSWER(
@@ -240,8 +301,13 @@ class MainActivity : ComponentActivity() {
                 val score by _playerScore.collectAsState()
                 ResultScreen(
                     ranking = playerRanking,
-                    onRestart = { appScope.launch { tcpClient?.send(GameMessage.RESTART()) } },
-                    onBack = { stopPlayerMode(); navigateTo(Screen.HOME) }
+                    wrongRecords = roundRecords.filter { !it.isCorrect },
+                    onRestart = {
+                        clearRoundRecords()
+                        appScope.launch { tcpClient?.send(GameMessage.RESTART()) }
+                    },
+                    onBack = { clearRoundRecords(); stopPlayerMode(); navigateTo(Screen.HOME) },
+                    onReview = { navigateTo(Screen.REVIEW) }
                 )
             }
 
@@ -296,6 +362,7 @@ class MainActivity : ComponentActivity() {
                 hostPlayers = gameEngine?.players?.values?.toList() ?: emptyList()
             }
 
+            roundDirection = direction  // 主机答题方向 = 本局方向
             udpDiscovery.startAdvertising(ip, 5201, "我的手机", direction, total)
             val questions = wordRepo.generateQuestions(direction, total, unit)
             gameEngine?.init(direction, total, questions, answerTimeout)
@@ -334,6 +401,7 @@ class MainActivity : ComponentActivity() {
 
     private fun joinHost(host: UdpBroadcast) {
         DebugLog.i("加入主机: ${host.ip}:${host.port} name=${host.name}")
+        roundDirection = host.dir  // 客户端答题方向 = 主机广播的方向
         tcpClient = TcpClient(appScope)
         appScope.launch {
             DebugLog.d("连接中...")
@@ -384,10 +452,12 @@ class MainActivity : ComponentActivity() {
                                     _playerOptions.value = msg.options
                                     _playerStatus.value = "ANSWERING"
                                     udpDiscovery.updateStatus("ANSWERING")
+                                    goBuffer[msg.round] = msg.question to msg.options
                                     DebugLog.i("GO: 题目=${msg.question}, 选项数=${msg.options.size}")
                                 }
                                 "REVEAL" -> {
                                     val msg = json.decodeFromString<GameMessage.REVEAL>(jsonStr)
+                                    recordRoundAnswer(msg, roundDirection)
                                     val correctText = _playerOptions.value.getOrNull(msg.correctIdx) ?: ""
                                     _playerStatus.value = "REVEAL:idx=${msg.correctIdx}:text=$correctText"
                                     DebugLog.i("揭晓: 答案=$correctText 胜者=${msg.winnerName}")
@@ -411,6 +481,7 @@ class MainActivity : ComponentActivity() {
                                     if (!hostAsPlayer) navigateTo(Screen.PLAYER_RESULT) else Unit
                                 }
                                 "RESTART" -> {
+                                    clearRoundRecords()
                                     _playerScore.value = 0
                                     _playerStatus.value = "WAITING"
                                     _playerQuestion.value = ""

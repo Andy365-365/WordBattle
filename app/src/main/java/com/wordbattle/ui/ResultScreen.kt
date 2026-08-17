@@ -10,13 +10,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.wordbattle.data.RoundRecord
 import com.wordbattle.network.RankEntry
 
 @Composable
 fun ResultScreen(
     ranking: List<RankEntry>,
+    /** 本轮答错/超时的题；null = 未记录（不显示复盘入口） */
+    wrongRecords: List<RoundRecord>?,
     onRestart: () -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onReview: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -48,6 +52,19 @@ fun ResultScreen(
                         }
                         Text("${entry.score} 分", fontSize = 18.sp)
                     }
+                }
+            }
+        }
+
+        // 复盘入口：有错题显示按钮，全对显示文案，无记录不显示
+        wrongRecords?.let { records ->
+            Spacer(modifier = Modifier.height(16.dp))
+            if (records.isEmpty()) {
+                Text("全部答对，太厉害了！", fontSize = 18.sp, fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary)
+            } else {
+                TextButton(onClick = onReview) {
+                    Text("查看错题（${records.size} 题）", fontSize = 18.sp)
                 }
             }
         }

@@ -12,4 +12,5 @@ sealed class Screen {
     object PLAYER_RESULT : Screen()
     object DEBUG : Screen()
     object USER_MANAGE : Screen()
+    object REVIEW : Screen()
 }
