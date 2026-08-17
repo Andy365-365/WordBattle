@@ -18,7 +18,8 @@ fun HomeScreen(
     onHostClicked: () -> Unit,
     onPlayerClicked: () -> Unit,
     onDebugClicked: () -> Unit,
-    onUserManageClicked: () -> Unit
+    onUserManageClicked: () -> Unit,
+    onWrongBookClicked: () -> Unit
 ) {
     var clickCount by remember { mutableIntStateOf(0) }
     var lastClickTime by remember { mutableLongStateOf(0) }
@@ -79,6 +80,16 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
         ) {
             Text("答题", fontSize = 20.sp)
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Button(
+            onClick = {
+                DebugLog.i("[UI] HomeScreen: 点击'错题本'")
+                onWrongBookClicked()
+            },
+            modifier = Modifier.fillMaxWidth(0.8f).height(60.dp)
+        ) {
+            Text("错题本", fontSize = 20.sp)
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(onClick = onDebugClicked) {

@@ -167,7 +167,8 @@ class MainActivity : ComponentActivity() {
                 onHostClicked = { navigateTo(Screen.HOST_SETUP) },
                 onPlayerClicked = { navigateTo(Screen.PLAYER_JOIN); udpDiscovery.startListening() },
                 onDebugClicked = { navigateTo(Screen.DEBUG) },
-                onUserManageClicked = { navigateTo(Screen.USER_MANAGE) }
+                onUserManageClicked = { navigateTo(Screen.USER_MANAGE) },
+                onWrongBookClicked = { navigateTo(Screen.WRONG_BOOK) }
             )
 
             Screen.HOST_SETUP -> HostSetupScreen(
@@ -256,6 +257,36 @@ class MainActivity : ComponentActivity() {
                     },
                     onBack = { clearRoundRecords(); navigateTo(Screen.HOME) }
                 )
+            }
+
+            Screen.WRONG_BOOK -> {
+                val username = userRepo.getCurrent()?.username
+                val all = wrongWordRepo.getByUser(username ?: "")
+                WrongBookScreen(
+                    wrongCount = all.size,
+                    onViewClicked = { navigateTo(Screen.WRONG_LIST) },
+                    onPracticeClicked = {
+                        // 错题练习为第4步功能，暂提示
+                        DebugLog.i("[WrongBook] 错题练习: 第4步实现")
+                    },
+                    onBack = { navigateTo(Screen.HOME) }
+                )
+            }
+
+            Screen.WRONG_LIST -> {
+                val username = userRepo.getCurrent()?.username
+                var listVersion by remember { mutableIntStateOf(0) }
+                val all = wrongWordRepo.getByUser(username ?: "")
+                key("wronglist_" + (username ?: "") + "_" + listVersion) {
+                    WrongListScreen(
+                        records = all,
+                        onDelete = { word, direction ->
+                            wrongWordRepo.delete(username ?: "", word, direction)
+                            listVersion++  // 刷新列表
+                        },
+                        onBack = { navigateTo(Screen.WRONG_BOOK) }
+                    )
+                }
             }
 
             Screen.PLAYER_JOIN -> {

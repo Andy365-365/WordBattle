@@ -13,4 +13,6 @@ sealed class Screen {
     object DEBUG : Screen()
     object USER_MANAGE : Screen()
     object REVIEW : Screen()
+    object WRONG_BOOK : Screen()
+    object WRONG_LIST : Screen()
 }
