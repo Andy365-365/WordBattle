@@ -28,7 +28,10 @@ fun HostSetupScreen(
 
         Text("方向", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             RadioButton(
                 selected = direction == "EN_TO_ZH",
                 onClick = { DebugLog.i("[UI] HostSetup: 选择方向 英→中"); direction = "EN_TO_ZH" }
@@ -91,7 +94,7 @@ fun HostSetupScreen(
                         else MaterialTheme.colorScheme.surfaceVariant
                     )
                 ) {
-                    Text("$n")
+                    Text("$n", maxLines = 1)
                 }
             }
         }
@@ -101,7 +104,7 @@ fun HostSetupScreen(
         Text("答题等待时间(秒)", fontSize = 18.sp)
         Spacer(modifier = Modifier.height(8.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            listOf(5, 10, 20, 30, 120).forEach { n ->
+            listOf(5, 10, 20, 30).forEach { n ->
                 val selected = answerTimeout == n
                 Button(
                     onClick = { DebugLog.i("[UI] HostSetup: 选择答题等待 $n 秒"); answerTimeout = n },
@@ -109,9 +112,12 @@ fun HostSetupScreen(
                         containerColor = if (selected) MaterialTheme.colorScheme.primary
                         else MaterialTheme.colorScheme.surfaceVariant
                     ),
-                    modifier = Modifier.width(80.dp)
+                    // 用权重均分整行宽度：固定 80.dp 在窄屏上超出屏幕宽度会溢出/滚动
+                    modifier = Modifier.weight(1f),
+                    // 系统字体放大(如1.4x)时，默认24dp水平内边距会让"120"被挤成两行，压缩内边距
+                    contentPadding = PaddingValues(horizontal = 4.dp, vertical = 12.dp)
                 ) {
-                    Text("$n")
+                    Text("$n", maxLines = 1)
                 }
             }
         }

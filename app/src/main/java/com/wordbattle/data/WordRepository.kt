@@ -23,19 +23,14 @@ class WordRepository {
     }
 
     /**
-     * 按方向筛选词
+     * 按方向筛选词：题库中每个词有 EN_TO_ZH / ZH_TO_EN 两条镜像条目，
+     * 必须按 level 字段精确选取；用"translation 是否中文"筛选会选到镜像条目，
+     * 导致题目/选项语言颠倒。
      */
     private fun filterByDirection(direction: String): List<Word> {
-        return when (direction) {
-            "EN_TO_ZH" -> words.filter { word -> isChinese(word.translation) }
-            "ZH_TO_EN" -> words.filter { word -> !isChinese(word.translation) }
-            else -> words
-        }
+        val byLevel = words.filter { it.level == direction }
+        return if (byLevel.isNotEmpty()) byLevel else words
     }
-
-    private fun isChinese(text: String): Boolean = text.any { it.isChineseChar() }
-
-    private fun Char.isChineseChar(): Boolean = this in '\u4e00'..'\u9fff'
 
     /**
      * 获取所有 unit 列表
@@ -56,8 +51,9 @@ class WordRepository {
 
         val shuffled = filtered.shuffled().take(count)
         return shuffled.mapIndexed { index, word ->
-            val questionText = if (direction == "EN_TO_ZH") word.word else word.translation
-            val correctAnswer = if (direction == "EN_TO_ZH") word.translation else word.word
+            // 题库数据结构：word=提问侧语言，translation=作答侧语言（镜像条目由 filterByDirection 按 level 区分）
+            val questionText = word.word
+            val correctAnswer = word.translation
 
             val allOptions: MutableList<String> = mutableListOf(correctAnswer)
             allOptions.addAll(word.distractors.take(3))
