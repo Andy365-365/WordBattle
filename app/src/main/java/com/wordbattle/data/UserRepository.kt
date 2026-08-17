@@ -54,10 +54,19 @@ class UserRepository(context: Context) {
 
     /**
      * 获取当前用户
+     * 先调 getAll() 确保首次初始化已执行（默认用户"玩家"被创建）
      */
     fun getCurrent(): User? {
-        val username = prefs.getString(KEY_CURRENT, null) ?: return null
-        return getAll().find { it.username == username }
+        val all = getAll()
+        val username = prefs.getString(KEY_CURRENT, null)
+        if (username != null) return all.find { it.username == username }
+        // KEY_CURRENT 缺失（历史数据/异常状态）：回退到第一个用户并补写
+        if (all.isNotEmpty()) {
+            setCurrentUser(all.first().username)
+            DebugLog.i("[UserRepo] KEY_CURRENT 缺失，回退到: ${all.first().username}")
+            return all.first()
+        }
+        return null
     }
 
     /**

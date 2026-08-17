@@ -12,6 +12,7 @@ import com.wordbattle.data.Question
 import com.wordbattle.data.RoundRecord
 import com.wordbattle.data.UserRepository
 import com.wordbattle.data.WordRepository
+import com.wordbattle.data.WrongWordRepository
 import com.wordbattle.game.*
 import com.wordbattle.network.*
 import com.wordbattle.ui.*
@@ -26,6 +27,7 @@ class MainActivity : ComponentActivity() {
 
     private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private lateinit var userRepo: UserRepository
+    private lateinit var wrongWordRepo: WrongWordRepository
     private val wordRepo = WordRepository()
 
     private val _currentScreen = MutableStateFlow<Screen>(Screen.HOME)
@@ -94,6 +96,13 @@ class MainActivity : ComponentActivity() {
             timedOut = choice == null
         )
         DebugLog.i("[Review] 第${msg.round}题记录: word=$word correct=$isCorrect timeout=${choice == null}")
+
+        // 错题本：按当前用户记录（主机自答也记到主机当前用户名）
+        // EN_TO_ZH: 题目=英文, 答案=中文 → meaning=correctText
+        // ZH_TO_EN: 题目=中文, 答案=英文 → meaning=question
+        val username = userRepo.getCurrent()?.username ?: return
+        val meaning = if (direction == "ZH_TO_EN") question else correctText
+        wrongWordRepo.recordAnswer(username, word, meaning, direction, isCorrect)
     }
 
     /** GAME_OVER 后清空本轮临时列表（离开复盘页时同样调用） */
@@ -111,6 +120,7 @@ class MainActivity : ComponentActivity() {
         DebugLog.init(this)
         DebugLog.i("App started, SDK=${android.os.Build.VERSION.SDK_INT}")
         userRepo = UserRepository(this)
+        wrongWordRepo = WrongWordRepository(this)
         DebugLog.i("[UserRepo] 当前用户: ${userRepo.getCurrent()?.username}")
 
         udpDiscovery = UdpDiscovery(appScope)
