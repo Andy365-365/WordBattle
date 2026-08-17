@@ -109,6 +109,18 @@ class WrongWordRepository(context: Context) {
         return result
     }
 
+    /** 设置某条记录星级（练习模式"连续 3 次答对直接归零"用，recordAnswer 只做 ±1） */
+    fun setStarLevel(username: String, word: String, direction: String, star: Int) {
+        val all = getAll().toMutableList()
+        val idx = all.indexOfFirst {
+            it.username == username && it.word == word && it.direction == direction
+        }
+        if (idx < 0) return
+        all[idx] = all[idx].copy(starLevel = star.coerceIn(0, 6))
+        saveAll(all)
+        DebugLog.i("[WrongWord] 设星级: $username $word $direction -> star=$star")
+    }
+
     /** 删除一条记录（用户认为已掌握）。word/direction 定位，username 限定 */
     fun delete(username: String, word: String, direction: String) {
         val all = getAll()

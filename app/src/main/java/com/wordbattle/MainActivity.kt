@@ -74,6 +74,9 @@ class MainActivity : ComponentActivity() {
     private var roundRecords by mutableStateOf<List<RoundRecord>>(emptyList())
     private var roundDirection by mutableStateOf("EN_TO_ZH")
 
+    // 错题练习：当前题池（错题本主页→全部错题 / 复盘页→本轮错题）
+    private var practicePool by mutableStateOf<List<com.wordbattle.data.WrongWord>>(emptyList())
+
     /**
      * REVEAL 到达时调用：本地比对本题选择并追加 RoundRecord。
      * 英文单词提取：EN_TO_ZH 时 question 即英文词；ZH_TO_EN 时 options[correctIdx] 即英文词。
@@ -93,7 +96,8 @@ class MainActivity : ComponentActivity() {
             correctAnswer = correctText,
             userAnswer = userText,
             isCorrect = isCorrect,
-            timedOut = choice == null
+            timedOut = choice == null,
+            direction = direction
         )
         DebugLog.i("[Review] 第${msg.round}题记录: word=$word correct=$isCorrect timeout=${choice == null}")
 
@@ -250,10 +254,17 @@ class MainActivity : ComponentActivity() {
                     records = records.filter { !it.isCorrect },
                     correctCount = records.count { it.isCorrect },
                     onPractice = {
-                        // 错题练习为二期功能，暂提示
-                        DebugLog.i("[Review] 练习这些词: 功能二期实现")
+                        // 题池 = 本轮答错/超时的词对应的库记录
+                        val uname = userRepo.getCurrent()?.username ?: ""
+                        val wrongWords = records.filter { !it.isCorrect }
+                            .map { (it.word to it.direction) }
+                            .distinct()
+                        val pool = wrongWords.mapNotNull { (w, d) ->
+                            wrongWordRepo.find(uname, w, d)
+                        }
+                        practicePool = pool
                         clearRoundRecords()
-                        navigateTo(Screen.HOME)
+                        navigateTo(Screen.WRONG_PRACTICE)
                     },
                     onBack = { clearRoundRecords(); navigateTo(Screen.HOME) }
                 )
@@ -266,8 +277,8 @@ class MainActivity : ComponentActivity() {
                     wrongCount = all.size,
                     onViewClicked = { navigateTo(Screen.WRONG_LIST) },
                     onPracticeClicked = {
-                        // 错题练习为第4步功能，暂提示
-                        DebugLog.i("[WrongBook] 错题练习: 第4步实现")
+                        practicePool = all   // 题池 = 当前用户全部错题（含 0 星）
+                        navigateTo(Screen.WRONG_PRACTICE)
                     },
                     onBack = { navigateTo(Screen.HOME) }
                 )
@@ -287,6 +298,21 @@ class MainActivity : ComponentActivity() {
                         onBack = { navigateTo(Screen.WRONG_BOOK) }
                     )
                 }
+            }
+
+            Screen.WRONG_PRACTICE -> {
+                val username = userRepo.getCurrent()?.username ?: ""
+                PracticeScreen(
+                    username = username,
+                    records = practicePool,
+                    wordRepo = wordRepo,
+                    wrongWordRepo = wrongWordRepo,
+                    onBack = {
+                        // 答题中退出 = 进结束页（PracticeScreen 内部处理）；设置页返回 = 回错题本
+                        navigateTo(Screen.WRONG_BOOK)
+                    },
+                    onHome = { navigateTo(Screen.HOME) }
+                )
             }
 
             Screen.PLAYER_JOIN -> {

@@ -12,6 +12,7 @@ data class RoundRecord(
     val userAnswer: String?,     // 用户选择的答案文本；null = 超时未答
     val isCorrect: Boolean,
     val timedOut: Boolean,
+    val direction: String = "EN_TO_ZH",  // 本题方向（错题练习题池用）
     val starBefore: Int? = null, // 二期：答题前星级
     val starAfter: Int? = null   // 二期：答题后星级
 )

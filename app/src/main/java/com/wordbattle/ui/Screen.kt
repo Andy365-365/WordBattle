@@ -15,4 +15,5 @@ sealed class Screen {
     object REVIEW : Screen()
     object WRONG_BOOK : Screen()
     object WRONG_LIST : Screen()
+    object WRONG_PRACTICE : Screen()
 }
