@@ -49,29 +49,40 @@ fun WrongListScreen(
     var pendingDelete by remember { mutableStateOf<WrongWord?>(null) }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text("查看错题", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            TextButton(onClick = onBack) { Text("← 返回") }
+            Spacer(modifier = Modifier.width(8.dp))
+            Text("查看错题", fontSize = 24.sp, fontWeight = FontWeight.Bold)
+        }
         Spacer(modifier = Modifier.height(16.dp))
 
         // 方向单选
+        // icon = {} 显式清空：Material3 SegmentedButton 选中态默认塞一个 ✓ 图标，
+        // 导致选中/未选中按钮文字位置不对称（实测文字中心跳 36px），选中态纯靠背景色区分
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             SingleChoiceSegmentedButtonRow(modifier = Modifier.weight(1f)) {
                 SegmentedButton(
                     selected = directionFilter == "ZH_TO_EN",
                     onClick = { directionFilter = "ZH_TO_EN" },
-                    shape = SegmentedButtonDefaults.itemShape(0, 1)
+                    shape = SegmentedButtonDefaults.itemShape(0, 1),
+                    icon = {}
                 ) { Text("中→英") }
                 SegmentedButton(
                     selected = directionFilter == "EN_TO_ZH",
                     onClick = { directionFilter = "EN_TO_ZH" },
-                    shape = SegmentedButtonDefaults.itemShape(1, 2)
+                    shape = SegmentedButtonDefaults.itemShape(1, 2),
+                    icon = {}
                 ) { Text("英→中") }
             }
         }
         Spacer(modifier = Modifier.height(12.dp))
 
         if (shown.isEmpty()) {
-            // 空状态：什么都不显示
-            Box(modifier = Modifier.weight(1f))
+            // 空状态：提示语，避免一片空白让人以为卡了
+            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
+                Text("该方向暂无错题", fontSize = 14.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         } else {
             LazyColumn(
                 modifier = Modifier.weight(1f),
@@ -120,17 +131,6 @@ fun WrongListScreen(
                     }
                 }
             }
-        }
-
-        Spacer(modifier = Modifier.height(8.dp))
-        Button(
-            onClick = onBack,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
-            ),
-            modifier = Modifier.fillMaxWidth().height(52.dp)
-        ) {
-            Text("返回")
         }
     }
 

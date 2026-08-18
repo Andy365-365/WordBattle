@@ -80,10 +80,11 @@ fun PracticeScreen(
             TopAppBar(
                 title = { Text("错题练习") },
                 navigationIcon = {
-                    IconButton(onClick = {
+                    TextButton(onClick = {
+                        // 答题/反馈中按下 = 结束本轮直接看结果；设置/结束页 = 返回
                         if (phase == 1 || phase == 2) phase = 3 else onBack()
                     }) {
-                        Text("✕", fontSize = 22.sp)
+                        Text("← 返回")
                     }
                 }
             )
