@@ -28,6 +28,10 @@
 - 已开 USB 调试 / USB 安装 / USB 安全设置 / 无锁屏
 - MIUI 怪癖：
   - KEYCODE_WAKEUP 被静默丢弃，亮屏/息屏切换用 KEYCODE_POWER
+  - **POWER 是切换键**：亮屏时再按一次就是息屏。唤醒后绝不"保险"再按；
+    操作中途若 dump 报 "null root node" 先 screencap 看是否已自动熄屏，
+    而不是反复按 POWER（曾因此把屏按灭）
+  - 息屏超时设置不可靠（设 2147483647 也会中途自熄），长操作每步前确认 mWakefulness
   - adb install 弹窗靠"USB 安装"开关消除
   - Shizuku 不可用
 - 日志：主机跑 `python3 scripts/log_receiver.py` 收 8765 端口 UDP → logs/remote_all_YYYYMMDD.log
