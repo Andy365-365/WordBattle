@@ -56,24 +56,27 @@ fun WrongListScreen(
         }
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 方向单选
+        // 方向单选：两个独立胶囊按钮，居中排列
         // icon = {} 显式清空：Material3 SegmentedButton 选中态默认塞一个 ✓ 图标，
         // 导致选中/未选中按钮文字位置不对称（实测文字中心跳 36px），选中态纯靠背景色区分
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            SingleChoiceSegmentedButtonRow(modifier = Modifier.weight(1f)) {
-                SegmentedButton(
-                    selected = directionFilter == "ZH_TO_EN",
-                    onClick = { directionFilter = "ZH_TO_EN" },
-                    shape = SegmentedButtonDefaults.itemShape(0, 1),
-                    icon = {}
-                ) { Text("中→英") }
-                SegmentedButton(
-                    selected = directionFilter == "EN_TO_ZH",
-                    onClick = { directionFilter = "EN_TO_ZH" },
-                    shape = SegmentedButtonDefaults.itemShape(1, 2),
-                    icon = {}
-                ) { Text("英→中") }
-            }
+        // itemShape(0, 1) = 完整胶囊（全圆角），与 app 默认按钮样式一致
+        // 两按钮各占一半宽（weight），中间用 Spacer 撑出 24dp 间隙
+        SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+            SegmentedButton(
+                selected = directionFilter == "ZH_TO_EN",
+                onClick = { directionFilter = "ZH_TO_EN" },
+                shape = SegmentedButtonDefaults.itemShape(0, 1),
+                icon = {},
+                modifier = Modifier.weight(1f).height(48.dp)
+            ) { Text("中→英") }
+            Spacer(Modifier.width(24.dp))
+            SegmentedButton(
+                selected = directionFilter == "EN_TO_ZH",
+                onClick = { directionFilter = "EN_TO_ZH" },
+                shape = SegmentedButtonDefaults.itemShape(0, 1),
+                icon = {},
+                modifier = Modifier.weight(1f).height(48.dp)
+            ) { Text("英→中") }
         }
         Spacer(modifier = Modifier.height(12.dp))
 
