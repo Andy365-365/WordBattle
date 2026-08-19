@@ -11,10 +11,12 @@ import kotlin.math.pow
 /**
  * 错题练习会话（纯逻辑，无 Compose 依赖；UI 状态在 PracticeScreen 里）
  * 规则见 docs/requirements/错题本需求文档_v2.md 七、错题练习：
- * - 题池 = 传入的错题记录（含 0 星词），词数 < 题数时允许重复
- * - 抽题 = 加权抽样：weight = (1 + wrongCount) * 2^(-小时数/24)
+ * - 题池 = 传入的错题记录（含 0 星词）
+ * - 抽题 = 保底 + 加权：词数 ≤ 题数时先给每个词保底 1 题（保证全词覆盖），
+ *   剩余名额按权重抽，最后整体洗牌；词数 > 题数时纯加权抽 count 个不同词
+ * - 权重 weight = (1 + wrongCount) * 2^(-小时数/24)
  *   （答错越多权重越高；距上次答错越久权重越低，24h 衰减一半——交接文档公式为正指数系笔误，
- *     按已对齐的"时间衰减：最近答错翻倍"语义实现为负指数）
+ *    按已对齐的"时间衰减：最近答错翻倍"语义实现为负指数）
  * - 每题 10 秒倒计时，超时 = 答错
  * - 答错/超时：星级+1（≤6）；答对：星级-1
  * - 同一词会话内连续答对 3 次 → 直接归 0，计数重置；期间答错计数清零
@@ -42,7 +44,7 @@ class PracticeSession(
         return stars[key(rec)] ?: rec.starLevel
     }
 
-    /** 抽题开始：词数 < 题数时循环取（重复出现是"连对 3 次归零"的触发途径） */
+    /** 抽题开始：词数 ≤ 题数时每词保底 1 题（全词覆盖），剩余名额加权抽（重复是"连对 3 次归零"的触发途径） */
     fun start(count: Int) {
         val picked = weightedPick(records, count)
         recordAt = picked
@@ -60,28 +62,35 @@ class PracticeSession(
     }
 
     /**
-     * 加权抽样（每轮按权重独立抽取，会话内允许重复——重复是"连对 3 次归零"的触发途径）。
-     * 边界语义与旧纯随机一致：
-     * - 空池 → 空列表
-     * - 1 个词 → 必抽它
-     * - 全权重相同（全新记录）→ 退化纯随机
-     * - 0 星已纠正词不剔除，留在池里（权重自然最低）
+     * 保底 + 加权抽样（v2.3 修复：旧实现纯独立加权抽，词数 < 题数时低频词可能整场 0 题）：
+     * - 词数 ≤ 题数：每个词保底 1 题（全词覆盖），剩余名额按权重重复抽，最后整体洗牌
+     * - 词数 > 题数：维持旧行为——独立加权抽 count 题
+     * 重复仍保留（保底词也可能被额外抽中），是"连对 3 次归零"的触发途径。
+     * 边界：空池 → 空列表；1 个词 → 必抽它
      */
     fun weightedPick(records: List<WrongWord>, count: Int, now: Long = System.currentTimeMillis()): List<WrongWord> {
         if (records.isEmpty() || count <= 0) return emptyList()
-        return List(count) {
-            val weights = records.map { computeWeight(it, now) }
-            val total = weights.sum()
-            // 在 [0, total) 取均匀点，按权重前缀和切分区间选词（标准加权随机，无截断偏差）
-            val target = Math.random() * total
-            var acc = 0.0
-            var idx = weights.size - 1
-            for (i in weights.indices) {
-                acc += weights[i]
-                if (target < acc) { idx = i; break }
-            }
-            records[idx]
+        return if (records.size <= count) {
+            val base = records.toMutableList()
+            repeat(count - records.size) { base += pickOne(records, now) }
+            base.shuffled()
+        } else {
+            List(count) { pickOne(records, now) }
         }
+    }
+
+    /** 在池内按权重独立抽 1 个：[0,total) 取均匀点，按权重前缀和切分区间（标准加权随机，无截断偏差） */
+    private fun pickOne(records: List<WrongWord>, now: Long): WrongWord {
+        val weights = records.map { computeWeight(it, now) }
+        val total = weights.sum()
+        val target = Math.random() * total
+        var acc = 0.0
+        var idx = weights.size - 1
+        for (i in weights.indices) {
+            acc += weights[i]
+            if (target < acc) { idx = i; break }
+        }
+        return records[idx]
     }
 
     private fun buildQuestion(round: Int, rec: WrongWord): Question =

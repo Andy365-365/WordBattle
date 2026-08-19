@@ -109,7 +109,7 @@ fun PracticeScreen(
                         Spacer(modifier = Modifier.height(24.dp))
                         Text("选练习题数：", fontSize = 16.sp)
                         Spacer(modifier = Modifier.height(12.dp))
-                        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             listOf(5, 10, 20, 30).forEach { n ->
                                 OutlinedButton(
                                     onClick = {
@@ -120,9 +120,9 @@ fun PracticeScreen(
                                         results = emptyList()
                                         phase = 1
                                     },
-                                    modifier = Modifier.height(56.dp)
+                                    modifier = Modifier.height(40.dp)
                                 ) {
-                                    Text("$n 题", fontSize = 18.sp)
+                                    Text("$n", fontSize = 14.sp)
                                 }
                             }
                         }

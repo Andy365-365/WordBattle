@@ -5,17 +5,20 @@
 流程：启动 → 错题本 → 错题练习 → 20 题 → 全程不 tap（全超时，自动推进）
       → 结束页 → 拉设备日志，从 [Practice] Qn 行抓 20 题序列做分布断言。
 
-预期权重（weight=(1+wrongCount)*2^(-小时/24)，现注入数据）：
+预期权重（weight=(1+wrongCount)*2^(-小时/24)，现注入数据，总权重≈24.85）：
   history≈10.7  biology≈6.4  geography≈3.0  nod/rest≈1.9  wolf≈1.5
   textbook≈0.75  eraser≈0.5  ready≈0.1
-20 题期望分布：history≈8  biology≈5  geography≈2  其余零散。
+
+v2.3 保底 + 加权：20 题 = 9 词各保底 1 题 + 11 名额按权重抽：
+  history 期望≈1+4.7=5.7  biology≈3.8  geography≈2.3  低权重三词各≈1.x
 
 断言：
   V1 新 VERSION 出现在运行日志
   V2 抽题序列 20 条完整（[Practice] Q1..Q20）
-  V3 最高权重词 history 单频第一且 >=5（不做逐词严格单调，小样本下脆弱）
-  V4 高权重占比：history+biology >= 9/20（期望 10，P<1e-4 才翻车）
-  V5 低权重受抑：textbook+eraser+ready 合计 <= 3（期望 ~1.1，P(>=4)≈1.5%）
+  V3 保底覆盖：9 词全部出现（每词 ≥1 题，确定性断言）
+  V4 权重排序：history 单频第一，且 ≥ 每个低权重词（textbook/eraser/ready）
+  V5 高权重组 > 低权重组：history+biology 合计 ≥ textbook+eraser+ready 合计
+     （期望 9.6 vs 4.2，差 5.4，P 反转 <0.01%）
   V6 20 题全超时（日志"超时" x20），超时推进正常
 用法：python3 scripts/weighted_test.py
 """
@@ -31,7 +34,7 @@ import auto_test as at
 
 DEVICE = "b054d001"
 ROUNDS = 20
-NEW_VERSION = "v2.2-20260819-1421"   # 本次 build.sh 生成，脚本里改这里即可复用
+NEW_VERSION = "v2.3-20260819-1709"   # 本次 build.sh 生成，脚本里改这里即可复用
 PASS, FAIL = [], []
 
 def check(name, ok, detail=""):
@@ -68,10 +71,10 @@ def main():
     pos = at.find_button_center('错题练习')
     if not pos: print("  FAIL 没找到'错题练习'"); return 1
     at.tap(*pos); time.sleep(2)
-    pos = at.find_button_center(f'{ROUNDS} 题')
-    if not pos: print("  FAIL 没找到'20 题'按钮"); return 1
+    pos = at.find_button_center(f'{ROUNDS}')
+    if not pos: print(f"  FAIL 没找到'{ROUNDS} 题'按钮"); return 1
     at.tap(*pos)
-    print("  已点'20 题'，进入答题（全程不 tap，等超时自动推进）")
+    print(f"  已点'{ROUNDS} 题'，进入答题（全程不 tap，等超时自动推进）")
 
     # ===== 4. 等结束页：20 题 x (10s 超时 + 2s 反馈) ≈ 240s，轮询"练习完成" =====
     print("[4] 等待结束页（约 4 分钟）...")
@@ -127,17 +130,23 @@ def main():
     print("    分布:", dict(c.most_common()))
 
     if len(seq) == ROUNDS:
-        h, b, g = c.get('history', 0), c.get('biology', 0), c.get('geography', 0)
-        low = c.get('textbook', 0) + c.get('eraser', 0) + c.get('ready', 0)
-        # V3 改为统计稳健断言：最高权重词 history（p≈0.33，20 题期望 6.5）应单频第一且 ≥5。
-        # 不做逐词严格单调——biology(期望3.9)与 geography(期望1.8)期望差仅 2.2，
-        # 20 题小样本下互换属正常波动（联合概率 ~15%），严格单调是脆弱断言。
+        # 词池 = 6 构造词 + 3 存量词（wolf/nod/rest），应全部出现（保底，确定性）
+        c = Counter(seq)
+        pool_words = {'history', 'biology', 'geography', 'textbook', 'eraser', 'ready',
+                      'wolf', 'nod', 'rest'}
+        missing = [w for w in pool_words if c.get(w, 0) < 1]
+        check("V3 保底覆盖：9 词全部出现（每词≥1题）", not missing,
+              f"缺席={missing} 分布={dict(c.most_common())}")
+        # V4 权重排序：最高权重词 history 单频第一，且不低于任何低权重词
         top_word, top_cnt = c.most_common(1)[0]
-        check("V3 最高权重词 history 单频第一且>=5",
-              top_word == 'history' and h >= 5,
-              f"最高频 {top_word}={top_cnt}; history={h} geography={g} biology={b}")
-        check("V4 高权重占比 history+biology>=9", h + b >= 9, f"实际 {h + b}")
-        check("V5 低权重受抑 textbook+eraser+ready<=3", low <= 3, f"实际 {low}")
+        lows_ok = all(c.get('history', 0) >= c.get(w, 0) for w in ('textbook', 'eraser', 'ready'))
+        check("V4 history 单频第一且>=每个低权重词",
+              top_word == 'history' and lows_ok,
+              f"最高频 {top_word}={top_cnt}; history={c.get('history',0)} textbook={c.get('textbook',0)} eraser={c.get('eraser',0)} ready={c.get('ready',0)}")
+        # V5 高权重组 vs 低权重组（期望 9.6 vs 4.2，差 5.4，P 反转 <0.01%）
+        hi = c.get('history', 0) + c.get('biology', 0)
+        low = c.get('textbook', 0) + c.get('eraser', 0) + c.get('ready', 0)
+        check("V5 高权重组>低权重组", hi > low, f"高={hi} 低={low}")
     else:
         check("V3-V5 分布断言（跳过，序列不全）", False, "")
 
